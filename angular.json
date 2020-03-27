@@ -122,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "uhc-spa"
+    }
+  },
+  "defaultProject": "uhc-spa",
+  "cli": {
+    "analytics": "a1b934bf-cd62-47bf-845f-4d38352229ab"
+  }
 }

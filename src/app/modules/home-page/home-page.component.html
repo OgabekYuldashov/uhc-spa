@@ -1,0 +1,35 @@
+
+<div>
+
+    <!--    ==============Plan  Selection==================================-->
+    <div style="display:inline-block">
+
+
+
+      <label class="choose-plan"> Plans </label> <br>
+      <select id="plan" #plan class="group-8" (change)="onChange(plan.value)">
+        <option class="zone-1" value="" selected>Choose Plant</option>
+        <option *ngFor="let p of plans let j = idx;" value="{{ p}}"
+                [selected]="j === getSelected()"
+        >{{p}}
+        </option>
+      </select>
+
+      <input class="choose-plan" id="location" name="Location" placeholder="your Location">
+
+
+      <button class="filterAllButton" (click)="filterByPlan_And_Location_Distance()"> Search</button>
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
