@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/fonts/fonts-sourceSansPro.css"
             ],
             "scripts": []
           },
@@ -89,6 +90,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/assets/fonts/fonts-sourceSansPro.css",
               "src/styles.css"
             ],
             "scripts": [
