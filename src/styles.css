@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  font-family: SourceSansPro-Regular;
+  color: #0058c3;
+  /*overflow: hidden;*/
+}
