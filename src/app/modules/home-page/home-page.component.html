@@ -5,26 +5,22 @@
     <div class="Rectangle-3-Copy-3">
 
 
-      <select id="plan" #plan class="DENTAL-PLAN-Select" (change)="onChange(plan.value)">
-        <option class="DENTAL-PLAN" value="" selected>Dental Plan</option>
+      <select id="plan" [(ngModel)]="Choose_Dental_Plan" #plan class="DENTAL-PLAN-Select" (change)="onPlanChange(plan.value)">
+        <option class="DENTAL-PLAN" value="Dental Plan" selected> Choose Dental Plan</option>
         <option class="DENTAL-PLAN" value="National Options PPO 20">National Options PPO 20</option>
-        <option class="DENTAL-PLAN" value="National Options PPO 20">National Select Managed Care</option>
+        <option class="DENTAL-PLAN" value="National Select Managed Care">National Select Managed Care</option>
         <option class="DENTAL-PLAN" value="National Options PPO 30"> National Options PPO 30</option>
-
-        <!--      <option *ngFor="let p of this.plans let j = idx;" value="{{p}}"-->
-        <!--              [selected]="j === getSelected()"-->
-        <!--      >{{p}}-->
-
-        <!--      </option>-->
       </select>
 
-      <input class="YOUR-location" id="location" name="Location" placeholder="your Location">
-      <input class="YOUR-location" id="distance" name="distance" placeholder="your Location">
+      <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="your Location">
+
+      <input class="YOUR-location" id="distance" name="distance" placeholder="distance">
 
       <!--===============================================-->
       <button class="SEARCH" (click)="filterByPlan_And_Location_Distance()"> Search</button>
 
     </div>
+
 
     <!--  ====================Advanced search Button=======-->
     <div>
@@ -42,65 +38,71 @@
         <label class="availability"> AVAILABILITY</label>
         <br>
         <label class="Accepting-new-patien"> Accessing new Patients</label>
+
+        <div style="display: inline-block">
+          <label>
+            <input type="checkbox" #inputE1 id="accessebility" [(ngModel)]="parameter_list.acceptingNew" (change)="isacceptingNew(inputE1.checked)"  name="newPatientAccessibility" data-toggle="toggle">
+
+          </label>
+        </div>
+
       </div>
 
       <div class="Specialization_div" style="display: inline-block">
         <label> SPECIALIZATION</label>
+        <div class="Languages-Spoken_coln">
+          <input type="checkbox" #inputE2 id="oralSurgeon" [(ngModel)]="oralSureon" (change)="isOralSurgeon(inputE2.checked)">
+          <label>Oral Surgeon </label>
+          <input type="checkbox" id="endodontist" #inputElement3 [(ngModel)]="endodontist" (change)="isEndodontist(inputElement3.checked)">
+          <label>Endodontist</label>
+          <br>
+          <input type="checkbox" id="LoremIpsum ">
+          <label>Lorem-Ipsum </label>
 
-<!--        <form formGroup="specializationform" (ngSubmit)="submitForm()">-->
-
-<!--          <div *ngFor="let sp of specializations; let i=index">-->
-<!--            <label>-->
-<!--              <input type="checkbox" [value]="sp.value" (change)="onCheckboxChange($event)"/>-->
-<!--              {{sp.name}}-->
-<!--            </label>-->
-<!--          </div>-->
-
-<!--          <p class="error" *ngIf="this.specializationform.controls['checkArray'].errors?.required">-->
-<!--            Checkbox is required, select atleast one value.-->
-<!--          </p>-->
-
-<!--          <input type="submit" value="Submit">-->
-<!--        </form>-->
+        </div>
 
       </div>
 
       <!--    ================= Times Attributies         ==================-->
-      <div>
+      <div style="display: inline-block">
         <div style="display: inline-block">
           <hr class="horizontal-line">
           <label class="Extended-Hours"> EXTENDED HOURS</label>
           <br>
           <label class="Saturday"> Saturday</label>
+          <input type="checkbox" id="extendedhourse_saturday" #inputElement4 [(ngModel)]= "Extendedhourse_saturday" (change)="isThereExtendedhourse_saturday(inputElement4.checked)" name="extendedhourse_saturday" data-toggle="toggle">
           <br>
+
           <label class="Weekday"> Weekday</label>
+          <input type="checkbox" id="extendedhourse_weekday"  #inputElement6 [(ngModel)]="weekday" (change)="isWeekdayWorking(inputElement6.checked)"name="extendedhourse_weekday" data-toggle="toggle">
 
         </div>
 
         <!--      ===============    Accessibility==============-->
-        <div class="accessibility_div">
+
+        <div style="display: inline-block" class="accessibility_div">
           <label class="accessibility"> ACCESSIBILITY </label>
           <br>
           <label class="Handicap-Accessible"> Handicap Accessible</label>
+          <input type="checkbox" id="handicapAccecebility" name="handicapAccecebility" data-toggle="toggle">
+          <input type="checkbox"   #inputElement7 [(ngModel)]="handicapAccecebility" (change)="ishandicapAccecebility(inputElement7.checked)" data-toggle="toggle">
         </div>
 
       </div>
-      <!--    ===============    Doctor Profiles ==================================-->
-
+      <!--    ===============    Doctor Profile ==================================-->
       <div class="doctorProfile_div">
         <hr class="horizontal-line">
         <div class="DoctorName_div">
           <label> DOCTOR NAME</label>
           <br>
-          <input class="FIRST-NAME" type="text" id="firstName" name="firstName" placeholder="FIRST NAME">
-          <input class="SECOND-NAME" type="text" id="LastName" name="lastName" placeholder="LAST NAME">
-
+          <input class="FIRST-NAME"  [(ngModel)]="parameter_list.firstName"type="text" id="firstName" name="firstName" placeholder="FIRST NAME">
+          <input class="SECOND-NAME" [(ngModel)]="parameter_list.lastName" type="text" id="LastName" name="lastName" placeholder="LAST NAME">
         </div>
         <div class="GENDER_div">
           <label class="GENDER"> GENDER</label>
           <br>
-          <button class="MALE" id="male" name="male"> MALE</button>
-          <button class="FEMALE" id="female" name="female"> FEMALE</button>
+          <button (click)="isMale($event)" class="MALE" id="male" name="male"> MALE</button>
+          <button class="FEMALE" id="female" (click)="isFemale($event)" name="female"> FEMALE</button>
         </div>
 
 
@@ -112,16 +114,99 @@
         <label class="Languages-Spoken"> LANGUAGE SPOKEN</label>
 
         <div>
-<!--          <form [formGroup]="form" (ngSubmit)="submit()">-->
-<!--            <label formArrayName="orders" *ngFor="let order of form.controls.orders.controls; let i = index">-->
-<!--              <input type="checkbox" [formControlName]="i">-->
-<!--              {{ordersData[i].name}}-->
-<!--            </label>-->
+          <!--          <mat-card>-->
+          <!--            <mat-card-content>-->
+          <!--              <h2 class="example-h2">Angular Material Checkbox Example</h2>-->
+          <!--              <form [formGroup]="form">-->
+          <!--                <section class="example-section" *ngFor="let cartoon of cartoonsData">-->
+          <!--                  <mat-checkbox class="example-margin"-->
+          <!--                                (change)="onChangeEventFunc(cartoon.name, $event)"-->
+          <!--                                [formControl]="cartoonControl">-->
+          <!--                    {{ cartoon.name }}-->
+          <!--                  </mat-checkbox>-->
+          <!--                </section>-->
+          <!--                <button mat-raised-button color="accent" style="margin-top:10px;">Submit</button>-->
+          <!--              </form>-->
+          <!--            </mat-card-content>-->
+          <!--          </mat-card>-->
 
-<!--            <div *ngIf="!form.valid">At least one order must be selected</div>-->
-<!--            <br>-->
-<!--            <button [disabled]="!form.valid">submit</button>-->
-<!--          </form>-->
+
+          <!--          ============column 1========-->
+
+          <div class="Languages-Spoken_coln">
+            <input type="checkbox" id="arabic">
+            <label>Arabic </label>
+            <br>
+
+            <input type="checkbox" id="spanish">
+            <label>Spanish</label>
+            <br>
+            <input type="checkbox" id="german">
+            <label>German</label>
+
+          </div>
+
+
+          <!--          ============column 2========-->
+          <div class="Languages-Spoken_coln">
+            <input type="checkbox" id="romanian">
+            <label>Romanian </label>
+            <br>
+            <input type="checkbox" id="french">
+
+            <label>French</label>
+            <br>
+            <input type="checkbox" id="hindi">
+            <label>Hindi</label>
+
+          </div>
+
+
+          <!--          ============column 3========-->
+          <div class="Languages-Spoken_coln">
+            <input type="checkbox" id="italian">
+            <label>Italian</label>
+            <br>
+            <input type="checkbox" id="russian">
+
+            <label>Russian</label>
+            <br>
+            <input type="checkbox" id="korean">
+            <label>Korean</label>
+
+          </div>
+
+          <!--          ============column 4========-->
+          <div class="Languages-Spoken_coln">
+            <input type="checkbox" id="portuguese">
+            <label>Portuguese</label>
+            <br>
+            <input type="checkbox" id="chinese">
+            <label> Chinese</label>
+            <br>
+            <input type="checkbox" id="egyptian">
+            <label>Egyptian</label>
+
+          </div>
+
+          <!--          ============column 5========-->
+          <div class="Languages-Spoken_coln">
+            <input type="checkbox" id="farsi">
+            <label>Farsi</label>
+            <br>
+
+            <input type="checkbox" id="polish">
+            <label> Polish</label>
+            <br>
+            <input type="checkbox" id="greek">
+            <label>Greek</label>
+
+          </div>
+
+        </div>
+
+        <div>
+
 
         </div>
       </div>
@@ -152,33 +237,7 @@
   </div>
 
 
-  <!--  <div class="advancedSearchcss">-->
-  <!--    <button class="filterAllButton" (click)="advancedSearch()"> Advanced search</button>-->
-
-  <!--    <label> Accepting new Patients </label>-->
-  <!--    <div>-->
-  <!--      <label> Specialization</label>-->
-  <!--      -->
-  <!--    </div>-->
-
-  <!--  =====================Language Section================-->
-  <!--    <div class="container">-->
-  <!--      <div *ngFor="let item of data; let i = index;">-->
-
-  <!--        <mat-checkbox [ngModel]="item.checked" (change)="onLanguageChange($event, i, item)">-->
-  <!--          {{item.label}}-->
-  <!--          </mat-checkbox>-->
-  <!--      </div>-->
-  <!--      <br>-->
-  <!--      <strong>Last action:</strong> {{lastAction}}-->
-
-  <!--      <h4>JSON data:</h4>-->
-  <!--      <pre>-->
-  <!--{{data}}-->
-  <!--</pre>-->
-
   <!--      ///////////////////////////////////-->
-
 
   <!--    </div>-->
   <!--===================fotter Images=============================-->

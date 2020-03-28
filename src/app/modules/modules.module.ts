@@ -5,19 +5,27 @@ import {MatSliderModule} from '@angular/material/slider';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
-import { LanguagesPageComponent } from './home-page/languages-page/languages-page.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 
 
 @NgModule({
-  declarations: [HomePageComponent, LanguagesPageComponent],
+  declarations: [  ],
   imports: [
-    CommonModule,
-    MatSliderModule,
+    BrowserModule,
     FormsModule,
-    MatCheckboxModule,
-    MatCardModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSliderModule
   ],
   exports: [
     CommonModule,
@@ -28,6 +36,11 @@ import { LanguagesPageComponent } from './home-page/languages-page/languages-pag
     MatCheckboxModule,
     MatCardModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class ModulesModule { }

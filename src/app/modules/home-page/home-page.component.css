@@ -1,199 +1,10 @@
-/*.planFormat{*/
-/*  margin-top:10px;*/
 
-/*}*/
-
-/*.choose-camera {*/
-/*  height: 18px;*/
-/*  width: 97px;*/
-/*  color: #6A7C92;*/
-/*  font-family: Antenna;*/
-/*  font-size: 12px;*/
-/*  font-weight: 500;*/
-/*  line-height: 18px;*/
-/*  !**!*/
-/*  margin-left: 15px;*/
-/*  margin-top: 20px;*/
-/*}*/
-
-/*.barchartSide{*/
-/*  height: 200px;*/
-/*  width: 90%;*/
-/*}*/
-/*.group-8 {*/
-/*  height: 30px;*/
-/*  width: 200px;*/
-/*  margin-left: 5px;*/
-/*  margin-top: 3px;*/
-/*}*/
-
-/*.camera-04 {*/
-/*  height: 17px;*/
-/*  width: 82px;*/
-/*  color: #6879A4;*/
-/*  font-family: Antenna;*/
-/*  font-size: 14px;*/
-/*  line-height: 17px;*/
-/*}*/
-/*.choose-plan {*/
-/*  height: 12px;*/
-/*  width: 60px;*/
-/*  color: #6A7C92;*/
-/*  font-family: Antenna;*/
-/*  font-size: 12px;*/
-/*  font-weight: 500;*/
-/*  line-height: 18px;*/
-/*  margin-left: 40px;*/
-/*  align-content: center;*/
-
-
-/*  !*margin-left: 10px;*!*/
-/*}*/
-/*.timeBlock{*/
-/*  margin-top: 180px;*/
-/*  !*display: block;*!*/
-/*  !*margin-right: 300px;*!*/
-/*}*/
-
-/*.DateValue {*/
-/*  height: 17px;*/
-/*  width: 82px;*/
-/*  color: #6879A4;*/
-/*  font-family: Antenna;*/
-/*  font-size: 14px;*/
-/*  line-height: 17px;*/
-/*}*/
-/*.plan-1 {*/
-/*  height: 12px;*/
-/*  width: 200px;*/
-/*  color: #6879A4;*/
-/*  font-family: Antenna;*/
-/*  font-size: 14px;*/
-/*  line-height: 17px;*/
-/*}*/
-
-/*.threats {*/
-/*  height: 24px;*/
-/*  width: 98px;*/
-/*  color: #003379;*/
-/*  font-family: Antenna;*/
-/*  font-size: 24px;*/
-/*  font-weight: bold;*/
-/*  line-height: 29px;*/
-/*  !**!*/
-/*  margin-left: 40px;*/
-/*  margin-top: 30px;*/
-/*;*/
-/*}*/
-
-/*.sel{*/
-/*  padding-left: 20px;*/
-/*  !*padding-left: 24px;*!*/
-/*  height: 17px;*/
-/*  width: 291px;*/
-/*  color: #6879A4;*/
-/*  !*font-family: Antenna;*!*/
-/*  font-size: 14px;*/
-/*  line-height: 17px;*/
-/*}*/
-/*.labelCriteria{*/
-/*  height: 18px;*/
-/*  !*width: 102px;*!*/
-/*  color: #6A7C92;*/
-/*  !*font-family: Antenna;*!*/
-/*  font-size: 12px;*/
-/*  font-weight: 500;*/
-/*  line-height: 18px;*/
-/*}*/
-/*.right{*/
-/*  !*float: right;*!*/
-/*  margin-top: 20px;*/
-/*  margin-right: 100px;*/
-/*  margin-left: 50px;*/
-/*  margin-top: 5px;*/
-/*}*/
-
-/*.info{*/
-/*  height: 14px;*/
-/*  !*width: 95px;*!*/
-/*  color: #003379;*/
-/*  !*font-family: "Ford Antenna";*!*/
-/*  font-size: 12px;*/
-/*  font-weight: 500;*/
-/*  letter-spacing: 0.93px;*/
-/*  line-height: 14px;*/
-/*}*/
-/*.rectangleDate {*/
-/*  box-sizing: border-box;*/
-/*  height: 44px;*/
-/*  width: 250px;*/
-/*  border: 1px solid #E9E9E9;*/
-/*  border-radius: 3px;*/
-/*  background-color: #FFFFFF;*/
-/*  margin-left: 5px;*/
-/*  margin-top: 20px;*/
-/*  !*margin-top: 50px;*!*/
-/*}*/
-
-/*.buttonFilter {*/
-/*  box-sizing: border-box;*/
-/*  height: 50px;*/
-/*  width: 90px;*/
-/*  border: 1px solid #E9E9E9;*/
-/*  mso-foreground: #DEE5FE;*/
-/*  border-radius: 3px;*/
-/*  background-color:#00317B;*/
-/*  margin-left: 5px;*/
-/*}*/
-/*.left{*/
-/*  float: left;*/
-/*  margin-left: 15px;*/
-/*}*/
-
-/*mat-slider {*/
-/*  width: 300px;*/
-/*}*/
-
-/*.AllButton {*/
-/*  !*margin-top: 100px;*!*/
-/*  height: 30px;*/
-/*  width: 90px;*/
-/*  color: #FFFFFF;*/
-/*  font-family: Antenna;*/
-/*  font-size: 18px;*/
-/*  font-weight: bold;*/
-/*  line-height: 22px;*/
-/*  text-align: justify;*/
-/*  align-content: center;*/
-/*  border-radius: 3px;*/
-/*  background-color:#00317B;*/
-/*  margin-left:0px;*/
-/*  !*display:inline-block;*!*/
-/*  margin-bottom: 0px;*/
-
-/*}*/
-/*.barchartHeight{*/
-/*  height: 200px;*/
-/*  width:100%;*/
-/*  margin-top: 30px;*/
-/*}*/
-/*#input{*/
-/*  display: inline-flex;*/
-/*}*/
-
-/*.myDateformatDate{*/
-/*  width: 230px;*/
-/*}*/
-
-
-/*.advancedSearchcss{*/
-/*}*/
 
 
 .Captura-de-Pantalla-2020-03-25-a-las-155236 {
-  width: 1439px;
-  height: 498px;
-  margin-top: 200px;
+  width: 1000px;
+  height: 900px;
+  margin-top: 100px;
   margin-left: 200px;
 }
 .DENTAL-PLAN {
@@ -207,9 +18,11 @@
   line-height: 1.71;
   letter-spacing: 1px;
   color: #9b9b9b;
+  margin-top: 0px;
   /*margin-bottom: 12px;*/
   /*margin-top: 12px;*/
   /*margin-left: 15px;*/
+  border: 0px;
 
 }
 .SEARCH {
@@ -394,8 +207,9 @@
 
 
 .accessibility_div{
-  margin-left: 10px;
-  display: inline-block;
+  display:inline-block;
+  width: 200px;
+
 }
 .accessibility {
   width: 153px;
@@ -424,7 +238,7 @@
   color: #8f99a3;
 }
 .GENDER_div{
-  margin-left: 30px;
+  margin-left: 55px;
   display: inline-block;
 }
 .DoctorName_div{
@@ -432,7 +246,7 @@
 }
 
 .SECOND-NAME {
-  width: 113px;
+  width: 130px;
   height: 24px;
   font-family: SourceSansPro;
   font-size: 14px;
@@ -446,7 +260,7 @@
 }
 
 .FIRST-NAME {
-  width: 113px;
+  width: 125px;
   height: 24px;
   font-family: SourceSansPro;
   font-size: 14px;
@@ -504,6 +318,16 @@
   background-color: #0058c3;
 }
 
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+.example-margin {
+  margin: 0 10px;
+}
 .Languages-Spoken {
   width: 200px;
   height: 24px;
@@ -515,4 +339,11 @@
   line-height: 1.71;
   letter-spacing: 1.17px;
   color: #0058c3;
+}
+.Languages-Spoken_coln
+{
+  display: inline-block;
+  margin-left: 55px;
+  width: 100px;
+
 }

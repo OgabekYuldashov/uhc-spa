@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, ValidatorFn } from '@angular/forms';
-import { of } from 'rxjs';
+import {FormBuilder, FormGroup, FormArray, FormControl} from '@angular/forms';
+import {of} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
+import {DatafectcingService} from '../../services/datafectcing.service';
+import {MatSliderModule} from '@angular/material/slider';
+import {Parameters} from '../../models/parameters';
+
+// ==========================model=======
 
 @Component({
   selector: 'app-home-page',
@@ -8,6 +14,27 @@ import { of } from 'rxjs';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+
+
+  canSpeackArabic = 'Arabic';
+  canSpeakSpanish = 'Spanish'
+  canSpeapkgermany = 'Germany'
+  canSpeakItaly = 'Italy'
+  canSpeakPortuese = 'Portugese'
+  canSpeakFarsi = 'Farsi'
+
+
+  constructor(private fb: FormBuilder, private datafectcingService: DatafectcingService, private route: ActivatedRoute) {
+
+    // this.plans = ['National Options PPO 20', 'National Options PPO 30', 'National Select Managed Care'];
+    // this.specializations = [
+    //   {name: 'Oral-Surgeon', value: 'Oral-Surgeon'},
+    //   {name: 'Endodontist', value: 'Endodontist'},
+    //   {name: 'Lorem-Ipsum', value: 'Lorem-Ipsum'},
+    //   {name: 'Lorem-Ipsum', value: 'Lorem-Ipsum'},
+    // ];
+  }
+
 
   // Slider attributes
   autoTicks = false;
@@ -20,64 +47,61 @@ export class HomePageComponent implements OnInit {
   thumbLabel = true;
   value = 0;
   vertical = false;
-  tickInterval = 1
-  specializationform: FormGroup;
+  tickInterval = 1;
 
   isAdvancedSearchButtonCliked = false;
 
   specializations: Array<any>;
-  form: FormGroup;
-  ordersData = [];
-
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      orders: new FormArray([], minSelectedCheckboxes(1))
-    });
-
-    // async orders
-    of(this.getOrders()).subscribe(orders => {
-      this.ordersData = orders;
-      this.addCheckboxes();
-    });
-    this.plans = ['National Options PPO 20', 'National Options PPO 30', 'National Select Managed Care'];
-    this.specializations = [
-      {name: 'Oral-Surgeon', value: 'Oral-Surgeon'},
-      {name: 'Endodontist', value: 'Endodontist'},
-      {name: 'Lorem-Ipsum', value: 'Lorem-Ipsum'},
-      {name: 'Lorem-Ipsum', value: 'Lorem-Ipsum'},
-    ];
-  }
-
-  plans: string [];
-
-  // ======================= Language =================//////
-
-  lastAction: string;
-
-  data = [
-    {label: 'one', checked: false},
-    {label: 'two', checked: false},
-    {label: 'three', checked: true},
-    {label: 'four', checked: false},
-    {label: 'five', checked: false}
-  ];
+  // form: FormGroup;FormGroup
+  // ordersData = [];
 
 
-  ngOnInit(): void {
-  }
+  // ========variable for Jsonobject==============
+
+
+  jsonDataModel: any[];
+  selectedPlan: string;
+  location: string;
+
+  // tslint:disable-next-line:variable-name
+  parameter_list: Parameters = new Parameters();
+
+  // ==================== Language Section======================
+
+
+  // indexsubmit() {
+  //   console.log(this.form.value.name);
+  // }
+  oralSureon: string;
+
+///////////////////////////////////////////
+  endodontist: string;
+  // tslint:disable-next-line:variable-name
+  Extendedhourse_saturday: string;
+  weekday: string;
+  handicapAccecebility: any;
+
+
+  // tslint:disable-next-line:variable-name
+  Choose_Dental_Plan = 'Choose Dental Plan';
 
   getSelected() {
 
   }
 
-  onChange(value: string) {
+  onChange(e) {
+    this.parameter_list.plans = e.target.value.toString();
 
   }
 
+
   filterByPlan_And_Location_Distance() {
 
-
     this.isAdvancedSearchButtonCliked = false;
+    this.parameter_list.languageSponeken = [this.canSpeackArabic, this.canSpeakFarsi, this.canSpeakItaly, this.canSpeakPortuese, this.canSpeakSpanish, this.canSpeapkgermany];
+    this.parameter_list.specialization = [this.oralSureon, this.endodontist];
+    console.log(this.parameter_list);
+    this.isAdvancedSearchButtonCliked= false;
 
   }
 
@@ -91,89 +115,98 @@ export class HomePageComponent implements OnInit {
 
 
   advancedSearch() {
-
     this.isAdvancedSearchButtonCliked = true;
-
-
-  }
-
-  // tslint:disable-next-line:adjacent-overload-signatures
-  onLanguageChange(event, index, item) {
-
-    item.checked = !item.checked;
-
-    this.lastAction = 'index: ' + index + ', label: ' + item.label + ', checked: ' + item.checked;
-
-    console.log(index, event, item);
-
-  }
-
-  /// method for slider action/
-  getSliderTickInterval(): number | 'auto' {
-    if (this.showTicks) {
-      this.value = this.autoTicks ? 0 : this.tickInterval;
-      return this.value;
+    // this.parameter_list.plans=
+    //   this.parameter_list.location= this.
+    if ((this.oralSureon === 'Y') && (this.endodontist === 'Y')) { // @ts-ignore
+      this.parameter_list.specialization = [this.oralSureon, this.endodontist];
     }
-    return 0;
+    if ((this.oralSureon === 'Y') && (this.endodontist === 'N')) { // @ts-ignore
+      this.parameter_list.specialization = [this.oralSureon];
+    }
+
+    if ((this.oralSureon === 'N') && (this.endodontist === 'Y')) { // @ts-ignore
+      this.parameter_list.specialization = [this.endodontist];
+    }
+
   }
 
-  //////////             Handling mupltiple checkbox              //////////////////////////////////////
-  onCheckboxChange(e) {
-    const checkArray: FormArray = this.specializationform.get('checkArray') as FormArray;
+  ngOnInit(): void {
+  }
 
-    if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
+
+  valueChange(e: string) {
+    this.parameter_list.location = e.trim().toString();
+    console.log('your location is ==========' + this.parameter_list.location);
+
+  }
+
+  isacceptingNew(isChecked) {
+
+    if (isChecked) {
+      this.parameter_list.acceptingNew = isChecked;
+    }
+
+
+  }
+
+  isOralSurgeon(checked: boolean) {
+    if (!checked) {
+      this.oralSureon = '';
     } else {
-      let i = 0;
-      checkArray.controls.forEach((item: FormControl) => {
-        if (item.value === e.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
+      this.oralSureon = 'Y';
     }
+
   }
 
+  isEndodontist(checked: boolean) {
+    if (!checked) {
+      this.endodontist = '';
+    } else {
+      this.endodontist = 'Y';
+    }
 
-///////////////////////////////////////////
-
-  submitForm() {
-    console.log(this.specializationform.value);
   }
 
-  // ==================== Language Section======================
-  private addCheckboxes() {
-    this.ordersData.forEach((o, i) => {
-      const control = new FormControl(i === 0); // if first item set to true, else false
-      (this.form.controls.orders as FormArray).push(control);
-    });
-  }
-  getOrders() {
-    return [
-      { id: 100, name: 'order 1' },
-      { id: 200, name: 'order 2' },
-      { id: 300, name: 'order 3' },
-      { id: 400, name: 'order 4' }
-    ];
+  isThereExtendedhourse_saturday(checked: boolean) {
+    if (!checked) {
+      this.Extendedhourse_saturday = 'N';
+    } else {
+      this.Extendedhourse_saturday = 'Y';
+    }
+
   }
 
-  submit() {
-    const selectedOrderIds = this.form.value.orders
-      .map((v, i) => v ? this.ordersData[i].id : null)
-      .filter(v => v !== null);
-    console.log(selectedOrderIds);
+  isWeekdayWorking(checked: boolean) {
+    if (!checked) {
+      this.weekday = 'N';
+    } else {
+      this.weekday = 'Y';
+    }
+
   }
-}
 
-function minSelectedCheckboxes(min = 1) {
-  const validator: ValidatorFn = (formArray: FormArray) => {
-    const totalSelected = formArray.controls
-      .map(control => control.value)
-      .reduce((prev, next) => next ? prev + next : prev, 0);
+  ishandicapAccecebility(checked: boolean) {
 
-    return totalSelected >= min ? null : { required: true };
-  };
+    if (!checked) {
+      this.handicapAccecebility = 'N';
+    } else {
+      this.handicapAccecebility = 'Y';
+    }
 
-  return validator;
+  }
+
+  isMale(e) {
+    this.parameter_list.gender = 'M';
+  }
+
+  isFemale($event: MouseEvent) {
+    this.parameter_list.gender = 'F';
+  }
+
+  onPlanChange(e) {
+    this.parameter_list.plans = e;
+    console.log(' selected plan is ' + e);
+
+  }
 }
