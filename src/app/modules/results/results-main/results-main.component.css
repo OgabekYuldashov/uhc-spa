@@ -48,3 +48,6 @@ section {
 /**************************START RESULTS SECTION*******************/
 
 /**************************END RESULTS SECTION*******************/
+#mapContainer {
+  height: 700pt;
+}
