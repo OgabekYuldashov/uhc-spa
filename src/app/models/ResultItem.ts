@@ -7,7 +7,7 @@ export class ResultItem {
   midName: string;
   city: string;
   mailingPhone: string;
-  acceptingNew: string;
+  zip: string;
   nameSuffix: string;
   languages: string[];
   state: string;
@@ -15,6 +15,7 @@ export class ResultItem {
   lat: number;
   long: number;
   handicapAccessible: string;
+  latConfidence: number;
   mailingFax: string;
   credential: string;
   fax: string;
@@ -24,12 +25,17 @@ export class ResultItem {
   phone: string;
   namePrefix: string;
   organizationName: string;
+  acceptingNew: string;
   specialization: string;
   displayName: string;
-  zip: string;
   firstName: string;
   gender: string;
   licenseNumber: string;
   extendedHrsWeek: string;
   lastName: string;
+
+
+  constructor() {
+  }
+
 }
