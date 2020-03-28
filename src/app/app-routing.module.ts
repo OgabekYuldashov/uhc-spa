@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ResultsMainComponent} from './modules/results/results-main/results-main.component';
-import {HomePageComponent} from './modules/home-page/home-page.component';
+import { DetailsviewComponent } from './modules/details/detailsview/detailsview.component';
 
 
 const routes: Routes = [
   {path: 'results', component: ResultsMainComponent},
-  {path: '', component: HomePageComponent} // Replace with your own main component
+  {path: '', component: ResultsMainComponent}, // Replace with your own main component
+  {path: 'details', component: DetailsviewComponent},
 ];
 
 @NgModule({

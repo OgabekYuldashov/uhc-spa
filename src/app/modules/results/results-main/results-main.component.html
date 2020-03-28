@@ -1,15 +1,155 @@
 <div class="row">
   <section class="col-lg-2" id="filtersContainer">
+
     <div class="panel-group">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapse1">SPECIALIZATION</a>
+          <h4 class="panel-title filter-title">
+            <a data-toggle="collapse" href="#collapseSpecialization">SPECIALIZATION</a>
           </h4>
         </div>
-        <div id="collapse1" class="panel-collapse collapse">
-          <div class="panel-body">Panel Body</div>
-          <div class="panel-footer">Panel Footer</div>
+        <div id="collapseSpecialization" class="panel-collapse collapse show">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxOralSurgeon">
+            <label class="form-check-label" for="cbxOralSurgeon">
+              Oral Surgeon
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxEndodontist">
+            <label class="form-check-label" for="cbxEndodontist">
+              Endodontist
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxLorem1">
+            <label class="form-check-label" for="cbxLorem1">
+              Lorem Ipsum 1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxLorem2">
+            <label class="form-check-label" for="cbxLorem2">
+              Lorem Ipsum 2
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="filterDivider">
+
+    <div class="panel-group">
+      <h4 class="panel-title filter-title">
+        GENDER
+      </h4>
+      <div class="btn-group btn-toggle gender">
+        <input type="button" name="gender" class="btn btn-default" value="Male">
+        <input type="button" name="gender" class="btn btn-primary active" value="Female">
+      </div>
+    </div>
+
+    <hr class="filterDivider">
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title filter-title">
+            <a data-toggle="collapse" href="#collapseLanguages">LANGUAGES</a>
+          </h4>
+        </div>
+        <div id="collapseLanguages" class="panel-collapse collapse show">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxArabic">
+            <label class="form-check-label" for="cbxArabic">
+              Arabic
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxSpanish">
+            <label class="form-check-label" for="cbxSpanish">
+             Spanish
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxGerman">
+            <label class="form-check-label" for="cbxGerman">
+              German
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxRomanian">
+            <label class="form-check-label" for="cbxRomanian">
+              Romanian
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxFrench">
+            <label class="form-check-label" for="cbxFrench">
+              French
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxHindi">
+            <label class="form-check-label" for="cbxHindi">
+              Hindi
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxItalian">
+            <label class="form-check-label" for="cbxItalian">
+              Italian
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxRussian">
+            <label class="form-check-label" for="cbxRussian">
+              Russian
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxKorean">
+            <label class="form-check-label" for="cbxKorean">
+              Korean
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxPortugese">
+            <label class="form-check-label" for="cbxPortugese">
+              Portugese
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxChinese">
+            <label class="form-check-label" for="cbxChinese">
+              Chinese
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxEgyptian">
+            <label class="form-check-label" for="cbxEgyptian">
+              Egyptian
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxFarsi">
+            <label class="form-check-label" for="cbxFarsi">
+              Farsi
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxPolish">
+            <label class="form-check-label" for="cbxPolish">
+              Polish
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="cbxGreek">
+            <label class="form-check-label" for="cbxGreek">
+              Greek
+            </label>
+          </div>
+
         </div>
       </div>
     </div>
@@ -17,12 +157,13 @@
 
 
   <section class="col-lg-6" id="resultsContainer">
-
+    <app-result-item></app-result-item>
+    <app-result-item></app-result-item>
+    <app-result-item></app-result-item>
   </section>
 
 
-  <section class="col-lg-4" id="mapContainer">
-
+  <section #resultsMap class="col-lg-4" id="mapContainer">
   </section>
 
 

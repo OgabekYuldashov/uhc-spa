@@ -1,0 +1,139 @@
+.profile {
+    width: 1440px;
+    height: 1271px;
+    margin-left: 127px;
+    margin-top: 59px;
+    margin-right: 128px;
+    margin-bottom: 50px;
+    background-color: #ffffff;
+}
+.imgDentist {
+  width: 186px;
+  height: 186px;
+  object-fit: contain;
+}
+.res-item-header {
+  margin: 15pt;
+}
+.res-item-header > div {
+  display: inline-block;
+}
+.dentistName {
+  width: 374px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 28px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.86;
+  letter-spacing: 1.02px;
+  color: #0058c3;
+}
+ .specialization {
+  width: 288px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+  color: #0058c3;
+}
+.info {
+  display: inline-block;
+  width: 130px;
+  height: 46px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.64;
+  letter-spacing: normal;
+  color: #5a7898 !important;
+}
+.text1 {
+  margin-top: 20px;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.text2 {
+  margin-top: 20px;
+  font-weight: bold;
+
+}
+.officeTimings {
+  width: 200px;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+  padding-left: 50px;
+  padding-top: 16px;
+}
+.schedule > p{
+  height: 44px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  color: #5a7898;
+  padding-top: 16px;
+}
+
+.headerDetails > h4 {
+  width: 288px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.29;
+  letter-spacing: normal;
+  color: #0058c3;
+}
+.headerDetails > p {
+  width: 439px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: 0.36px;
+  color: #5a7898;
+  margin-top: 35px;
+}
+.headerD {
+  margin-left: 35px;
+
+}
+.headerDetails > div > span + span {
+  margin-left: 15pt;
+}
+
+li > h4 {
+  /*width: 163px;*/
+  /*height: 36px;*/
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  /*line-height: 1.29;*/
+  /*letter-spacing: normal;*/
+  color: #5a7898;
+}

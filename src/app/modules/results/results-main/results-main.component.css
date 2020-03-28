@@ -1,4 +1,53 @@
 section {
-  height: 500pt;
+  height: 100%;
   border: 1px solid green;
+}
+
+/**************************START FILTERS SECTION*******************/
+#filtersContainer .panel-group {
+  margin: 15pt;
+}
+
+.filter-title {
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+}
+.form-check label {
+  width: 96px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+
+  cursor: pointer;
+}
+.filterDivider {
+  margin: 15pt;
+  height: 1pt;
+  border: solid 1px #e6e6e6;
+}
+
+/**************************END FILTERS SECTION*******************/
+
+
+
+
+/**************************START RESULTS SECTION*******************/
+
+/**************************END RESULTS SECTION*******************/
+#mapContainer {
+  height: 700pt;
 }
