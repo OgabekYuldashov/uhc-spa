@@ -1,0 +1,55 @@
+<div class="col-lg-12 profile" id="resultsContainer">
+<div style="border: solid 1px #d1d1d1">
+  <div class="res-item-header row">
+    <img src="../../../assets/imgs/dentist-female.png" class="imgDentist"/>
+    <div class="headerD headerDetails">
+      <h3 class="dentistName">Nicole Leigh</h3>
+      <h4 class ="specialization"> {{specialty}}</h4>
+      <p><svg _ngcontent-xpd-c20="" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="bi bi-geo-alt" fill="#5a7898">
+        <path _ngcontent-xpd-c20="" fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+      </svg> {{address}}</p>
+      <div>
+        <div class="info text2">Phone: <div class="info">{{phone}}</div></div>
+        <div class="info text1">Email: <div class="info">{{email}}</div></div>
+        <div class="info text1">Web: <div class="info"><a href="{{websiteUrl}}" [target]="website">{{website}}</a></div></div>
+        <div class="info text1">Gender: <div class="info">{{gender}}</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="res-item-details border-top border-bottom">
+    <div class="officeTimings">OFFICE TIMINGS</div>
+
+    <div class="col-md-8 table row" style="border-collapse: separate; border-spacing: 1em; padding-left: 50px; padding-top: 14px;">
+      <div class="d-sm-table-row schedule">
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">MON <br>8:00 AM - 3:30 PM</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">TUE <br>8:00 AM - 3:30 PM</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">WED <br>8:00 AM - 3:30 PM</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">THU <br>8:00 AM - 3:30 PM</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">FRI <br>8:00 AM - 3:30 PM</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">SAT <br>CLOSED</p>
+        <p class="d-sm-table-cell">SUN <br>CLOSED</p>
+      </div>
+
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+       <div>CATEGORY NAME</div>
+       <div><p>Plans accepted</p>
+      <ul *ngFor="let pl of plans">
+        <li>{{pl}}</li>
+      </ul>
+      </div>
+      </div>
+      <div class="col-sm">
+        <div>CATEGORY NAME</div>
+      </div>
+      <div class="col-sm">
+        <div>CATEGORY NAME</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
