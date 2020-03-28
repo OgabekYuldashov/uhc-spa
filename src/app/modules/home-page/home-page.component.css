@@ -1,182 +1,518 @@
-.planFormat{
-  margin-top:10px;
+/*.planFormat{*/
+/*  margin-top:10px;*/
+
+/*}*/
+
+/*.choose-camera {*/
+/*  height: 18px;*/
+/*  width: 97px;*/
+/*  color: #6A7C92;*/
+/*  font-family: Antenna;*/
+/*  font-size: 12px;*/
+/*  font-weight: 500;*/
+/*  line-height: 18px;*/
+/*  !**!*/
+/*  margin-left: 15px;*/
+/*  margin-top: 20px;*/
+/*}*/
+
+/*.barchartSide{*/
+/*  height: 200px;*/
+/*  width: 90%;*/
+/*}*/
+/*.group-8 {*/
+/*  height: 30px;*/
+/*  width: 200px;*/
+/*  margin-left: 5px;*/
+/*  margin-top: 3px;*/
+/*}*/
+
+/*.camera-04 {*/
+/*  height: 17px;*/
+/*  width: 82px;*/
+/*  color: #6879A4;*/
+/*  font-family: Antenna;*/
+/*  font-size: 14px;*/
+/*  line-height: 17px;*/
+/*}*/
+/*.choose-plan {*/
+/*  height: 12px;*/
+/*  width: 60px;*/
+/*  color: #6A7C92;*/
+/*  font-family: Antenna;*/
+/*  font-size: 12px;*/
+/*  font-weight: 500;*/
+/*  line-height: 18px;*/
+/*  margin-left: 40px;*/
+/*  align-content: center;*/
+
+
+/*  !*margin-left: 10px;*!*/
+/*}*/
+/*.timeBlock{*/
+/*  margin-top: 180px;*/
+/*  !*display: block;*!*/
+/*  !*margin-right: 300px;*!*/
+/*}*/
+
+/*.DateValue {*/
+/*  height: 17px;*/
+/*  width: 82px;*/
+/*  color: #6879A4;*/
+/*  font-family: Antenna;*/
+/*  font-size: 14px;*/
+/*  line-height: 17px;*/
+/*}*/
+/*.plan-1 {*/
+/*  height: 12px;*/
+/*  width: 200px;*/
+/*  color: #6879A4;*/
+/*  font-family: Antenna;*/
+/*  font-size: 14px;*/
+/*  line-height: 17px;*/
+/*}*/
+
+/*.threats {*/
+/*  height: 24px;*/
+/*  width: 98px;*/
+/*  color: #003379;*/
+/*  font-family: Antenna;*/
+/*  font-size: 24px;*/
+/*  font-weight: bold;*/
+/*  line-height: 29px;*/
+/*  !**!*/
+/*  margin-left: 40px;*/
+/*  margin-top: 30px;*/
+/*;*/
+/*}*/
+
+/*.sel{*/
+/*  padding-left: 20px;*/
+/*  !*padding-left: 24px;*!*/
+/*  height: 17px;*/
+/*  width: 291px;*/
+/*  color: #6879A4;*/
+/*  !*font-family: Antenna;*!*/
+/*  font-size: 14px;*/
+/*  line-height: 17px;*/
+/*}*/
+/*.labelCriteria{*/
+/*  height: 18px;*/
+/*  !*width: 102px;*!*/
+/*  color: #6A7C92;*/
+/*  !*font-family: Antenna;*!*/
+/*  font-size: 12px;*/
+/*  font-weight: 500;*/
+/*  line-height: 18px;*/
+/*}*/
+/*.right{*/
+/*  !*float: right;*!*/
+/*  margin-top: 20px;*/
+/*  margin-right: 100px;*/
+/*  margin-left: 50px;*/
+/*  margin-top: 5px;*/
+/*}*/
+
+/*.info{*/
+/*  height: 14px;*/
+/*  !*width: 95px;*!*/
+/*  color: #003379;*/
+/*  !*font-family: "Ford Antenna";*!*/
+/*  font-size: 12px;*/
+/*  font-weight: 500;*/
+/*  letter-spacing: 0.93px;*/
+/*  line-height: 14px;*/
+/*}*/
+/*.rectangleDate {*/
+/*  box-sizing: border-box;*/
+/*  height: 44px;*/
+/*  width: 250px;*/
+/*  border: 1px solid #E9E9E9;*/
+/*  border-radius: 3px;*/
+/*  background-color: #FFFFFF;*/
+/*  margin-left: 5px;*/
+/*  margin-top: 20px;*/
+/*  !*margin-top: 50px;*!*/
+/*}*/
+
+/*.buttonFilter {*/
+/*  box-sizing: border-box;*/
+/*  height: 50px;*/
+/*  width: 90px;*/
+/*  border: 1px solid #E9E9E9;*/
+/*  mso-foreground: #DEE5FE;*/
+/*  border-radius: 3px;*/
+/*  background-color:#00317B;*/
+/*  margin-left: 5px;*/
+/*}*/
+/*.left{*/
+/*  float: left;*/
+/*  margin-left: 15px;*/
+/*}*/
+
+/*mat-slider {*/
+/*  width: 300px;*/
+/*}*/
+
+/*.AllButton {*/
+/*  !*margin-top: 100px;*!*/
+/*  height: 30px;*/
+/*  width: 90px;*/
+/*  color: #FFFFFF;*/
+/*  font-family: Antenna;*/
+/*  font-size: 18px;*/
+/*  font-weight: bold;*/
+/*  line-height: 22px;*/
+/*  text-align: justify;*/
+/*  align-content: center;*/
+/*  border-radius: 3px;*/
+/*  background-color:#00317B;*/
+/*  margin-left:0px;*/
+/*  !*display:inline-block;*!*/
+/*  margin-bottom: 0px;*/
+
+/*}*/
+/*.barchartHeight{*/
+/*  height: 200px;*/
+/*  width:100%;*/
+/*  margin-top: 30px;*/
+/*}*/
+/*#input{*/
+/*  display: inline-flex;*/
+/*}*/
+
+/*.myDateformatDate{*/
+/*  width: 230px;*/
+/*}*/
+
+
+/*.advancedSearchcss{*/
+/*}*/
+
+
+.Captura-de-Pantalla-2020-03-25-a-las-155236 {
+  width: 1439px;
+  height: 498px;
+  margin-top: 200px;
+  margin-left: 200px;
+}
+.DENTAL-PLAN {
+  width: 113px;
+  height: 20px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1px;
+  color: #9b9b9b;
+  /*margin-bottom: 12px;*/
+  /*margin-top: 12px;*/
+  /*margin-left: 15px;*/
 
 }
-
-.choose-camera {
-  height: 18px;
-  width: 97px;
-  color: #6A7C92;
-  font-family: Antenna;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 18px;
-  /**/
-  margin-left: 15px;
-  margin-top: 20px;
+.SEARCH {
+  width: 94px;
+  height: 48px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #0058c3;
+  border:0px;
 }
-
-.barchartSide{
-  height: 200px;
-  width: 90%;
+.Rectangle-3-Copy-3 {
+  /*width: 917px;*/
+  width: 757px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 4px;
+  border: solid 1px #e6e6e6;
+  background-color: #ffffff;
 }
-.group-8 {
-  height: 30px;
+.DENTAL-PLAN-Select{
   width: 200px;
-  margin-left: 5px;
-  margin-top: 3px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 4px;
+  border: solid 1px #e6e6e6;
+  background-color: #ffffff;
 }
-
-.camera-04 {
-  height: 17px;
-  width: 82px;
-  color: #6879A4;
-  font-family: Antenna;
-  font-size: 14px;
-  line-height: 17px;
-}
-.choose-plan {
-  height: 12px;
-  width: 60px;
-  color: #6A7C92;
-  font-family: Antenna;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 18px;
-  margin-left: 40px;
-  align-content: center;
-
-
-  /*margin-left: 10px;*/
-}
-.timeBlock{
-  margin-top: 180px;
-  /*display: block;*/
-  /*margin-right: 300px;*/
-}
-
-.DateValue {
-  height: 17px;
-  width: 82px;
-  color: #6879A4;
-  font-family: Antenna;
-  font-size: 14px;
-  line-height: 17px;
-}
-.zone-1 {
-  height: 12px;
-  width: 40px;
-  color: #6879A4;
-  font-family: Antenna;
-  font-size: 14px;
-  line-height: 17px;
-}
-
-.threats {
+.YOUR-location {
+  width: 230px;
   height: 24px;
-  width: 98px;
-  color: #003379;
-  font-family: Antenna;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 29px;
-  /**/
-  margin-left: 40px;
-  margin-top: 30px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  /*color: #9b9b9b;*/
+
+  border: 1px;
+  padding-left: 12px;
+}
+.Advanced-search {
+  width: 150px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+  background-color: white;
+  margin-top: 19px;
+  border: 0px;
+}
+
+.footer_Rectangle {
+  width: 239px;
+  height: 229px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px 0 rgba(17, 29, 41, 0.1);
+  background-color: #ffffff;
+  display: inline-block;
+
+}
+
+.footer{
+  margin-left: 20px;
+}
+
+.horizontal-line{
+  width: 757px;
+  margin-left: 10px;
+  /*margin-top: 5px;*/
+}
+.Accepting-new-patien {
+  width: 148px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+.availability {
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+}
+
+.Specialization_div
+{
+  width: 200px;
+  margin-left: 200px;
+  display: inline-block;
+}
+.Specialization {
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+}
+
+
+
+.Extended-Hours {
+
+  width: 183px;
+
+  height: 24px;
+
+  font-family: SourceSansPro;
+
+  font-size: 14px;
+
+  font-weight: normal;
+
+  font-stretch: normal;
+
+  font-style: normal;
+
+  line-height: 1.71;
+
+  letter-spacing: 1.17px;
+
+  color: #0058c3;
+
+}
+
+
+
+.Saturday {
+  width: 128px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+.Weekday {
+  width: 128px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+
+.accessibility_div{
+  margin-left: 10px;
+  display: inline-block;
+}
+.accessibility {
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
 ;
 }
 
-.sel{
-  padding-left: 20px;
-  /*padding-left: 24px;*/
-  height: 17px;
-  width: 291px;
-  color: #6879A4;
-  /*font-family: Antenna;*/
-  font-size: 14px;
-  line-height: 17px;
-}
-.labelCriteria{
+.Handicap-Accessible {
+  width: 148px;
   height: 18px;
-  /*width: 102px;*/
-  color: #6A7C92;
-  /*font-family: Antenna;*/
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
 }
-.right{
-  /*float: right;*/
-  margin-top: 20px;
-  margin-right: 100px;
-  margin-left: 50px;
-  margin-top: 5px;
+.GENDER_div{
+  margin-left: 30px;
+  display: inline-block;
 }
-
-.info{
-  height: 14px;
-  /*width: 95px;*/
-  color: #003379;
-  /*font-family: "Ford Antenna";*/
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.93px;
-  line-height: 14px;
-}
-.rectangleDate {
-  box-sizing: border-box;
-  height: 44px;
-  width: 250px;
-  border: 1px solid #E9E9E9;
-  border-radius: 3px;
-  background-color: #FFFFFF;
-  margin-left: 5px;
-  margin-top: 20px;
-  /*margin-top: 50px;*/
+.DoctorName_div{
+  display: inline-block;
 }
 
-.buttonFilter {
-  box-sizing: border-box;
-  height: 50px;
-  width: 90px;
-  border: 1px solid #E9E9E9;
-  mso-foreground: #DEE5FE;
-  border-radius: 3px;
-  background-color:#00317B;
-  margin-left: 5px;
+.SECOND-NAME {
+  width: 113px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+  border: 0px;
 }
-.left{
-  float: left;
+
+.FIRST-NAME {
+  width: 113px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+  border: 0px
+;
+}
+
+.GENDER {
+  width: 148px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+
+}
+
+.MALE {
+  width: 55px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+  border: 0px;
+}
+
+.FEMALE {
+  width: 75px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #ffffff;
+  border: 0px;
   margin-left: 15px;
+  background-color: #0058c3;
 }
 
-.AllButton {
-  /*margin-top: 100px;*/
-  height: 30px;
-  width: 90px;
-  color: #FFFFFF;
-  font-family: Antenna;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 22px;
-  text-align: justify;
-  align-content: center;
-  border-radius: 3px;
-  background-color:#00317B;
-  margin-left:0px;
-  /*display:inline-block;*/
-  margin-bottom: 0px;
-
-}
-.barchartHeight{
-  height: 200px;
-  width:100%;
-  margin-top: 30px;
-}
-#input{
-  display: inline-flex;
-}
-
-.myDateformatDate{
-  width: 230px;
+.Languages-Spoken {
+  width: 200px;
+  height: 24px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
 }

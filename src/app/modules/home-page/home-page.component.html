@@ -1,35 +1,219 @@
-
 <div>
+  <!--    ==============Plan  Selection==================================-->
+  <div class="Captura-de-Pantalla-2020-03-25-a-las-155236">
+    <!--    <label class="choose-plan"> Plans </label> <border-radius>-->
+    <div class="Rectangle-3-Copy-3">
 
-    <!--    ==============Plan  Selection==================================-->
-    <div style="display:inline-block">
 
+      <select id="plan" #plan class="DENTAL-PLAN-Select" (change)="onChange(plan.value)">
+        <option class="DENTAL-PLAN" value="" selected>Dental Plan</option>
+        <option class="DENTAL-PLAN" value="National Options PPO 20">National Options PPO 20</option>
+        <option class="DENTAL-PLAN" value="National Options PPO 20">National Select Managed Care</option>
+        <option class="DENTAL-PLAN" value="National Options PPO 30"> National Options PPO 30</option>
 
+        <!--      <option *ngFor="let p of this.plans let j = idx;" value="{{p}}"-->
+        <!--              [selected]="j === getSelected()"-->
+        <!--      >{{p}}-->
 
-      <label class="choose-plan"> Plans </label> <br>
-      <select id="plan" #plan class="group-8" (change)="onChange(plan.value)">
-        <option class="zone-1" value="" selected>Choose Plant</option>
-        <option *ngFor="let p of plans let j = idx;" value="{{ p}}"
-                [selected]="j === getSelected()"
-        >{{p}}
-        </option>
+        <!--      </option>-->
       </select>
 
-      <input class="choose-plan" id="location" name="Location" placeholder="your Location">
+      <input class="YOUR-location" id="location" name="Location" placeholder="your Location">
+      <input class="YOUR-location" id="distance" name="distance" placeholder="your Location">
+
+      <!--===============================================-->
+      <button class="SEARCH" (click)="filterByPlan_And_Location_Distance()"> Search</button>
+
+    </div>
+
+    <!--  ====================Advanced search Button=======-->
+    <div>
+      <button class="Advanced-search" (click)="advancedSearch()"> Advanced search</button>
+      <img src="../../../assets/icons/page-1-copy.png" height="7" width="12"/>
+
+    </div>
+
+    <!--    /////////              Availability        ////-->
+
+    <div [hidden]="!isAdvancedSearchButtonCliked">
+      <hr class="horizontal-line">
+
+      <div style="display: inline-block">
+        <label class="availability"> AVAILABILITY</label>
+        <br>
+        <label class="Accepting-new-patien"> Accessing new Patients</label>
+      </div>
+
+      <div class="Specialization_div" style="display: inline-block">
+        <label> SPECIALIZATION</label>
+
+<!--        <form formGroup="specializationform" (ngSubmit)="submitForm()">-->
+
+<!--          <div *ngFor="let sp of specializations; let i=index">-->
+<!--            <label>-->
+<!--              <input type="checkbox" [value]="sp.value" (change)="onCheckboxChange($event)"/>-->
+<!--              {{sp.name}}-->
+<!--            </label>-->
+<!--          </div>-->
+
+<!--          <p class="error" *ngIf="this.specializationform.controls['checkArray'].errors?.required">-->
+<!--            Checkbox is required, select atleast one value.-->
+<!--          </p>-->
+
+<!--          <input type="submit" value="Submit">-->
+<!--        </form>-->
+
+      </div>
+
+      <!--    ================= Times Attributies         ==================-->
+      <div>
+        <div style="display: inline-block">
+          <hr class="horizontal-line">
+          <label class="Extended-Hours"> EXTENDED HOURS</label>
+          <br>
+          <label class="Saturday"> Saturday</label>
+          <br>
+          <label class="Weekday"> Weekday</label>
+
+        </div>
+
+        <!--      ===============    Accessibility==============-->
+        <div class="accessibility_div">
+          <label class="accessibility"> ACCESSIBILITY </label>
+          <br>
+          <label class="Handicap-Accessible"> Handicap Accessible</label>
+        </div>
+
+      </div>
+      <!--    ===============    Doctor Profiles ==================================-->
+
+      <div class="doctorProfile_div">
+        <hr class="horizontal-line">
+        <div class="DoctorName_div">
+          <label> DOCTOR NAME</label>
+          <br>
+          <input class="FIRST-NAME" type="text" id="firstName" name="firstName" placeholder="FIRST NAME">
+          <input class="SECOND-NAME" type="text" id="LastName" name="lastName" placeholder="LAST NAME">
+
+        </div>
+        <div class="GENDER_div">
+          <label class="GENDER"> GENDER</label>
+          <br>
+          <button class="MALE" id="male" name="male"> MALE</button>
+          <button class="FEMALE" id="female" name="female"> FEMALE</button>
+        </div>
 
 
-      <button class="filterAllButton" (click)="filterByPlan_And_Location_Distance()"> Search</button>
+      </div>
+
+      <!--      ===================   Languages attributes ================================-->
+      <div>
+        <hr class="horizontal-line">
+        <label class="Languages-Spoken"> LANGUAGE SPOKEN</label>
+
+        <div>
+<!--          <form [formGroup]="form" (ngSubmit)="submit()">-->
+<!--            <label formArrayName="orders" *ngFor="let order of form.controls.orders.controls; let i = index">-->
+<!--              <input type="checkbox" [formControlName]="i">-->
+<!--              {{ordersData[i].name}}-->
+<!--            </label>-->
+
+<!--            <div *ngIf="!form.valid">At least one order must be selected</div>-->
+<!--            <br>-->
+<!--            <button [disabled]="!form.valid">submit</button>-->
+<!--          </form>-->
+
+        </div>
+      </div>
+
 
     </div>
 
 
+    <!--=================Slider button=======================-->
+    <!--    <mat-card class="example-result-card">-->
+    <!--        <mat-slider class="example-margin"-->
+    <!--          [thumbLabel]= this.thumbLabel-->
+    <!--          [tickInterval]="getSliderTickInterval()"-->
+    <!--          [(ngModel)]=this.value-->
+    <!--        >-->
+    <!--        </mat-slider>-->
+    <!--    </mat-card>-->
 
 
+    <!--    <mat-slider-->
+    <!--      thumbLabel-->
+    <!--      [(ngModel)]="formatLabel"-->
+    <!--      tickInterval="50"-->
+    <!--      min="1"-->
+    <!--      max="50"></mat-slider>-->
 
+
+  </div>
+
+
+  <!--  <div class="advancedSearchcss">-->
+  <!--    <button class="filterAllButton" (click)="advancedSearch()"> Advanced search</button>-->
+
+  <!--    <label> Accepting new Patients </label>-->
+  <!--    <div>-->
+  <!--      <label> Specialization</label>-->
+  <!--      -->
+  <!--    </div>-->
+
+  <!--  =====================Language Section================-->
+  <!--    <div class="container">-->
+  <!--      <div *ngFor="let item of data; let i = index;">-->
+
+  <!--        <mat-checkbox [ngModel]="item.checked" (change)="onLanguageChange($event, i, item)">-->
+  <!--          {{item.label}}-->
+  <!--          </mat-checkbox>-->
+  <!--      </div>-->
+  <!--      <br>-->
+  <!--      <strong>Last action:</strong> {{lastAction}}-->
+
+  <!--      <h4>JSON data:</h4>-->
+  <!--      <pre>-->
+  <!--{{data}}-->
+  <!--</pre>-->
+
+  <!--      ///////////////////////////////////-->
+
+
+  <!--    </div>-->
+  <!--===================fotter Images=============================-->
+  <div class="footer">
+    <div style="display:inline-block">
+      <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png"/>
+      <br>
+      <span> Amly Lee</span>
+    </div>
+
+    <div style="display:inline-block">
+      <img class="footer_Rectangle" src="../../../assets/icons/bitmap2.png" height="158" width="239"/>
+      <br>
+      <span> Amly Lee</span>
+    </div>
+
+    <div style="display:inline-block">
+      <img class="footer_Rectangle" src="../../../assets/icons/bitmap4.png" height="158" width="239"/>
+      <br>
+      <span> Amly Lee</span>
+    </div>
+
+    <div style="display:inline-block">
+      <img class="footer_Rectangle" src="../../../assets/icons/bitmap3.png" height="158" width="239"/>
+      <br>
+      <span> Amly Lee</span>
+    </div>
+
+    <div style="display:inline-block">
+      <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png"/>
+      <br>
+      <span> Amly Lee</span>
+    </div>
+
+  </div>
 
 
 </div>
-
-
-
-
