@@ -106,3 +106,7 @@ li > h4 {
 .workHours {
   border-spacing: 6pt!important;
 }
+.resultItemHoverable:hover {
+  cursor: pointer;
+  background-color: rgba(228, 240, 250, 0.42);
+}
