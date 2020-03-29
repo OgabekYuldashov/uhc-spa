@@ -13,8 +13,8 @@ const headers = new HttpHeaders({
 })
 export class DataSearchService {
   index = 'uhc_v4';
-  hostUrl: any = `http://localhost:9200/${this.index}/_search`;
-  // hostUrl: any = `http://34.95.36.224:9200/${this.index}/`;
+  // hostUrl: any = `http://localhost:9200/${this.index}/_search`;
+  hostUrl: any = `http://35.229.120.24:9200/${this.index}/_search`;
   user: any = 'elastic';
   password: any = 'changeme';
 
@@ -37,13 +37,13 @@ export class DataSearchService {
         bool : {
           must: {
             match: {
-              city: 'chicago'
+              state: 'AK'
             }
           },
           filter : {
             geo_distance : {
-              distance : "200km",
-              location : "40,-70"
+              distance : '0.1km',
+              location : '61.22016475,-149.7336659'
             }
           }
         }
@@ -55,7 +55,7 @@ export class DataSearchService {
       from: 0
     };
     // @ts-ignore
-    this.httpClient.post<JsonObject>(this.hostUrl, query, headers).subscribe(s => {
+    this.httpClient.post<JsonObject>(this.hostUrl, query0, headers).subscribe(s => {
       const j = s;
       // @ts-ignore
       for (const k of j.hits.hits) {
