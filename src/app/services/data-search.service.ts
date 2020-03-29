@@ -89,7 +89,7 @@ export class DataSearchService {
           },
           filter : {
             geo_distance : {
-              distance : '1km',
+              distance : '100km',
               location : '61.22016475,-149.7336659'
             }
           }
@@ -97,7 +97,7 @@ export class DataSearchService {
       }
     };
 
-    query0.size = 5;
+    query0.size = 50;
     query0.from = 0;
     // query0.bool.must.match.add('npi', '1720135999');
 
