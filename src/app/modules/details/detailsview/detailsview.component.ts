@@ -42,7 +42,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
 
     console.log(this.id)
 
-    // console.log(this.service.getDummyRecords);
+    console.log(this.service.getRecordByNPI(this.npi));
   }
 
   ngOnInit(): void {
