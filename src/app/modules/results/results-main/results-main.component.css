@@ -7,6 +7,7 @@ section {
 
 #filtersContainer {
   border-right: 1pt solid #e6e6e6;
+  padding-right: 0;
 }
 
 #filtersContainer .panel-group {
@@ -44,8 +45,8 @@ section {
 }
 .filterDivider {
   margin: 15pt;
-  height: 1pt;
-  border: solid 1px #e6e6e6;
+
+  border: solid 1pt #e6e6e6;
 }
 
 /**************************END FILTERS SECTION*******************/
