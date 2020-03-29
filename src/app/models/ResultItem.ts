@@ -2,7 +2,7 @@ export class ResultItem {
   classification: string;
   fullAddress: string;
   fullMailingAddress: string;
-  npi: string;
+  public npi: string;
   extendedHrsSat: string;
   midName: string;
   city: string;
@@ -38,4 +38,7 @@ export class ResultItem {
   constructor() {
   }
 
+  public getNPI(): string {
+    return this.npi;
+  }
 }

@@ -10,10 +10,10 @@ import {ResultItem} from '../../../models/ResultItem';
 export class ResultsMainComponent implements OnInit, AfterViewInit {
   @ViewChild('resultsMap', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
-  lat = 40.730610;
+  lat = 37.730610;
   lng = -73.935242;
 
-  results: ResultItem[];
+  resItems: ResultItem[];
 
   coordinates = new google.maps.LatLng(this.lat, this.lng);
 
@@ -47,7 +47,13 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
 
 
   constructor(private dataService: DataSearchService) {
-    dataService.getDummyRecords();
+
+    dataService.getResultItems().subscribe(r => {
+      // this.resItems = this.dataService.getResults(r);
+      console.log('res:');
+      console.log(this.resItems);
+    });
+
   }
 
   ngOnInit(): void {

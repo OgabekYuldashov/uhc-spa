@@ -134,12 +134,33 @@
         </div>
       </div>
     </div>
+
+    <hr class="filterDivider">
+
+    <div class="panel-group">
+      <h4 class="panel-title filter-title">
+        ACCESSIBILITY
+      </h4>
+      <!--<label class="containerLabel" for="tglHandicapAccessible" style="padding-left: 0;">Handicap Accessible
+&lt;!&ndash;        <input type="checkbox" checked data-toggle="toggle" data-size="xs">&ndash;&gt;
+        <input type="checkbox" id="tglHandicapAccessible" checked data-toggle="toggle" data-style="ios" data-height="2" data-width="5" data-size="xs" data-on="Yes" data-off="No" >
+&lt;!&ndash;        <span class="checkmark"></span>&ndash;&gt;
+      </label>-->
+      <span>
+
+        <label class="switch" for="tglHandicapAccessible"><span>Handicap Accessible</span>
+          <input type="checkbox" id="tglHandicapAccessible" checked>
+          <span class="slider round"></span>
+        </label>
+      </span>
+    </div>
   </section>
 
 
   <section class="col-lg-6" id="resultsContainer">
+    <app-result-item *ngFor=""></app-result-item>
 
-    <app-result-item></app-result-item>
+
     <app-result-item></app-result-item>
     <app-result-item></app-result-item>
     <app-result-item></app-result-item>
