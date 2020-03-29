@@ -16,6 +16,8 @@
 
       <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="YOUR LOCATION">
       <!--      <mat-card class="example-result-card">-->
+
+      <label class="distancetoSearch"> Distance  </label>
       <div class="Rectangle-739-Copy">
         <mat-slider
           [max]="max"
@@ -80,7 +82,7 @@
           </div>
 
           <div style="margin-left:10px; display: inline-block" >
-            <label class="containerLabel" for="LoremIpsum2">Lorem-Ipsum
+            <label class="containerLabel" for="LoremIpsum2"> Maxillofacial Surgeon
             <input  type="checkbox" id="LoremIpsum2">
               <span class="checkmark"></span>
             </label>
@@ -130,7 +132,7 @@
       <div  class="doctorProfile_div">
         <hr class="horizontal-line">
         <div class="DoctorName_div">
-          <label> DOCTOR NAME</label>
+          <label class="doctor2" > DOCTOR NAME</label>
           <br>
           <input class="FIRST-NAME" [(ngModel)]="parameter_list.firstName" type="text" id="firstName" name="firstName"
                  placeholder="FIRST NAME">

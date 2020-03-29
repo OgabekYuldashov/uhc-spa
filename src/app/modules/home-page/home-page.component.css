@@ -38,7 +38,7 @@
 
 .Rectangle-3-Copy-3 {
   /*width: 959px;*/
-  width: 761px;
+  width: 843px;
   /*height: 121px;*/
   height: 91px;
   object-fit: contain;
@@ -129,7 +129,22 @@
   margin-left: 10px;
   /*margin-top: 5px;*/
 }
+.distancetoSearch{
+  color: #8f99a3;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  padding-right: 8px;
+  /*color: #9b9b9b;*/
 
+  border: 1px;
+  padding-left: 12px;
+}
 .Accepting-new-patien {
   width: 148px;
   height: 18px;
@@ -146,7 +161,7 @@
 .availability {
   width: 153px;
   height: 24px;
-  font-family: SourceSansPro;
+  font-family: SourceSansPro-Bold;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -185,7 +200,7 @@
 .Extended-Hours {
   width: 183px;
   height: 24px;
-  font-family: SourceSansPro-Regular;
+  font-family: SourceSansPro-Bold;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -298,7 +313,7 @@
 .GENDER {
   width: 148px;
   height: 24px;
-  font-family: SourceSansPro-Regular;
+  font-family: SourceSansPro-Bold;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -549,4 +564,17 @@
   letter-spacing: normal;
   color: #5a7898;
   padding-left: 13px;
+}
+
+.doctor2{
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
 }
