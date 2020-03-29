@@ -14,22 +14,22 @@
         <div id="collapseSpecialization" class="panel-collapse collapse show">
 
           <label class="containerLabel" for="cbxOralSurgeon">Oral Surgeon
-            <input *ngIf="searchParams.specializationMap['OralSurgeon']" type="checkbox" checked id="cbxOralSurgeon">
-            <input *ngIf="searchParams.specializationMap['OralSurgeon'] == false"  type="checkbox" id="cbxOralSurgeon">
+            <input *ngIf="searchParams.specialization" type="checkbox" checked id="cbxOralSurgeon"  (change)="onSpecializationCheckboxChanged('OralSurgeon')">
+<!--            <input type="checkbox" checked id="cbxOralSurgeon">-->
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxEndodontist">Endodontist
-            <input type="checkbox" id="cbxEndodontist">
+            <input type="checkbox" id="cbxEndodontist" (change)="onSpecializationCheckboxChanged('Endodontist')">
             <span class="checkmark"></span>
           </label>
 
-          <label class="containerLabel" for="cbxMaxiSurgeon">Maxillofacial Surgeon
+          <label class="containerLabel" for="cbxMaxiSurgeon" (change)="onSpecializationCheckboxChanged('MaxillofacialSurgeon')">Maxillofacial Surgeon
             <input type="checkbox" id="cbxMaxiSurgeon">
             <span class="checkmark"></span>
           </label>
 
-          <label class="containerLabel" for="cbxPediatric">Pediatric
+          <label class="containerLabel" for="cbxPediatric" (change)="onSpecializationCheckboxChanged('Pediatric')">Pediatric
             <input type="checkbox" id="cbxPediatric">
             <span class="checkmark"></span>
           </label>
@@ -44,12 +44,12 @@
         GENDER
       </h4>
       <div *ngIf="searchParams.gender == 'F'" class="btn-group btn-toggle gender">
-        <input type="button" name="gender" class="btn btn-default" value="Male" (click)="selectMaleFilter()">
-        <input type="button" name="gender" class="btn btn-primary active" value="Female" (click)="selectFemaleFilter()">
+        <input type="button" name="gender" class="btn btn-default" value="Male" (click)="changeGender('M')">
+        <input type="button" name="gender" class="btn btn-primary active" value="Female" (click)="changeGender('F')">
       </div>
       <div *ngIf="searchParams.gender !== 'F'" class="btn-group btn-toggle gender">
-        <input type="button" name="gender" class="btn btn-primary active" value="Male" (click)="selectMaleFilter()">
-        <input type="button" name="gender" class="btn btn-default" value="Female" (click)="selectFemaleFilter()">
+        <input type="button" name="gender" class="btn btn-primary active" value="Male" (click)="changeGender('M')">
+        <input type="button" name="gender" class="btn btn-default" value="Female" (click)="changeGender('F')">
       </div>
     </div>
 
@@ -66,77 +66,77 @@
         <div id="collapseLanguages" class="panel-collapse collapse show">
 
           <label class="containerLabel" for="cbxArabic">Arabic
-            <input type="checkbox" id="cbxArabic">
+            <input type="checkbox" id="cbxArabic" (change)="onLangCheckboxChanged('Arabic')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxSpanish">Spanish
-            <input type="checkbox" id="cbxSpanish">
+            <input type="checkbox" id="cbxSpanish" (change)="onLangCheckboxChanged('Spanish')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxGerman">German
-            <input type="checkbox" id="cbxGerman">
+            <input type="checkbox" id="cbxGerman" (change)="onLangCheckboxChanged('German')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxRomanian">Romanian
-            <input type="checkbox" id="cbxRomanian">
+            <input type="checkbox" id="cbxRomanian" (change)="onLangCheckboxChanged('Romanian')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxFrench">French
-            <input type="checkbox" id="cbxFrench">
+            <input type="checkbox" id="cbxFrench" (change)="onLangCheckboxChanged('French')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxHindi">Hindi
-            <input type="checkbox" id="cbxHindi">
+            <input type="checkbox" id="cbxHindi" (change)="onLangCheckboxChanged('Hindi')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxItalian">Italian
-            <input type="checkbox" id="cbxItalian">
+            <input type="checkbox" id="cbxItalian" (change)="onLangCheckboxChanged('Italian')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxRussian">Russian
-            <input type="checkbox" id="cbxRussian">
+            <input type="checkbox" id="cbxRussian" (change)="onLangCheckboxChanged('Russian')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxKorean">Korean
-            <input type="checkbox" id="cbxKorean">
+            <input type="checkbox" id="cbxKorean" (change)="onLangCheckboxChanged('Korean')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxPortugese">Portugese
-            <input type="checkbox" id="cbxPortugese">
+            <input type="checkbox" id="cbxPortugese" (change)="onLangCheckboxChanged('Portugese')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxChinese">Chinese
-            <input type="checkbox" id="cbxChinese">
+            <input type="checkbox" id="cbxChinese" (change)="onLangCheckboxChanged('Chinese')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxEgyptian">Egyptian
-            <input type="checkbox" id="cbxEgyptian">
+            <input type="checkbox" id="cbxEgyptian" (change)="onLangCheckboxChanged('Egyptian')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxFarsi">Farsi
-            <input type="checkbox" id="cbxFarsi">
+            <input type="checkbox" id="cbxFarsi" (change)="onLangCheckboxChanged('Farsi')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxPolish">Polish
-            <input type="checkbox" id="cbxPolish">
+            <input type="checkbox" id="cbxPolish" (change)="onLangCheckboxChanged('Polish')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxGreek">Greek
-            <input type="checkbox" id="cbxGreek">
+            <input type="checkbox" id="cbxGreek" (change)="onLangCheckboxChanged('Greek')">
             <span class="checkmark"></span>
           </label>
         </div>

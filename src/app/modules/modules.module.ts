@@ -10,11 +10,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { SearchCompenentComponent } from './home-page/search-compenent/search-compenent.component';
 
 
 
 @NgModule({
-  declarations: [  ],
+  declarations: [  SearchCompenentComponent],
   imports: [
     BrowserModule,
     FormsModule,
