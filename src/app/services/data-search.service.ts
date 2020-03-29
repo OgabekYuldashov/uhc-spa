@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RequestParams} from 'elasticsearch';
 import {JsonObject} from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 import {Observable} from 'rxjs';
-import {Parameters} from "../models/parameters";
+import {Parameters} from '../models/parameters';
 
 const headers = new HttpHeaders({
   'Content-Type': 'application/json'
@@ -75,17 +75,17 @@ export class DataSearchService {
       from: 0
     };
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers).map(s => {
+    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers).subscribe(s => {
       // @ts-ignore
-      // for (const k of s.hits.hits) {
-      //   // console.log(k);
-      //   let res = new ResultItem();
-      //   // console.log(k._source);
-      //   res = k._source;
+      for (const k of s.hits.hits) {
+        // console.log(k);
+        let res = new ResultItem();
+        // console.log(k._source);
+        res = k._source;
         this.results.push(res);
-      // }
+       }
       // console.log(this.results);
-        return s.hits.hits._source;
+      return s.hits.hits._source;
     });
   }
 
