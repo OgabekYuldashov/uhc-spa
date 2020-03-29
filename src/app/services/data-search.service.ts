@@ -3,6 +3,8 @@ import {ResultItem} from '../models/ResultItem';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RequestParams} from 'elasticsearch';
 import {JsonObject} from '@angular/compiler-cli/ngcc/src/packages/entry_point';
+import {Observable} from 'rxjs';
+import {Parameters} from "../models/parameters";
 
 const headers = new HttpHeaders({
   'Content-Type': 'application/json'
@@ -17,10 +19,12 @@ export class DataSearchService {
   hostUrl: any = `http://35.229.120.24:9200/${this.index}/_search`;
   user: any = 'elastic';
   password: any = 'changeme';
-  results: Array<ResultItem> = new Array();
+  results: Array<ResultItem>;
+  parameters: Parameters;
 
   constructor(private httpClient: HttpClient) {
     this.connect();
+    this.getResults();
   }
 
   connect() {
@@ -30,7 +34,11 @@ export class DataSearchService {
     return this.results;
   }
 
-  public getResult(): ResultItem[] {
+  public getParameters(p: Parameters) {
+    this.parameters = p;
+  }
+
+  public getResults(): Observable<ResultItem[]> {
     const searchParams: RequestParams.Search = {
         query: {
           match: { city: 'chicago' }
@@ -67,19 +75,18 @@ export class DataSearchService {
       from: 0
     };
     // @ts-ignore
-    this.httpClient.post<JsonObject>(this.hostUrl, query0, headers).subscribe(s => {
+    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers).map(s => {
       // @ts-ignore
-      for (const k of s.hits.hits) {
-        // console.log(k);
-        let res = new ResultItem();
-        // console.log(k._source);
-        res = k._source;
+      // for (const k of s.hits.hits) {
+      //   // console.log(k);
+      //   let res = new ResultItem();
+      //   // console.log(k._source);
+      //   res = k._source;
         this.results.push(res);
-      }
-      console.log(this.results);
+      // }
+      // console.log(this.results);
+        return s.hits.hits._source;
     });
-
-    return this.results;
   }
 
   public getRecordByNPI(npi: string): ResultItem {
