@@ -1,0 +1,118 @@
+.imgDentist {
+  width: 93px;
+  height: 93px;
+  object-fit: contain;
+  display: inline-block;
+  margin-right: 15pt;
+}
+.res-item-header {
+  margin: 15pt;
+}
+.res-item-header > div {
+  display: inline-block;
+}
+.dentistName {
+  width: 142px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.09;
+  letter-spacing: 0.8px;
+  color: #0058c3;
+}
+
+.headerDetails > h4 {
+  width: 288px;
+  height: 18px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.29;
+  letter-spacing: normal;
+  color: #0058c3;
+}
+.headerDetails > span {
+  width: 439px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.29;
+  letter-spacing: 0.31px;
+  color: #5a7898;
+}
+.headerDetails > div > span {
+  font-family: SourceSansPro-Regular;
+  color: #5a7898;
+}
+.headerDetails > div > span > span {
+  color: #5a7898;
+  font-family: SourceSansPro-Bold;
+}
+.headerDetails > div > span > a {
+  color: #5a7898;
+}
+.headerDetails > div > span + span {
+  margin-left: 15pt;
+}
+
+.res-item-details > div > ul {
+  list-style: none;
+}
+li > h4 {
+  /*width: 163px;*/
+  /*height: 36px;*/
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  /*line-height: 1.29;*/
+  /*letter-spacing: normal;*/
+  color: #5a7898;
+}
+.res-item-title {
+  /*width: 163px;*/
+  /*height: 36px;*/
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  /*line-height: 1.29;*/
+  /*letter-spacing: normal;*/
+  color: #5a7898;
+}
+.workHours > div > p {
+  width: 133px;
+  height: 44px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  color: #5a7898;
+}
+
+.workHours {
+  border-spacing: 6pt!important;
+}
+.resultItemHoverable {
+  border-left: solid 1pt #d1d1d1;
+  border-right: solid 1pt #d1d1d1;
+  border-bottom: solid 1pt #d1d1d1;
+  border-top: solid 1pt #d1d1d1;
+}
+.resultItemHoverable:hover {
+  cursor: pointer;
+  background-color: rgba(228, 240, 250, 0.42);
+}

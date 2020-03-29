@@ -19,12 +19,22 @@
     "@angular/platform-browser": "~9.0.2",
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
+    "@types/googlemaps": "^3.39.3",
     "bootstrap": "^4.4.1",
     "bootstrap4": "0.0.1-security",
+    "elasticsearch": "^16.7.1",
     "ngx-bootstrap": "^5.5.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@elastic/elasticsearch": "7.6.0"
+  },
+  "overrides": {
+    "elasticsearch": {
+      "main": [
+        "elasticsearch.angular.js"
+      ]
+    }
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.3",

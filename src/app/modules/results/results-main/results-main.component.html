@@ -1,15 +1,136 @@
 <div class="row">
   <section class="col-lg-2" id="filtersContainer">
+
     <div class="panel-group">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapse1">SPECIALIZATION</a>
+          <h4 class="panel-title filter-title">
+            <a data-toggle="collapse" href="#collapseSpecialization">SPECIALIZATION</a>
           </h4>
         </div>
-        <div id="collapse1" class="panel-collapse collapse">
-          <div class="panel-body">Panel Body</div>
-          <div class="panel-footer">Panel Footer</div>
+        <div id="collapseSpecialization" class="panel-collapse collapse show">
+
+          <label class="containerLabel" for="cbxOralSurgeon">Oral Surgeon
+            <input type="checkbox" id="cbxOralSurgeon">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxEndodontist">Endodontist
+            <input type="checkbox" id="cbxEndodontist">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxLorem1">Lorem Ipsum 1
+            <input type="checkbox" id="cbxLorem1">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxLorem2">Lorem Ipsum 2
+            <input type="checkbox" id="cbxLorem2">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <hr class="filterDivider">
+
+    <div class="panel-group">
+      <h4 class="panel-title filter-title">
+        GENDER
+      </h4>
+      <div class="btn-group btn-toggle gender">
+        <input type="button" name="gender" class="btn btn-default" value="Male">
+        <input type="button" name="gender" class="btn btn-primary active" value="Female">
+      </div>
+    </div>
+
+    <hr class="filterDivider">
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title filter-title">
+            <a data-toggle="collapse" href="#collapseLanguages">LANGUAGES SPOKEN</a>
+          </h4>
+<!--          <img src="../../../../assets/icons/arrow-down.svg" class="float-right arrowDown">-->
+        </div>
+        <div id="collapseLanguages" class="panel-collapse collapse show">
+
+          <label class="containerLabel" for="cbxArabic">Arabic
+            <input type="checkbox" id="cbxArabic">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxSpanish">Spanish
+            <input type="checkbox" id="cbxSpanish">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxGerman">German
+            <input type="checkbox" id="cbxGerman">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxRomanian">Romanian
+            <input type="checkbox" id="cbxRomanian">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxFrench">French
+            <input type="checkbox" id="cbxFrench">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxHindi">Hindi
+            <input type="checkbox" id="cbxHindi">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxItalian">Italian
+            <input type="checkbox" id="cbxItalian">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxRussian">Russian
+            <input type="checkbox" id="cbxRussian">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxKorean">Korean
+            <input type="checkbox" id="cbxKorean">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxPortugese">Portugese
+            <input type="checkbox" id="cbxPortugese">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxChinese">Chinese
+            <input type="checkbox" id="cbxChinese">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxEgyptian">Egyptian
+            <input type="checkbox" id="cbxEgyptian">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxFarsi">Farsi
+            <input type="checkbox" id="cbxFarsi">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxPolish">Polish
+            <input type="checkbox" id="cbxPolish">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxGreek">Greek
+            <input type="checkbox" id="cbxGreek">
+            <span class="checkmark"></span>
+          </label>
         </div>
       </div>
     </div>
@@ -17,12 +138,15 @@
 
 
   <section class="col-lg-6" id="resultsContainer">
-
+    <app-result-item></app-result-item>
+    <app-result-item></app-result-item>
+    <app-result-item></app-result-item>
+    <app-result-item></app-result-item>
+    <app-result-item></app-result-item>
   </section>
 
 
-  <section class="col-lg-4" id="mapContainer">
-
+  <section #resultsMap class="col-lg-4" id="mapContainer">
   </section>
 
 

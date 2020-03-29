@@ -1,0 +1,149 @@
+<div class="col-lg-12 profile" id="resultsContainer">
+  <div><button style="border: none; margin-bottom: 19px; color: #5a7898; font-family: SourceSansPro-Regular;" routerLink="/results" ><span><svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="1 1 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+  </svg></span> Back to List</button></div>
+  <div style="border: solid 1px #d1d1d1">
+    <div class="res-item-header row">
+      <img src="../../../assets/imgs/dentist-female.png" class="imgDentist" />
+      <div class="headerD headerDetails">
+        <h3 class="dentistName">Nicole Leigh</h3>
+        <h4 class="specialization">{{ specialty }}</h4>
+        <p>
+          <svg
+            _ngcontent-xpd-c20=""
+            width="18px"
+            height="18px"
+            viewBox="0 0 16 16"
+            xmlns="http://www.w3.org/2000/svg"
+            class="bi bi-geo-alt"
+            fill="#5a7898"
+          >
+            <path
+              _ngcontent-xpd-c20=""
+              fill-rule="evenodd"
+              d="M8 16s6-5.686 6-10A6 6 0 002 6c0 4.314 6 10 6 10zm0-7a3 3 0 100-6 3 3 0 000 6z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          {{ address }}
+        </p>
+        <div>
+          <div class="info text2">
+            Phone:
+            <div class="info">{{ phone }}</div>
+          </div>
+          <div class="info text1">
+            Email:
+            <div class="info">{{ email }}</div>
+          </div>
+          <div class="info text1">
+            Web:
+            <div class="info">
+              <a href="{{ websiteUrl }}" [target]="website">{{ website }}</a>
+            </div>
+          </div>
+          <div class="info text1">
+            Gender:
+            <div class="info">{{ gender }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="res-item-details border-top border-bottom">
+      <div class="officeTimings">OFFICE TIMINGS</div>
+
+      <div
+        class="col-md-8 table row"
+        style="border-collapse: separate; border-spacing: 1em; padding-left: 50px; padding-top: 14px;" >
+        <div class="d-sm-table-row schedule">
+          <p class="d-sm-table-cell border-right" style="padding-right: 10pt">
+            MON <br />8:00 AM - 3:30 PM
+          </p>
+          <p class="d-sm-table-cell border-right" style="padding-right: 10pt">
+            TUE <br />8:00 AM - 3:30 PM
+          </p>
+          <p class="d-sm-table-cell border-right" style="padding-right: 10pt">
+            WED <br />8:00 AM - 3:30 PM
+          </p>
+          <p class="d-sm-table-cell border-right" style="padding-right: 10pt">
+            THU <br />8:00 AM - 3:30 PM
+          </p>
+          <p class="d-sm-table-cell border-right" style="padding-right: 10pt">
+            FRI <br />8:00 AM - 3:30 PM
+          </p>
+          <p class="d-sm-table-cell border-right" style="padding-right: 10pt">
+            SAT <br />CLOSED
+          </p>
+          <p class="d-sm-table-cell">SUN <br />CLOSED</p>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-left: 30px; padding: 33px;">
+      <div class="row">
+        <div class="col-sm border" style="margin-right: 34px;">
+          <div class="categoryName">CATEGORY NAME</div>
+          <div style="margin-top: 30px; margin-left: 22px;">
+            <div>
+              <div class="subCategories">Plans accepted</div>
+              <ul style="padding-left: 22px; padding-top: 10px;">
+                <li *ngFor="let p of plans" class="subCValues">
+                  {{ p }}
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="subCategories">Languages Spoken</div>
+              <p class="subCValues">{{ languages }}</p>
+            </div>
+            <div>
+              <div class="subCategories">NPI</div>
+              <p class="subCValues">{{ npi }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm border" style="margin-right: 34px;">
+          <div class="categoryName">CATEGORY NAME</div>
+          <div style="margin-top: 30px; margin-left: 22px;">
+            <div>
+              <div class="subCategories">State Licences</div>
+              <p class="subCValues">{{ licence }}</p>
+            </div>
+            <div>
+              <div class="subCategories">Education</div>
+              <p class="subCValues">{{ education }}</p>
+            </div>
+            <div>
+              <div class="subCategories">Board Association</div>
+              <p class="subCValues">Lorem Ipsum</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm border">
+          <div class="categoryName">CATEGORY NAME</div>
+          <div style="margin-top: 30px; margin-left: 22px;">
+            <div>
+              <div class="subCategories">Accepting new patients</div>
+              <p>
+                <img src="../../../assets/icons/checkmark.svg" />
+              </p>
+            </div>
+            <div>
+              <div class="subCategories">Handicapped Accessibility</div>
+              <p>
+                <img src="../../../assets/icons/crossmark.svg" />
+              </p>
+            </div>
+            <div>
+              <div class="subCategories">Suggest Directory Update</div>
+              <p class="subCValues">
+                Lorem Ipsum
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div #mapContainer id="map"></div>
+  </div>
+</div>
