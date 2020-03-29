@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-result-item',
@@ -14,7 +15,10 @@ export class ResultItemComponent implements OnInit {
   website = 'nicoleleigh.com';
   websiteUrl = 'nicoleleigh.com';
   gender = 'Female';
-  constructor() { }
+
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit(): void {
     let url = '';
@@ -26,4 +30,7 @@ export class ResultItemComponent implements OnInit {
     this.websiteUrl = url;
   }
 
+  onResultItemClick() {
+    this.router.navigate(['/details', 456]);
+  }
 }

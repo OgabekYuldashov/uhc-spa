@@ -8,7 +8,7 @@ import { DetailsviewComponent } from './modules/details/detailsview/detailsview.
 const routes: Routes = [
   {path: 'results', component: ResultsMainComponent},
   {path: '', component: ResultsMainComponent}, // Replace with your own main component
-  {path: 'details', component: DetailsviewComponent}
+  {path: 'details/:npi', component: DetailsviewComponent},
 ];
 
 @NgModule({

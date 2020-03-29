@@ -11,3 +11,6 @@
   object-fit: contain;
 
 }
+header {
+  border-bottom: 1pt solid #e6e6e6;
+}
