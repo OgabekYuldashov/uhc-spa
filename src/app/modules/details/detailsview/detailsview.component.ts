@@ -45,7 +45,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
     console.log(this.id)
 
 
-    this.resultItem = this.service.getResult();
+    this.resultItem = this.service.getResults();
     let item = this.service.getRecordByNPI("1720135999");
     console.log(item)
     console.log(this.resultItem);
