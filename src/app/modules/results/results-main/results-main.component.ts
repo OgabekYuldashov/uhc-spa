@@ -108,10 +108,17 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
     });
   }
 
-  selectMaleFilter() {
-    this.searchParams.gender = 'M';
+  changeGender(gender: string) {
+    this.searchParams.gender = gender;
   }
-  selectFemaleFilter() {
-    this.searchParams.gender = 'F';
+
+  onLangCheckboxChanged(language: string) {
+    console.log('onLangCheckboxChanged: ' + language);
+    this.searchParams.languageMap[language] = !this.searchParams.languageMap[language];
+  }
+
+  onSpecializationCheckboxChanged(specialization: string) {
+    console.log('onSpecializationCheckboxChanged: ' + specialization);
+    this.searchParams.specializationMap[specialization] = !this.searchParams.specializationMap[specialization];
   }
 }
