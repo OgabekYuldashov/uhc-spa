@@ -2,6 +2,7 @@ export class ResultItem {
   classification: string;
   fullAddress: string;
   fullMailingAddress: string;
+  fullName:string;
   public npi: string;
   extendedHrsSat: string;
   midName: string;
