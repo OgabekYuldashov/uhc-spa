@@ -23,11 +23,29 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   // tslint:disable-next-line:variable-name
   Choose_Dental_Plan: string;
 
-  togglebutton : number = 1;
+  togglebutton: number = 1;
+
+  Arabic = 'Arabic';
+  Spanish = 'Spanish';
+  German = 'German';
+  Romanian = 'Romanian';
+  French = 'French';
+  Hindi = 'Hindi';
+  Italian = 'Italian';
+  Russian = 'Russian';
+  Korean = 'Korean';
+  Portugese = 'Portugese';
+  Chinese = 'Chinese'
+  Egyptian = 'Egyptian';
+  Farsi = 'Farsi';
+  Polish = 'Polish';
+  Greek = 'Greek';
+  // tslint:disable-next-line:no-construct ban-types
+  langs: String[]= new Array();
 
   constructor(private route: Router, private dataSearchService: DataSearchService) {
     // tslint:disable-next-line:variable-name
-    this.Choose_Dental_Plan = 'Choose Dental Plan';
+    // this.Choose_Dental_Plan = 'Choose Dental Plan';
     // this.parameter_list.plans = 'Choose Dental Plan';
   }
 
@@ -108,6 +126,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     console.log(this.parameter_list);
     this.isAdvancedSearchButtonCliked = false;
 
+    console.log('list of all selected lang' + this.langs);
+
     // this.dataSearchService.getDummyRecords(this.parameter_list)
     this.dataSearchService.getParameters(this.parameter_list);
     this.route.navigate((['results']));
@@ -117,8 +137,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   advancedSearch() {
     // tslint:disable-next-line:triple-equals
-    if(this.togglebutton % 2 == 0) {
-      this.isAdvancedSearchButtonCliked =  false;
+    if (this.togglebutton % 2 == 0) {
+      this.isAdvancedSearchButtonCliked = false;
       this.togglebutton = this.togglebutton + 1;
     } else {
       this.isAdvancedSearchButtonCliked = true;
@@ -232,7 +252,47 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   onPlanChange(e) {
     this.parameter_list.plans = e;
-    console.log(' selected plan is ' + e);
+    console.log('selected plan is ' + e);
+    this.Choose_Dental_Plan = e;
+
+
+  }
+
+  isArabic(c: boolean) {
+    if (c) {
+      this.Arabic = 'Arabic';
+      this.langs.push(this.Arabic);
+    }
+  }
+
+  isSpanis(c: boolean) {
+
+    if (c) {
+      this.Spanish = 'Spanish';
+      this.langs.push(this.Spanish);
+    }
+  }
+
+
+  isGermany(c: boolean) {
+    if (c) {
+
+      this.German = 'German'
+      this.langs.push(this.German);
+    }
+
+  }
+
+  isRomanian(ch: boolean) {
+    if (ch) {
+    this.langs.push(this.Romanian);
+    }
+  }
+  isFrench(checked: boolean) {
+    if (checked) {
+      this.langs.push(this.French)
+      console.log(' this langs array=====' + this.langs);
+    }
 
   }
 }
