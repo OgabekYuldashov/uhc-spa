@@ -378,14 +378,14 @@
 .Oral-Surgeon {
   width: 96px;
   height: 18px;
-  font-family: SourceSansPro;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #8f99a3;
+  /*font-family: SourceSansPro;*/
+  /*font-size: 14px;*/
+  /*font-weight: normal;*/
+  /*font-stretch: normal;*/
+  /*font-style: normal;*/
+  /*line-height: normal;*/
+  /*letter-spacing: normal;*/
+  /*color: #8f99a3;*/
   padding-left: 8px;
 }
 
@@ -523,15 +523,25 @@
 .Languages-Spoken_css {
   width: 74px;
   height: 18px;
-  font-family: SourceSansPro;
+  /*font-family: SourceSansPro;*/
+  /*font-size: 14px;*/
+  /*font-weight: normal;*/
+  /*font-stretch: normal;*/
+  /*font-style: normal;*/
+  /*line-height: normal;*/
+  /*letter-spacing: normal;*/
+  /*color: #8f99a3;*/
+  /*padding-left: 8px;*/
+
+
+  position: relative;
   font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   color: #8f99a3;
-  padding-left: 8px;
 }
 
 .Amy-Lee {

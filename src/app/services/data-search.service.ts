@@ -91,9 +91,11 @@ export class DataSearchService {
     }
   }
 
+  // tslint:disable-next-line:variable-name
   setParameters(parameter_list: Parameters) {
 
 
+    return null;
 
   }
 }
