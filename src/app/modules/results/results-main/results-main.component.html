@@ -20,13 +20,13 @@
             <span class="checkmark"></span>
           </label>
 
-          <label class="containerLabel" for="cbxLorem1">Lorem Ipsum 1
-            <input type="checkbox" id="cbxLorem1">
+          <label class="containerLabel" for="cbxMaxiSurgeon">Maxillofacial Surgeon
+            <input type="checkbox" id="cbxMaxiSurgeon">
             <span class="checkmark"></span>
           </label>
 
-          <label class="containerLabel" for="cbxLorem2">Lorem Ipsum 2
-            <input type="checkbox" id="cbxLorem2">
+          <label class="containerLabel" for="cbxPediatric">Pediatric
+            <input type="checkbox" id="cbxPediatric">
             <span class="checkmark"></span>
           </label>
         </div>
@@ -158,15 +158,15 @@
 
 
   <section class="col-lg-6" id="resultsContainer">
-    <app-result-item *ngFor="let res of resItems">
+    <app-result-item [resItem]="resItem" *ngFor="let resItem of resItems">
 
     </app-result-item>
 
 
+    <!--<app-result-item></app-result-item>
     <app-result-item></app-result-item>
     <app-result-item></app-result-item>
-    <app-result-item></app-result-item>
-    <app-result-item></app-result-item>
+    <app-result-item></app-result-item>-->
   </section>
 
 

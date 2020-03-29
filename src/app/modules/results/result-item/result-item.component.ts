@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {ResultItem} from '../../../models/ResultItem';
 
 @Component({
   selector: 'app-result-item',
@@ -7,6 +8,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./result-item.component.css']
 })
 export class ResultItemComponent implements OnInit {
+
+  @Input() resItem: ResultItem;
 
   specialty = 'General Dentist';
   address = '330 W TIENKEN RD ROCHESTER HILLS, MI 48306';
@@ -31,6 +34,6 @@ export class ResultItemComponent implements OnInit {
   }
 
   onResultItemClick() {
-    this.router.navigate(['/details', 456]);
+    this.router.navigate(['/details', this.resItem.npi]);
   }
 }
