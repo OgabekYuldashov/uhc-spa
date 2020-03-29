@@ -1,0 +1,30 @@
+  <!--    <label class="choose-plan"> Plans </label> <border-radius>-->
+  <div class="Rectangle-3-Copy-3">
+
+    <select id="plan" [(ngModel)]="this.Choose_Dental_Plan" #plan class="DENTAL-PLAN-Select"
+            (change)="onPlanChange(plan.value)">
+      <option class="DENTAL-PLAN" value ="" selected> Choose Dental Plan</option>
+      <option class="DENTAL-PLAN" value="National Options PPO 20">National Options PPO 20</option>
+      <option class="DENTAL-PLAN" value="National Select Managed Care">National Select Managed Care</option>
+      <option class="DENTAL-PLAN" value="National Options PPO 30"> National Options PPO 30</option>
+    </select>
+
+    <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="YOUR LOCATION">
+    <!--      <mat-card class="example-result-card">-->
+
+    <label class="distancetoSearch"> Distance  </label>
+    <div class="Rectangle-739-Copy">
+      <mat-slider
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumbLabel]="thumbLabel"
+        [tickInterval]="getSliderTickInterval()"
+        [(ngModel)]="value"
+      >
+      </mat-slider>
+    </div>
+
+    <!--===============================================-->
+    <button class="AdvancedSEARCH_div" (click)="filterByPlan_And_Location_Distance()"> Search</button>
+  </div>

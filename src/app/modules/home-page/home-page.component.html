@@ -8,7 +8,7 @@
 
       <select id="plan" [(ngModel)]="this.Choose_Dental_Plan" #plan class="DENTAL-PLAN-Select"
               (change)="onPlanChange(plan.value)">
-        <option class="DENTAL-PLAN" [ngValue]="this.Choose_Dental_Plan" selected> Choose Dental Plan</option>
+        <option class="DENTAL-PLAN" value ="" selected> Choose Dental Plan</option>
         <option class="DENTAL-PLAN" value="National Options PPO 20">National Options PPO 20</option>
         <option class="DENTAL-PLAN" value="National Select Managed Care">National Select Managed Care</option>
         <option class="DENTAL-PLAN" value="National Options PPO 30"> National Options PPO 30</option>
@@ -158,43 +158,41 @@
 
           <!--          ============column 1========-->
 
-          <div class="Languages-Spoken_coln">
 
+
+<!--          <label class="containerLabel" for="oralSurgeon">-->
+<!--            <input  type="checkbox" #inputE2 id="oralSurgeon" [(ngModel)]="oralSureon"-->
+<!--                    (change)="isOralSurgeon(inputE2.checked)">-->
+<!--            <span class="checkmark"></span>-->
+<!--            Oral Surgeon-->
+<!--          </label>-->
+
+          <div class="Languages-Spoken_coln">
             <label class="containerLabel" for="arabic">Arabic
-              <input type="checkbox" id="arabic">
+              <input type="checkbox" #ip11 [(ngModel)]="Arabic" (change)="isArabic(ip11.checked)"id="arabic">
               <span class="checkmark"></span>
             </label>
-
             <label class="containerLabel" for="spanish">Spanish
-              <input type="checkbox" id="spanish">
+              <input type="checkbox" id="spanish" #ip12 [(ngModel)]="Spanish"(change)="isSpanis(ip12.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="german">German
-              <input type="checkbox" id="german">
+              <input type="checkbox" #ip15 [(ngModel)]="German" (change)="isGermany(ip15.checked)" id="german">
               <span class="checkmark"></span>
             </label>
 
-            <!--<input type="checkbox" id="arabic">
-            <label class="Languages-Spoken_css"> Arabic </label>
-            <br>
-            <input type="checkbox" id="spanish">
-            <label class="Languages-Spoken_css">Spanish</label>
-            <br>
-            <input type="checkbox" id="german">
-            <label class="Languages-Spoken_css">German</label>-->
           </div>
-
 
           <!--          ============column 2========-->
           <div class="Languages-Spoken_coln">
             <label class="containerLabel" for="cbxRomanian">Romanian
-              <input type="checkbox" id="cbxRomanian">
+              <input type="checkbox"  #ip20 [(ngModel)]="Romanian" (change)="isRomanian(ip20.checked)" id="cbxRomanian">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxFrench">French
-              <input type="checkbox" id="cbxFrench">
+              <input type="checkbox" id="cbxFrench" #ip21 [(ngModel)]="French" (change)="isFrench(ip21.checked)">
               <span class="checkmark"></span>
             </label>
 
