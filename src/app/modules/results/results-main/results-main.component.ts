@@ -22,7 +22,6 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
     zoom: 8,
   };
 
-
   marker = new google.maps.Marker({
     position: this.coordinates,
     map: this.map,

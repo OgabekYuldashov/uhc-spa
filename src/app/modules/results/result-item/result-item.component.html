@@ -2,14 +2,14 @@
   <div class="res-item-header row">
     <img src="../../../assets/imgs/dentist-female.png" class="imgDentist"/>
     <div class="headerDetails">
-      <h3 class="dentistName" (click)="onResultItemClick()">Nicole Leigh</h3>
-      <h4>Specialty: <span>{{specialty}}</span></h4>
-      <span>{{address}}</span>
+      <h3 class="dentistName" (click)="onResultItemClick()">{{resItem.displayName}}</h3>
+      <h4>Specialty: <span>{{resItem.specialization}}</span></h4>
+      <span>{{resItem.fullAddress}}</span>
       <div>
-        <span><span>Phone:</span> {{phone}}</span>
-        <span><span>Email:</span> {{email}}</span>
-        <span><span>Web: </span> <a href="{{websiteUrl}}" [target]="website">{{website}}</a></span>
-        <span><span>Gender:</span> {{gender}}</span>
+        <span><span class="font-weight-bold">Phone:</span> {{resItem.phone}}</span>
+        <span><span class="font-weight-bold">Email:</span> {{resItem.firstName + '@gmail.com'}}</span>
+        <span><span class="font-weight-bold">Web: </span> <a href="{{resItem.firstName + '.com'}}" [target]="resItem.firstName + '.com'">{{resItem.firstName + '.com'}}</a></span>
+        <span><span class="font-weight-bold">Gender:</span> <span *ngIf="resItem.gender == 'M'"> Male</span> <span *ngIf="resItem.gender == 'F'"> Female</span></span>
       </div>
     </div>
   </div>
@@ -19,13 +19,15 @@
       <ul>
         <li><h4>Accepting new patients</h4></li>
         <li>
-          <img src="../../../assets/icons/checkmark.svg"/>
+          <img *ngIf="resItem.acceptingNew == 'Y'" src="../../../assets/icons/checkmark.svg"/>
+          <img *ngIf="resItem.acceptingNew == 'N'" src="../../../assets/icons/crossmark.svg"/>
         </li>
       </ul>
       <ul>
         <li><h4>Handicapped Accessibility</h4></li>
         <li>
-          <img src="../../../assets/icons/crossmark.svg"/>
+          <img *ngIf="resItem.handicapAccessible == 'Y'" src="../../../assets/icons/checkmark.svg"/>
+          <img *ngIf="resItem.handicapAccessible == 'N'" src="../../../assets/icons/crossmark.svg"/>
         </li>
       </ul>
 
@@ -35,15 +37,20 @@
         <span class="res-item-title">Office Timings</span>
       </div>
       <div class="d-sm-table-row">
-        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">MON <br>8:00 AM - 3:30 PM</p>
-        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">TUE <br>8:00 AM - 3:30 PM</p>
-        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">WED <br>8:00 AM - 3:30 PM</p>
-        <p class="d-sm-table-cell">THU <br>8:00 AM - 3:30 PM</p>
+<!--        <p *ngFor="let workHr of resItem.officeTimings; let i = index" [attr.data-index]="i" class="d-sm-table-cell border-right" style="padding-right: 10pt">MON <br>{{workHr}}</p>-->
+
+        <!--<template *ngFor="let workHr of resItem.officeTimings; let i = index" [attr.data-index]="i">
+
+        </template>-->
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">MON <br>{{resItem.officeTimings[0]}}</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">TUE <br>{{resItem.officeTimings[1]}}</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">WED <br>{{resItem.officeTimings[2]}}</p>
+        <p class="d-sm-table-cell">THU <br>{{resItem.officeTimings[3]}}</p>
       </div>
       <div class="d-sm-table-row">
-        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">FRI <br>8:00 AM - 3:30 PM</p>
-        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">SAT <br>CLOSED</p>
-        <p class="d-sm-table-cell">SUN <br>CLOSED</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">FRI <br>{{resItem.officeTimings[4]}}</p>
+        <p class="d-sm-table-cell border-right" style="padding-right: 10pt">SAT <br>{{resItem.officeTimings[5]}}</p>
+        <p class="d-sm-table-cell">SUN <br>{{resItem.officeTimings[6]}}</p>
       </div>
 
     </div>
