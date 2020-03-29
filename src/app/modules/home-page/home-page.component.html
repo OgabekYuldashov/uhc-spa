@@ -1,14 +1,14 @@
 <div class="maindiv">
   <!--    ==============Plan  Selection==================================-->
-<!--  <div #mapContainer id="map"></div>-->
+  <div #mapContainer id="map"></div>
 
   <div class="Captura-de-Pantalla-2020-03-25-a-las-155236">
     <!--    <label class="choose-plan"> Plans </label> <border-radius>-->
     <div class="Rectangle-3-Copy-3">
 
-      <select id="plan" [(ngModel)]="this.parameter_list.plans" #plan class="DENTAL-PLAN-Select"
+      <select id="plan" [(ngModel)]="this.Choose_Dental_Plan" #plan class="DENTAL-PLAN-Select"
               (change)="onPlanChange(plan.value)">
-        <option class="DENTAL-PLAN" value="Dental Plan" selected> Choose Dental Plan</option>
+        <option class="DENTAL-PLAN" [ngValue]="this.Choose_Dental_Plan" selected> Choose Dental Plan</option>
         <option class="DENTAL-PLAN" value="National Options PPO 20">National Options PPO 20</option>
         <option class="DENTAL-PLAN" value="National Select Managed Care">National Select Managed Care</option>
         <option class="DENTAL-PLAN" value="National Options PPO 30"> National Options PPO 30</option>
@@ -246,19 +246,19 @@
     </div>
 
     <div style="display:inline-block">
-      <img class="footer_Rectangle" src="../../../assets/icons/bitmap2.png" height="158" width="239"/>
+      <img class="footer_Rectangle" src="../../../assets/icons/bitmap2.png"/>
       <br>
       <span> Amly Lee</span>
     </div>
 
     <div style="display:inline-block">
-      <img class="footer_Rectangle" src="../../../assets/icons/bitmap4.png" height="158" width="239"/>
+      <img class="footer_Rectangle" src="../../../assets/icons/bitmap4.png"/>
       <br>
       <span> Amly Lee</span>
     </div>
 
     <div style="display:inline-block">
-      <img class="footer_Rectangle" src="../../../assets/icons/bitmap3.png" height="158" width="239"/>
+      <img class="footer_Rectangle" src="../../../assets/icons/bitmap3.png" height="120" width="180"/>
       <br>
       <span> Amly Lee</span>
     </div>
@@ -266,7 +266,7 @@
     <div style="display:inline-block">
       <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png"/>
       <br>
-      <span> Amly Lee</span>
+      <p class="Amy-Lee"> Amly Lee</p>
     </div>
 
   </div>

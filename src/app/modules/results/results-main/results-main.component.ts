@@ -9,7 +9,7 @@ import {DataSearchService} from "../../../services/data-search.service";
 export class ResultsMainComponent implements OnInit, AfterViewInit {
   @ViewChild('resultsMap', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
-  lat = 40.730610;
+  lat = 37.730610;
   lng = -73.935242;
 
   coordinates = new google.maps.LatLng(this.lat, this.lng);

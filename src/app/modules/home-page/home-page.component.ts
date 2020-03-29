@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   constructor(private route: Router, private dataSearchService: DataSearchService) {
     // tslint:disable-next-line:variable-name
     this.Choose_Dental_Plan = 'Choose Dental Plan';
-    this.parameter_list.plans = 'Choose Dental Plan';
+    // this.parameter_list.plans = 'Choose Dental Plan';
   }
 
 
@@ -64,7 +64,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
-  lat = 40.73061;
+  lat = 45.73061;
   lng = -73.935242;
 
   coordinates = new google.maps.LatLng(this.lat, this.lng);
@@ -138,11 +138,13 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
+    this.Choose_Dental_Plan = 'Choose Dental Plan';
   }
 
   getSliderTickInterval(): number {
     if (this.showTicks) {
-      let value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
+      const value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
       this.parameter_list.distanceFromYourAddress = this.value + 'mi';
       return this.value;
     }

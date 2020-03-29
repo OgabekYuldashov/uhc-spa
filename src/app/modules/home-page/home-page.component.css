@@ -17,6 +17,7 @@
   border: 0px;
 
 }
+
 .AdvancedSEARCH_div {
   width: 94px;
   height: 48px;
@@ -30,8 +31,9 @@
   text-align: center;
   color: #ffffff;
   background-color: #0058c3;
-  border:0px;
+  border: 0px;
 }
+
 .Rectangle-3-Copy-3 {
   /*width: 959px;*/
   width: 761px;
@@ -44,9 +46,11 @@
   background-color: #ffffff;
   /*margin-right: 121px;*/
   /*margin-right: 242px;*/
+  margin-left: 40px;
 
 }
-.DENTAL-PLAN-Select{
+
+.DENTAL-PLAN-Select {
   width: 250px;
   height: 46px;
   object-fit: contain;
@@ -55,6 +59,7 @@
   background-color: #ffffff;
   padding-left: 21px;
 }
+
 .YOUR-location {
   width: 230px;
   height: 24px;
@@ -70,6 +75,7 @@
   border: 1px;
   padding-left: 12px;
 }
+
 .Advanced-search {
   width: 150px;
   height: 18px;
@@ -89,32 +95,39 @@
 
 .footer_Rectangle {
   width: 239px;
-  height: 229px;
+  height: 158px;
   border-radius: 16px;
   box-shadow: 0 4px 18px 0 rgba(17, 29, 41, 0.1);
   background-color: #ffffff;
-  padding-left: 44px
-;
+  padding-left: 44px;
 
 }
 
-.footer{
+.footer {
   margin-left: 20px;
   z-index: -1;
   position: absolute;
+  width: 1200px;
+  /*height: 498px ;*/
+  /*margin-top: 100px;*/
+  /*margin-left: 170px;*/
 
 }
-.zIndex{
+
+.zIndex {
   z-index: 1;
-  opacity:1;
+  opacity: 1;
   background-color: white;
   width: 761px;
+  margin-left: 40px;
 }
-.horizontal-line{
+
+.horizontal-line {
   width: 757px;
   margin-left: 10px;
   /*margin-top: 5px;*/
 }
+
 .Accepting-new-patien {
   width: 148px;
   height: 18px;
@@ -141,12 +154,12 @@
   color: #0058c3;
 }
 
-.Specialization_div
-{
+.Specialization_div {
   /*width: 40%;*/
   margin-left: 200px;
   display: inline-block;
 }
+
 .Specialization {
   width: 153px;
   height: 24px;
@@ -161,10 +174,12 @@
 }
 
 
-.AccessebilityTimeframe{
+.AccessebilityTimeframe {
   width: 183px;
   display: inline-block;
+  margin-left: 15px;
 }
+
 .Extended-Hours {
   width: 183px;
   height: 24px;
@@ -188,7 +203,6 @@
 }
 
 
-
 .Saturday {
   width: 128px;
   height: 18px;
@@ -201,6 +215,7 @@
   letter-spacing: normal;
   color: #8f99a3;
 }
+
 .Weekday {
   width: 128px;
   height: 18px;
@@ -215,14 +230,15 @@
 }
 
 
-.accessibility_div{
-  display:inline-block;
-  width:50%;
+.accessibility_div {
+  display: inline-block;
+  width: 50%;
   margin-left: 80px;
   margin-top: 10px;
 
 
 }
+
 .accessibility {
   width: 153px;
   height: 24px;
@@ -233,8 +249,7 @@
   font-style: normal;
   line-height: 1.71;
   letter-spacing: 1.17px;
-  color: #0058c3;
-;
+  color: #0058c3;;
 }
 
 .Handicap-Accessible {
@@ -249,11 +264,13 @@
   letter-spacing: normal;
   color: #8f99a3;
 }
-.GENDER_div{
+
+.GENDER_div {
   margin-left: 55px;
   display: inline-block;
 }
-.DoctorName_div{
+
+.DoctorName_div {
   display: inline-block;
 }
 
@@ -282,8 +299,7 @@
   line-height: 1.71;
   letter-spacing: 1.17px;
   color: #9b9b9b;
-  border: 0px
-;
+  border: 0px;
 }
 
 .GENDER {
@@ -338,10 +354,6 @@
   height: 60px;
 }
 
-
-
-
-
 .Languages-Spoken {
   width: 200px;
   height: 24px;
@@ -355,13 +367,14 @@
   color: #0058c3;
   margin-left: 15px;
 }
-.Languages-Spoken_coln
-{
+
+.Languages-Spoken_coln {
   display: inline-block;
   margin-left: 20px;
   width: 100px;
 
 }
+
 .Oral-Surgeon {
   width: 96px;
   height: 18px;
@@ -416,6 +429,7 @@
   /*border-radius: 100px;*/
   /*background-color: #06a0ff;*/
   display: inline-block;
+  /*margin-right: 10px;*/
 
 }
 
@@ -426,8 +440,8 @@
 
 .Captura-de-Pantalla-2020-03-25-a-las-155236 {
   width: 1439px;
-  height: 240px ;
-  margin-top: 200px;
+  height: 240px;
+  margin-top: 85px;
   margin-left: 200px;
   z-index: 1;
   /*position: absolute;*/
@@ -435,19 +449,25 @@
 }
 
 #map {
-  width: 1439px;
-  height: 498px ;
+  width: 1450px;
+  height: 320px;
   /*margin-top: 100px;*/
-  margin-left: 200px;
+  /*margin-left: 170px;*/
   z-index: -1;
   position: absolute;
+  margin-top: -85px;
+  opacity: 0.8;
+  margin-left: -100px;
+
 }
 
 .maindiv {
-  width: 1440px;
+  width: 1439px;
   height: 1000px;
+  border: 1px;
+  border-color: red;
 
-margin-top: 1px;
+  margin-top: 1px;
   /*margin-top: 40px;*/
   /*background-color: #ffffff;*/
 }
@@ -482,18 +502,21 @@ margin-top: 1px;
 .Body2 {
   width: 361px;
   height: 46px;
-  margin-left: 540px;
+  margin-left: 400px;
   margin-bottom: 73px;
   z-index: -2;
   position: relative;
+  margin-top: 50px;
 }
-.doctorProfile_div{
+
+.doctorProfile_div {
   margin-left: 15px;
 }
 
-.avaialbility_div{
+.avaialbility_div {
   margin-top: 8px;
   display: inline-block;
+  margin-left: 15px;
 }
 
 
@@ -509,4 +532,18 @@ margin-top: 1px;
   letter-spacing: normal;
   color: #8f99a3;
   padding-left: 8px;
+}
+
+.Amy-Lee {
+  width: 149px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+  color: #5a7898;
+  padding-left: 13px;
 }
