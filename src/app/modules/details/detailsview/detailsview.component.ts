@@ -44,18 +44,9 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
     this.route.params.subscribe(params => {this.id = params['npi']; });
 
     console.log(this.id)
-
-
-
-    this.resultItem = this.service.getResults();
-    let item = this.service.getRecordByNPI("1720135999");
-    console.log(item);
-
-    console.log(this.resultItem);
-
-
-
-   //console.log(this.service.getRecordByNPI(this.npi));
+    this.service.getRecordByNPIOb('1720135999').subscribe(s => {
+      console.log(this.service.getResults(s)[0].firstName);
+    });
   }
 
   ngOnInit(): void {
