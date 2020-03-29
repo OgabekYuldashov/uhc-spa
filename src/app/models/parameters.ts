@@ -13,5 +13,6 @@ export class Parameters {
   gender: string;
   handicapAccessible: boolean;
   languageSponeken: string[];
-
+  languageMap: Map<string, boolean>;
+  specializationMap: Map<string, boolean>;
 }
