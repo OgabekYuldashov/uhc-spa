@@ -31,7 +31,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
   handicapAccessible: boolean;
   officeTimings: string[];
   id: string;
-  resultItem: ResultItem;
+  resultItem: Observable<ResultItem[]>;
 
   map: google.maps.Map;
   lat: number = 61.216112;

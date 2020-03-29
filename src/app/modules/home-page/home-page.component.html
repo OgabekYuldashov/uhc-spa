@@ -64,21 +64,32 @@
         <label class="Specialization"> SPECIALIZATION</label>
         <div >
           <div style="display:inline-block">
+
+
+            <label class="containerLabel" for="oralSurgeon">
             <input  type="checkbox" #inputE2 id="oralSurgeon" [(ngModel)]="oralSureon"
                     (change)="isOralSurgeon(inputE2.checked)">
-            <label  class="Oral-Surgeon"> Surgeon </label>
-            <br>
-            <input type="checkbox" id="endodontist" #inputElement3 [(ngModel)]="endodontist"
+              <span class="checkmark"></span>
+              Oral Surgeon
+            </label>
+            <label class="containerLabel" for="endodontist">Endodontist
+              <input type="checkbox" id="endodontist" #inputElement3 [(ngModel)]="endodontist"
                    (change)="isEndodontist(inputElement3.checked)">
-            <label class="Endodontist">Endodontist</label>
+              <span class="checkmark"></span>
+            </label>
           </div>
 
-          <div style="display: inline-block">
+          <div style="margin-left:10px; display: inline-block" >
+            <label class="containerLabel" for="LoremIpsum2">Lorem-Ipsum
             <input  type="checkbox" id="LoremIpsum2">
-            <label class="Lorem-Ipsum">Lorem-Ipsum </label>
-            <br>
-            <input  type="checkbox" id="LoremIpsum1 ">
-            <label class="Lorem-Ipsum">Lorem-Ipsum I </label>
+              <span class="checkmark"></span>
+            </label>
+
+            <label class="containerLabel" for ="Pediatric1"> Pediatric
+            <input  type="checkbox" id="Pediatric1">
+<!--            <label class="Lorem-Ipsum">Pediatric-->
+              <span class="checkmark"></span>
+            </label>
           </div>
 
         </div>
@@ -92,14 +103,14 @@
           <label class="Extended-Hours"> EXTENDED HOURS</label>
           <br>
           <label class="Saturday"> Saturday</label>
-          <input type="checkbox" id="extendedhourse_saturday" #inputElement4 [(ngModel)]="Extendedhourse_saturday"
+          <input  style="height:12px" type="checkbox" id="extendedhourse_saturday" #inputElement4 [(ngModel)]="Extendedhourse_saturday"
                  (change)="isThereExtendedhourse_saturday(inputElement4.checked)" name="extendedhourse_saturday"
                  data-toggle="toggle">
+          <br>
           <br>
           <label class="Weekday"> Weekday</label>
           <input type="checkbox" id="extendedhourse_weekday" #inputElement6 [(ngModel)]="weekday"
                  (change)="isWeekdayWorking(inputElement6.checked)" name="extendedhourse_weekday" data-toggle="toggle">
-
         </div>
 
 <!--              ===============    Accessibility==============-->
@@ -318,31 +329,31 @@
     <div style="display:inline-block">
       <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png"/>
       <br>
-      <span> Amly Lee</span>
+<!--      <span> Amly Lee</span>-->
     </div>
 
     <div style="display:inline-block">
       <img class="footer_Rectangle" src="../../../assets/icons/bitmap2.png"/>
       <br>
-      <span> Amly Lee</span>
+<!--      <span> Amly Lee</span>-->
     </div>
 
     <div style="display:inline-block">
       <img class="footer_Rectangle" src="../../../assets/icons/bitmap4.png"/>
       <br>
-      <span> Amly Lee</span>
+<!--      <span> Amly Lee</span>-->
     </div>
 
     <div style="display:inline-block">
       <img class="footer_Rectangle" src="../../../assets/icons/bitmap3.png" height="120" width="180"/>
       <br>
-      <span> Amly Lee</span>
+<!--      <span> Amly Lee</span>-->
     </div>
 
     <div style="display:inline-block">
       <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png"/>
       <br>
-      <p class="Amy-Lee"> Amly Lee</p>
+<!--      <p class="Amy-Lee"> Amly Lee</p>-->
     </div>
 
   </div>

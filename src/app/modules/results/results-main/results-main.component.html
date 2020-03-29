@@ -158,7 +158,11 @@
 
 
   <section class="col-lg-6" id="resultsContainer">
-    <app-result-item></app-result-item>
+    <app-result-item *ngFor="let res of resItems">
+
+    </app-result-item>
+
+
     <app-result-item></app-result-item>
     <app-result-item></app-result-item>
     <app-result-item></app-result-item>
