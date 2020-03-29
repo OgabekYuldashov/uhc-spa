@@ -34,6 +34,40 @@ export class DataSearchService {
 
   public setParameters(p: Parameters) {
     this.parameters = p;
+    this.parameters.languageMap = new Map<string, boolean>();
+
+    // this.parameters.languageMap.set('English', false);
+    this.parameters.languageMap.set('Arabic', false);
+    this.parameters.languageMap.set('Spanish', false);
+    this.parameters.languageMap.set('German', false);
+    this.parameters.languageMap.set('Romanian', false);
+    this.parameters.languageMap.set('French', false);
+    this.parameters.languageMap.set('Hindi', false);
+    this.parameters.languageMap.set('Italian', false);
+    this.parameters.languageMap.set('Russian', false);
+    this.parameters.languageMap.set('Korean', false);
+    this.parameters.languageMap.set('Portugese', false);
+    this.parameters.languageMap.set('Chinese', false);
+    this.parameters.languageMap.set('Egyptian', false);
+    this.parameters.languageMap.set('Farsi', false);
+    this.parameters.languageMap.set('Polish', false);
+    this.parameters.languageMap.set('Greek', false);
+
+    for (const s of p.languageSponeken) {
+      this.parameters.languageMap.set(s, true);
+    }
+
+    this.parameters.specializationMap = new Map<string, boolean>();
+
+    this.parameters.specializationMap.set('OralSurgeon', false);
+    this.parameters.specializationMap.set('Endodontist', false);
+    this.parameters.specializationMap.set('Maxillofacial Surgeon', false);
+    this.parameters.specializationMap.set('Pediatric', false);
+
+    for (const s of p.specialization) {
+      this.parameters.specializationMap.set(s, true);
+    }
+
     console.log(this.parameters);
   }
   public getParameters() {
