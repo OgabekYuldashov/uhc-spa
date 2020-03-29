@@ -42,8 +42,8 @@ export class DataSearchService {
           },
           filter : {
             geo_distance : {
-              distance : "200km",
-              location : "40,-70"
+              distance : '200km',
+              location : '40,-70'
             }
           }
         }
@@ -68,6 +68,6 @@ export class DataSearchService {
       console.log(results);
     });
 
-    return null;
+    return results;
   }
 }

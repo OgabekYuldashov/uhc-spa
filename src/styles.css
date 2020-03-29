@@ -84,3 +84,29 @@ router-outlet {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+
+/*================START SCROLLBAR STYLING===================*/
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5.5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e6e6e6;
+  border-radius: 10px;
+  margin-left: 200px;
+  margin-right: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(158, 169, 179, 0.42);
+}
+/*================END SCROLLBAR STYLING===================*/
