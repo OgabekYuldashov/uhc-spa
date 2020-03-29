@@ -1,8 +1,7 @@
 
 
-
 .Captura-de-Pantalla-2020-03-25-a-las-155236 {
-  width: 1000px;
+  width: 980px;
   height: 900px;
   margin-top: 100px;
   margin-left: 200px;
@@ -42,7 +41,7 @@
 }
 .Rectangle-3-Copy-3 {
   /*width: 917px;*/
-  width: 757px;
+  width: 716px;
   height: 48px;
   object-fit: contain;
   border-radius: 4px;
@@ -325,9 +324,11 @@
   align-items: center;
   height: 60px;
 }
-.example-margin {
-  margin: 0 10px;
-}
+
+
+
+
+
 .Languages-Spoken {
   width: 200px;
   height: 24px;
@@ -346,4 +347,68 @@
   margin-left: 55px;
   width: 100px;
 
+}
+
+.Oral-Surgeon {
+  width: 96px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+.Endodontist {
+  width: 96px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+.Lorem-Ipsum {
+  width: 96px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+.Shape {
+  width: 10px;
+  height: 7px;
+  background-color: #0070d2;
+}
+
+.Rectangle-739-Copy {
+  width: 185px;
+  height: 2.8px;
+  /*border-radius: 100px;*/
+  /*background-color: #06a0ff;*/
+  display: inline-block;
+
+}
+
+.mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  background-color: blue;
+}
+
+
+.Captura-de-Pantalla-2020-03-25-a-las-155236 {
+  width: 1439px;
+  height: 498px;
 }

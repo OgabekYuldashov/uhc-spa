@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormArray, FormControl} from '@angular/forms';
-import {of} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
-import {DatafectcingService} from '../../services/datafectcing.service';
-import {MatSliderModule} from '@angular/material/slider';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Parameters} from '../../models/parameters';
+import {DataSearchService} from '../../services/data-search.service';
+import {MatSliderModule} from '@angular/material/slider';
 
 // ==========================model=======
 
@@ -14,25 +12,14 @@ import {Parameters} from '../../models/parameters';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  canSpeackArabic: string;
+  canSpeakSpanish: string;
+  canSpeapkgermany: string;
+  canSpeakItaly: string ;
+  canSpeakPortuese: string;
+  canSpeakFarsi: string;
 
-
-  canSpeackArabic = 'Arabic';
-  canSpeakSpanish = 'Spanish'
-  canSpeapkgermany = 'Germany'
-  canSpeakItaly = 'Italy'
-  canSpeakPortuese = 'Portugese'
-  canSpeakFarsi = 'Farsi'
-
-
-  constructor(private fb: FormBuilder, private datafectcingService: DatafectcingService, private route: ActivatedRoute) {
-
-    // this.plans = ['National Options PPO 20', 'National Options PPO 30', 'National Select Managed Care'];
-    // this.specializations = [
-    //   {name: 'Oral-Surgeon', value: 'Oral-Surgeon'},
-    //   {name: 'Endodontist', value: 'Endodontist'},
-    //   {name: 'Lorem-Ipsum', value: 'Lorem-Ipsum'},
-    //   {name: 'Lorem-Ipsum', value: 'Lorem-Ipsum'},
-    // ];
+  constructor(private route: Router, private dataSearchService: DataSearchService) {
   }
 
 
@@ -51,27 +38,10 @@ export class HomePageComponent implements OnInit {
 
   isAdvancedSearchButtonCliked = false;
 
-  specializations: Array<any>;
-  // form: FormGroup;FormGroup
-  // ordersData = [];
-
-
-  // ========variable for Jsonobject==============
-
-
-  jsonDataModel: any[];
-  selectedPlan: string;
-  location: string;
-
   // tslint:disable-next-line:variable-name
   parameter_list: Parameters = new Parameters();
 
   // ==================== Language Section======================
-
-
-  // indexsubmit() {
-  //   console.log(this.form.value.name);
-  // }
   oralSureon: string;
 
 ///////////////////////////////////////////
@@ -85,33 +55,25 @@ export class HomePageComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   Choose_Dental_Plan = 'Choose Dental Plan';
 
-  getSelected() {
-
-  }
-
   onChange(e) {
     this.parameter_list.plans = e.target.value.toString();
 
   }
 
-
   filterByPlan_And_Location_Distance() {
 
     this.isAdvancedSearchButtonCliked = false;
+    // tslint:disable-next-line:max-line-length
     this.parameter_list.languageSponeken = [this.canSpeackArabic, this.canSpeakFarsi, this.canSpeakItaly, this.canSpeakPortuese, this.canSpeakSpanish, this.canSpeapkgermany];
     this.parameter_list.specialization = [this.oralSureon, this.endodontist];
     console.log(this.parameter_list);
-    this.isAdvancedSearchButtonCliked= false;
+    this.isAdvancedSearchButtonCliked = false;
+
+    this.dataSearchService.getResults(this.parameter_list)
+    this.route.navigate((['results']));
 
   }
 
-  formatLabel(value: number) {
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'mi';
-    }
-
-    return value;
-  }
 
 
   advancedSearch() {
@@ -129,12 +91,24 @@ export class HomePageComponent implements OnInit {
       this.parameter_list.specialization = [this.endodontist];
     }
 
+    this.canSpeackArabic = 'Arabic';
+    this.canSpeakSpanish = 'Spanish'
+    this.canSpeapkgermany = 'Germany'
+    this.canSpeakItaly = 'Italy'
+    this.canSpeakPortuese = 'Portugese'
+    this.canSpeakFarsi = 'Farsi';
   }
 
   ngOnInit(): void {
   }
 
+  getSliderTickInterval(): string {
+    if (this.showTicks) {
+      return this.autoTicks ? 'auto' : this.tickInterval + 'mi';
+    }
 
+    return '0';
+  }
   valueChange(e: string) {
     this.parameter_list.location = e.trim().toString();
     console.log('your location is ==========' + this.parameter_list.location);

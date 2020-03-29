@@ -5,16 +5,31 @@
     <div class="Rectangle-3-Copy-3">
 
 
-      <select id="plan" [(ngModel)]="Choose_Dental_Plan" #plan class="DENTAL-PLAN-Select" (change)="onPlanChange(plan.value)">
+      <select id="plan" [(ngModel)]="Choose_Dental_Plan" #plan class="DENTAL-PLAN-Select"
+              (change)="onPlanChange(plan.value)">
         <option class="DENTAL-PLAN" value="Dental Plan" selected> Choose Dental Plan</option>
         <option class="DENTAL-PLAN" value="National Options PPO 20">National Options PPO 20</option>
         <option class="DENTAL-PLAN" value="National Select Managed Care">National Select Managed Care</option>
         <option class="DENTAL-PLAN" value="National Options PPO 30"> National Options PPO 30</option>
       </select>
 
-      <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="your Location">
+      <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="YOUR LOCATION">
+      <!--      <mat-card class="example-result-card">-->
+      <div class="Rectangle-739-Copy">
+        <mat-slider
+          class="mat-slider.mat-slider-horizontal .mat-slider-track-fill"
+          [max]="max"
+          [min]="min"
+          [step]="step"
+          [thumbLabel]="thumbLabel"
+          [tickInterval]="getSliderTickInterval()"
+          [(ngModel)]="value"
+        >
+        </mat-slider>
+      </div>
 
-      <input class="YOUR-location" id="distance" name="distance" placeholder="distance">
+
+      <!--      <input class="YOUR-location" id="distance" name="distance" placeholder="distance">-->
 
       <!--===============================================-->
       <button class="SEARCH" (click)="filterByPlan_And_Location_Distance()"> Search</button>
@@ -41,7 +56,8 @@
 
         <div style="display: inline-block">
           <label>
-            <input type="checkbox" #inputE1 id="accessebility" [(ngModel)]="parameter_list.acceptingNew" (change)="isacceptingNew(inputE1.checked)"  name="newPatientAccessibility" data-toggle="toggle">
+            <input type="checkbox" #inputE1 id="accessebility" [(ngModel)]="parameter_list.acceptingNew"
+                   (change)="isacceptingNew(inputE1.checked)" name="newPatientAccessibility" data-toggle="toggle">
 
           </label>
         </div>
@@ -49,14 +65,17 @@
       </div>
 
       <div class="Specialization_div" style="display: inline-block">
-        <label> SPECIALIZATION</label>
-        <div class="Languages-Spoken_coln">
-          <input type="checkbox" #inputE2 id="oralSurgeon" [(ngModel)]="oralSureon" (change)="isOralSurgeon(inputE2.checked)">
+        <label class="Specialization"> SPECIALIZATION</label>
+        <div>
+          <input class="Oral-Surgeon" type="checkbox" #inputE2 id="oralSurgeon" [(ngModel)]="oralSureon"
+                 (change)="isOralSurgeon(inputE2.checked)">
           <label>Oral Surgeon </label>
-          <input type="checkbox" id="endodontist" #inputElement3 [(ngModel)]="endodontist" (change)="isEndodontist(inputElement3.checked)">
+          <br>
+          <input class="Endodontist" type="checkbox" id="endodontist" #inputElement3 [(ngModel)]="endodontist"
+                 (change)="isEndodontist(inputElement3.checked)">
           <label>Endodontist</label>
           <br>
-          <input type="checkbox" id="LoremIpsum ">
+          <input class="Lorem-Ipsum" type="checkbox" id="LoremIpsum ">
           <label>Lorem-Ipsum </label>
 
         </div>
@@ -70,11 +89,14 @@
           <label class="Extended-Hours"> EXTENDED HOURS</label>
           <br>
           <label class="Saturday"> Saturday</label>
-          <input type="checkbox" id="extendedhourse_saturday" #inputElement4 [(ngModel)]= "Extendedhourse_saturday" (change)="isThereExtendedhourse_saturday(inputElement4.checked)" name="extendedhourse_saturday" data-toggle="toggle">
+          <input type="checkbox" id="extendedhourse_saturday" #inputElement4 [(ngModel)]="Extendedhourse_saturday"
+                 (change)="isThereExtendedhourse_saturday(inputElement4.checked)" name="extendedhourse_saturday"
+                 data-toggle="toggle">
           <br>
 
           <label class="Weekday"> Weekday</label>
-          <input type="checkbox" id="extendedhourse_weekday"  #inputElement6 [(ngModel)]="weekday" (change)="isWeekdayWorking(inputElement6.checked)"name="extendedhourse_weekday" data-toggle="toggle">
+          <input type="checkbox" id="extendedhourse_weekday" #inputElement6 [(ngModel)]="weekday"
+                 (change)="isWeekdayWorking(inputElement6.checked)" name="extendedhourse_weekday" data-toggle="toggle">
 
         </div>
 
@@ -84,8 +106,9 @@
           <label class="accessibility"> ACCESSIBILITY </label>
           <br>
           <label class="Handicap-Accessible"> Handicap Accessible</label>
-          <input type="checkbox" id="handicapAccecebility" name="handicapAccecebility" data-toggle="toggle">
-          <input type="checkbox"   #inputElement7 [(ngModel)]="handicapAccecebility" (change)="ishandicapAccecebility(inputElement7.checked)" data-toggle="toggle">
+          <!--          <input type="checkbox" id="handicapAccecebility" name="handicapAccecebility" data-toggle="toggle"toggle>-->
+          <input type="checkbox" #inputElement7 [(ngModel)]="handicapAccecebility"
+                 (change)="ishandicapAccecebility(inputElement7.checked)" data-toggle="toggle">
         </div>
 
       </div>
@@ -95,8 +118,10 @@
         <div class="DoctorName_div">
           <label> DOCTOR NAME</label>
           <br>
-          <input class="FIRST-NAME"  [(ngModel)]="parameter_list.firstName"type="text" id="firstName" name="firstName" placeholder="FIRST NAME">
-          <input class="SECOND-NAME" [(ngModel)]="parameter_list.lastName" type="text" id="LastName" name="lastName" placeholder="LAST NAME">
+          <input class="FIRST-NAME" [(ngModel)]="parameter_list.firstName" type="text" id="firstName" name="firstName"
+                 placeholder="FIRST NAME">
+          <input class="SECOND-NAME" [(ngModel)]="parameter_list.lastName" type="text" id="LastName" name="lastName"
+                 placeholder="LAST NAME">
         </div>
         <div class="GENDER_div">
           <label class="GENDER"> GENDER</label>
@@ -137,13 +162,11 @@
             <input type="checkbox" id="arabic">
             <label>Arabic </label>
             <br>
-
             <input type="checkbox" id="spanish">
             <label>Spanish</label>
             <br>
             <input type="checkbox" id="german">
             <label>German</label>
-
           </div>
 
 
@@ -273,6 +296,5 @@
     </div>
 
   </div>
-
 
 </div>
