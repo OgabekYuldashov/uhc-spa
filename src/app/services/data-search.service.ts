@@ -90,4 +90,10 @@ export class DataSearchService {
       }
     }
   }
+
+  setParameters(parameter_list: Parameters) {
+
+
+
+  }
 }
