@@ -8,7 +8,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
   declarations: [DetailsviewComponent],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    AppRoutingModule
   ]
 })
 export class DetailsModule { }
