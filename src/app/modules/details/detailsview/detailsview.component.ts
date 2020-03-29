@@ -2,6 +2,7 @@ import { DataSearchService } from './../../../services/data-search.service';
 import { Component, OnInit } from '@angular/core';
 import {AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ResultItem } from 'src/app/models/ResultItem';
 
 @Component({
   selector: 'app-detailsview',
@@ -25,7 +26,8 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
   npi = "178761346";
   licence ="DDS - MI-2901016937";
   education = "MBBS";
-  id: number;
+  id: string;
+  resultItem: Array<ResultItem>;
 
   map: google.maps.Map;
   lat = 40.730610;
@@ -38,11 +40,19 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute, private service: DataSearchService) {
 
-    this.route.params.subscribe(params => {this.id = +params['npi']; });
+    this.route.params.subscribe(params => {this.id = params['npi']; });
 
     console.log(this.id)
 
-    console.log(this.service.getRecordByNPI(this.npi));
+
+    this.resultItem = this.service.getResult();
+    let item = this.service.getRecordByNPI("1720135999");
+    console.log(item)
+    console.log(this.resultItem);
+    console.log(this.resultItem.length);
+
+
+   //console.log(this.service.getRecordByNPI(this.npi));
   }
 
   ngOnInit(): void {
