@@ -1,9 +1,14 @@
 section {
-  height: 100%;
-  border: 1px solid green;
+  height: 100vh;
+  /*border: 1px solid green;*/
 }
 
 /**************************START FILTERS SECTION*******************/
+
+#filtersContainer {
+  border-right: 1pt solid #e6e6e6;
+}
+
 #filtersContainer .panel-group {
   margin: 15pt;
 }
@@ -19,6 +24,9 @@ section {
   line-height: 1.71;
   letter-spacing: 1.17px;
   color: #0058c3;
+}
+.filter-title > span{
+  display: inline-block;
 }
 .form-check label {
   width: 96px;
@@ -46,8 +54,20 @@ section {
 
 
 /**************************START RESULTS SECTION*******************/
+#resultsContainer {
+  border-right: 1pt solid #e6e6e6;
+}
 
 /**************************END RESULTS SECTION*******************/
+
+
+
+
+/**************************START MAP SECTION*******************/
 #mapContainer {
-  height: 700pt;
+  /*height: 100vh;*/
 }
+
+/**************************END MAP SECTION*******************/
+
+
