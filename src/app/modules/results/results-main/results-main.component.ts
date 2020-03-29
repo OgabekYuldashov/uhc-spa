@@ -108,4 +108,10 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
     });
   }
 
+  selectMaleFilter() {
+    this.searchParams.gender = 'M';
+  }
+  selectFemaleFilter() {
+    this.searchParams.gender = 'F';
+  }
 }
