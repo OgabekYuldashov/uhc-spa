@@ -109,7 +109,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.isAdvancedSearchButtonCliked = false;
 
     // this.dataSearchService.getDummyRecords(this.parameter_list)
-
     this.dataSearchService.setParameters(this.parameter_list);
     this.route.navigate((['results']));
 
