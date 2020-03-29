@@ -49,7 +49,7 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   constructor(private dataService: DataSearchService) {
 
     dataService.getResultItems().subscribe(r => {
-      // this.resItems = this.dataService.getResults(r);
+      this.resItems = this.dataService.getResults(r);
       console.log('res:');
       console.log(this.resItems);
     });

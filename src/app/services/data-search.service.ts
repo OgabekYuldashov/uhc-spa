@@ -19,7 +19,6 @@ export class DataSearchService {
   hostUrl: any = `http://35.229.120.24:9200/${this.index}/_search`;
   user: any = 'elastic';
   password: any = 'changeme';
-  results: Array<ResultItem>;
   parameters: Parameters;
 
   constructor(private httpClient: HttpClient) {
@@ -31,26 +30,45 @@ export class DataSearchService {
   }
 
   getDummyRecords(): ResultItem[] {
-    return this.results;
+    return null;
   }
 
-  public getParameters(p: Parameters) {
+  public setParameters(p: Parameters) {
     this.parameters = p;
+    console.log(this.parameters);
+  }
+  public getParameters() {
+    return this.parameters;
   }
 
   public getResults(js: JsonObject): ResultItem[] {
-      // @ts-ignore
-    return js.hits.hits._source;
+    const resItems = new Array<ResultItem>();
+    // console.log(js);
+    // @ts-ignore
+    for ( const j of js.hits.hits) {
+      resItems.push(j._source);
+    }
+    return resItems;
   }
 
-  public getRecordByNPI(npi: string): ResultItem {
-    // tslint:disable-next-line:prefer-for-of
-    for ( let i = 0; i < this.results.length; i++) {
-      if (this.results[i].npi === npi) {
-        return this.results[i];
-      }
+  public getResult(js: JsonObject): ResultItem {
+    let resItem: ResultItem;
+    // console.log(js);
+    // @ts-ignore
+    for ( const j of js.hits.hits) {
+      resItem = j._source;
     }
+    return resItem;
   }
+
+  // public getRecordByNPI(npi: string): ResultItem {
+  //   // tslint:disable-next-line:prefer-for-of
+  //   // for ( let i = 0; i < this.results.length; i++) {
+  //   //   if (this.results[i].npi === npi) {
+  //   //     return this.results[i];
+  //   //   }
+  //   // }
+  // }
 
   public getRecordByNPIOb(npiValue: string): Observable<JsonObject> {
     // tslint:disable-next-line:prefer-for-of
@@ -80,7 +98,6 @@ export class DataSearchService {
       npi: '1720135999'
     };
 
-    this.results = new Array<ResultItem>();
     const query0: RequestParams.Search = {
       query: {
         bool : {
@@ -106,6 +123,6 @@ export class DataSearchService {
       from: 0
     };
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers);
+    return this.httpClient.post<JsonObject>(this.hostUrl, query, headers);
   }
 }
