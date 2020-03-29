@@ -32,9 +32,7 @@ export class DataSearchService {
         }
     };
     const results: Array<ResultItem> = new Array<ResultItem>();
-    //sample query1
     const query0: RequestParams.Search = {
-      size: 3,
       query: {
         bool : {
           must: {
@@ -44,15 +42,14 @@ export class DataSearchService {
           },
           filter : {
             geo_distance : {
-              distance : "0.1km",
-              location : "61.22016475,-149.7336659"
+              distance : '0.1km',
+              location : '61.22016475,-149.7336659'
             }
           }
         }
       }
     };
 
-    //sample query2
     const query: RequestParams = {
       size: 10,
       from: 0

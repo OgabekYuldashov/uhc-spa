@@ -1,12 +1,15 @@
 
 #logo{
-  height: 30px;
+  width: 201px;
+  height: 41px;
   display: inline-block;
   /*float: left;*/
   margin-left: 90px;
   margin-top: 10px;
   margin-bottom: 10px;
   cursor: pointer;
+  object-fit: contain;
+
 }
 header {
   border-bottom: 1pt solid #e6e6e6;
