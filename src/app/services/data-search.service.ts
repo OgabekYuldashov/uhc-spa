@@ -97,4 +97,45 @@ export class DataSearchService {
       }
     }
   }
+
+
+  public getResultItems() {
+    const searchParams: RequestParams.Search = {
+      query: {
+        match: { city: 'chicago' }
+      }
+    };
+    const matchQ = {
+      // state: 'AK',
+      npi: '1720135999'
+    };
+
+    this.results = new Array<ResultItem>();
+    const query0: RequestParams.Search = {
+      query: {
+        bool : {
+          must: {
+            match: matchQ
+          },
+          filter : {
+            geo_distance : {
+              distance : '1km',
+              location : '61.22016475,-149.7336659'
+            }
+          }
+        }
+      }
+    };
+
+    query0.size = 5;
+    query0.from = 0;
+    // query0.bool.must.match.add('npi', '1720135999');
+
+    const query: RequestParams = {
+      size: 10,
+      from: 0
+    };
+    // @ts-ignore
+    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers);
+  }
 }
