@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ResultItem } from 'src/app/models/ResultItem';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detailsview',
@@ -27,7 +28,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
   licence ="DDS - MI-2901016937";
   education = "MBBS";
   id: string;
-  resultItem: Array<ResultItem>;
+  resultItem: Observable<ResultItem[]>;
 
   map: google.maps.Map;
   lat = 40.730610;
@@ -45,11 +46,11 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
     console.log(this.id)
 
 
-    this.resultItem = this.service.getResult();
+    this.resultItem = this.service.getResults();
     let item = this.service.getRecordByNPI("1720135999");
-    console.log(item)
+    console.log(item);
     console.log(this.resultItem);
-    console.log(this.resultItem.length);
+
 
 
    //console.log(this.service.getRecordByNPI(this.npi));

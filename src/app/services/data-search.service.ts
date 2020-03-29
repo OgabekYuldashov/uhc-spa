@@ -75,7 +75,7 @@ export class DataSearchService {
       from: 0
     };
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers).map(s => {
+    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers).subscribe(s => {
       // @ts-ignore
       // for (const k of s.hits.hits) {
       //   // console.log(k);

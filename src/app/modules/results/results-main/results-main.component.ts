@@ -47,7 +47,7 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
 
 
   constructor(private dataService: DataSearchService) {
-    this.resItems = dataService.getResult();
+   // this.resItems = dataService.getResult();
     console.log('res:');
     console.log(this.resItems);
   }
