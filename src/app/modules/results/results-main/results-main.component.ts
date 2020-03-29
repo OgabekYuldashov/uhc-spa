@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import {DataSearchService} from '../../../services/data-search.service';
 import {ResultItem} from '../../../models/ResultItem';
+import {Parameters} from '../../../models/parameters';
 
 @Component({
   selector: 'app-results-main',
@@ -14,6 +15,7 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   lng = -73.935242;
 
   resItems: ResultItem[];
+  searchParams: Parameters;
 
   coordinates = new google.maps.LatLng(this.lat, this.lng);
 
@@ -47,6 +49,9 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
 
 
   constructor(private dataService: DataSearchService) {
+    this.searchParams = dataService.getParameters();
+    console.log('Search Params:');
+    console.log(this.searchParams);
 
     dataService.getResultItems().subscribe(r => {
       this.resItems = this.dataService.getResults(r);
