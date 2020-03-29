@@ -132,68 +132,69 @@ export class DataSearchService {
       npi: '1720135999'
     };
     // @ts-ignore
-    const AND_LOGICS = [
-        '{ "match": { "state":"AK"}}',
-        '{ "match": { "handicapAccessible" : "N"}}'
-      ];
-    const OR_LOGICS = [
-      '{ "match": { "languages":"English"}}',
-      '{ "match": { "languages":"Egyptian"}}'
-    ];
-    const dist = '10000km';
-    const loc = '62.298254,-149.87542';
+    const AND_LOGIC = [];
+    const OR_LOGIC = [];
+    // const AND_LOGIC = [{ match: { state: 'AK'}},{ match: { handicapAccessible : 'N'}}];
+    // const OR_LOGIC = [{match: { languages:'English'}},{ match: { languages:'Egyptian'}}];
+    if (this.parameters.plans !== undefined) { AND_LOGIC.push({ match: { plans: this.parameters.plans}});}
+    // if (this.parameters.specialization !== undefined) { AND_LOGIC.push({ match: { specialization: this.parameters.specialization}});}
+    if (this.parameters.acceptingNew === true) { AND_LOGIC.push({ match: { acceptingNew: 'Y'}});}
+    if (this.parameters.firstName !== undefined) { AND_LOGIC.push({ match: { firstName: this.parameters.firstName}});}
+    if (this.parameters.lastName !== undefined) { AND_LOGIC.push({ match: { lastName: this.parameters.lastName}});}
+    if (this.parameters.extendedHrsWeek === true) {
+      AND_LOGIC.push({ match: { extendedHrsWeek: 'Y'}});
+    }
+    if (this.parameters.extendedHrsSat === true) {
+      AND_LOGIC.push({ match: { extendedHrsSat: 'Y'}});
+    }
+    if (this.parameters.gender !== undefined) { AND_LOGIC.push({ match: { gender: this.parameters.gender}});}
+    if (this.parameters.handicapAccessible === true) {
+      AND_LOGIC.push({ match: { handicapAccessible: this.parameters.handicapAccessible}});
+    }
+    for (const key of this.parameters.languageMap.keys()) {
+      if (this.parameters.languageMap.get(key) === true) {
+        OR_LOGIC.push({ match: { languages: key}});
+      }
+    }
+
+    for (const key of this.parameters.specializationMap.keys()) {
+      if (this.parameters.specializationMap.get(key) === true) {
+        AND_LOGIC.push({ match: { specialization: key}});
+      }
+    }
+    AND_LOGIC.push({ match: { languages: 'English'}});
+    OR_LOGIC.push({ match: { languages: 'English'}} );
+    let dist = '10000km';
+    if ( this.parameters.distanceFromYourAddress !== undefined) {
+      dist = this.parameters.distanceFromYourAddress;
+    }
+    let loc = '62.298254,-149.87542';
+    if (this.parameters.location !== undefined) {
+      loc = this.parameters.location;
+    }
+
+    const NOT_LOGIC = {range: {latConfidence: { lte: 0 }}};
     const paraQuery: RequestParams.Search = {
       query: {
       bool: {
-        must: AND_LOGICS,
-        should: OR_LOGICS,
+        must: [ AND_LOGIC ],
+        must_not: [ NOT_LOGIC ],
+        should: [ OR_LOGIC ],
         filter: {
           geo_distance : {
             distance : dist,
             location : loc
-          }
-        }
-      }
-    }
-    };
-
-    // plans: string;
-    // location: string;
-    // distanceFromYourAddress: string;
-    // specialization: string[];
-    // acceptingNew: boolean;
-    // firstName: string;
-    // lastName: string;
-    // extendedHrsWeek: boolean;
-    // extendedHrsSat: boolean;
-    // gender: string;
-    // handicapAccessible: boolean;
-    // languageSponeken: string[];
-    const query0: RequestParams.Search = {
-      query: {
-        bool : {
-          must: {
-            match: matchQ
-          },
-          filter : {
-            geo_distance : {
-              distance : '100km',
-              location : '61.22016475,-149.7336659'
             }
           }
         }
       }
     };
 
-    query0.size = 50;
-    query0.from = 0;
-    // query0.bool.must.match.add('npi', '1720135999');
-
-    const query: RequestParams = {
-      size: 10
-    };
+    console.log(paraQuery);
+    const size = 100;
+    const from = 0;
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(this.hostUrl, query, headers);
+    return this.httpClient.post<JsonObject>(`${this.hostUrl}?size=${size},from=${from}`, paraQuery, headers);
   }
 
   getRecordByNPI(npi: string): ResultItem {
