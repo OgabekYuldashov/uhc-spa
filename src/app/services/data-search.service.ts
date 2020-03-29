@@ -191,10 +191,9 @@ export class DataSearchService {
     };
 
     console.log(paraQuery);
-    const size = 100;
-    const from = 0;
+    const size = '50';
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(`${this.hostUrl}?size=${size},from=${from}`, paraQuery, headers);
+    return this.httpClient.post<JsonObject>(`${this.hostUrl}?size=${size}`, paraQuery, headers);
   }
 
   getRecordByNPI(npi: string): ResultItem {
