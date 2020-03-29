@@ -20,13 +20,12 @@ export class DataSearchService {
   user: any = 'elastic';
   password: any = 'changeme';
   parameters: Parameters;
+  results: Array<ResultItem> = new Array<ResultItem>();
 
   constructor(private httpClient: HttpClient) {
-    this.connect();
+    this.parameters = new Parameters();
+    this.parameters.acceptingNew = true;
     this.getResultItems().subscribe(s => this.getResults(s));
-  }
-
-  connect() {
   }
 
   getDummyRecords(): ResultItem[] {
@@ -48,6 +47,8 @@ export class DataSearchService {
     for ( const j of js.hits.hits) {
       resItems.push(j._source);
     }
+
+    this.results = resItems;
     return resItems;
   }
 
@@ -71,10 +72,9 @@ export class DataSearchService {
   // }
 
   public getRecordByNPIOb(npiValue: string): Observable<JsonObject> {
+    npiValue = '1568877207';
     // tslint:disable-next-line:prefer-for-of
     const query: RequestParams = {
-      size: 1,
-      from: 0,
       query: {
         must : {
           match: {
@@ -84,7 +84,7 @@ export class DataSearchService {
       }
     };
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers);
+    return this.httpClient.post<JsonObject>(this.hostUrl, query, headers);
   }
 
   public getResultItems(): Observable<JsonObject> {
@@ -97,7 +97,41 @@ export class DataSearchService {
       // state: 'AK',
       npi: '1720135999'
     };
+    // @ts-ignore
+    const paraQuery: RequestParams.Search = {
+      query: {
+        filtered: {
+          query: {
+            match_all: {}
+          },
+          filter: {
+            term: {plans: this.parameters.plans === undefined ? '*' : this.parameters.plans[0]}
+            // term: {specialization:  this.parameters.firstName === undefined ? '*' : this.parameters.specialization[0]},
+            // term: {acceptingNew: (this.parameters.acceptingNew === true) ? 'Y' : '*'},
+            // term: {firstName: this.parameters.firstName === undefined ? '*' : this.parameters.firstName},
+            // term: {lastName: this.parameters.lastName === undefined ? '*' : this.parameters.lastName},
+            // term: {extendedHrsWeek: this.parameters.extendedHrsWeek === true ? 'Y' : '*'},
+            // term: {extendedHrsSat: this.parameters.extendedHrsSat === true ? 'Y' : '*'},
+            // term: {gender: this.parameters.gender},
+            // term: {handicapAccessible: this.parameters.handicapAccessible === true ? 'Y' : '*'},
+            // term: {languageSponeken: this.parameters.languageSponeken === undefined ? '*' : this.parameters.languageSponeken[0]}
+          }
+        }
+      }
+    };
 
+    // plans: string;
+    // location: string;
+    // distanceFromYourAddress: string;
+    // specialization: string[];
+    // acceptingNew: boolean;
+    // firstName: string;
+    // lastName: string;
+    // extendedHrsWeek: boolean;
+    // extendedHrsSat: boolean;
+    // gender: string;
+    // handicapAccessible: boolean;
+    // languageSponeken: string[];
     const query0: RequestParams.Search = {
       query: {
         bool : {
@@ -119,10 +153,18 @@ export class DataSearchService {
     // query0.bool.must.match.add('npi', '1720135999');
 
     const query: RequestParams = {
-      size: 10,
-      from: 0
+      size: 10
     };
     // @ts-ignore
     return this.httpClient.post<JsonObject>(this.hostUrl, query, headers);
+  }
+
+  getRecordByNPI(npi: string): ResultItem {
+    for (const item of this.results) {
+      if (item.npi === npi) {
+        return item;
+      }
+    }
+    return null;
   }
 }
