@@ -98,26 +98,29 @@ export class DataSearchService {
       npi: '1720135999'
     };
     // @ts-ignore
+    const AND_LOGICS = [
+        '{ "match": { "state":"AK"}}',
+        '{ "match": { "handicapAccessible" : "N"}}'
+      ];
+    const OR_LOGICS = [
+      '{ "match": { "languages":"English"}}',
+      '{ "match": { "languages":"Egyptian"}}'
+    ];
+    const dist = '10000km';
+    const loc = '62.298254,-149.87542';
     const paraQuery: RequestParams.Search = {
       query: {
-        filtered: {
-          query: {
-            match_all: {}
-          },
-          filter: {
-            term: {plans: this.parameters.plans === undefined ? '*' : this.parameters.plans[0]}
-            // term: {specialization:  this.parameters.firstName === undefined ? '*' : this.parameters.specialization[0]},
-            // term: {acceptingNew: (this.parameters.acceptingNew === true) ? 'Y' : '*'},
-            // term: {firstName: this.parameters.firstName === undefined ? '*' : this.parameters.firstName},
-            // term: {lastName: this.parameters.lastName === undefined ? '*' : this.parameters.lastName},
-            // term: {extendedHrsWeek: this.parameters.extendedHrsWeek === true ? 'Y' : '*'},
-            // term: {extendedHrsSat: this.parameters.extendedHrsSat === true ? 'Y' : '*'},
-            // term: {gender: this.parameters.gender},
-            // term: {handicapAccessible: this.parameters.handicapAccessible === true ? 'Y' : '*'},
-            // term: {languageSponeken: this.parameters.languageSponeken === undefined ? '*' : this.parameters.languageSponeken[0]}
+      bool: {
+        must: AND_LOGICS,
+        should: OR_LOGICS,
+        filter: {
+          geo_distance : {
+            distance : dist,
+            location : loc
           }
         }
       }
+    }
     };
 
     // plans: string;
