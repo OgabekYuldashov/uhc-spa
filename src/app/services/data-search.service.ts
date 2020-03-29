@@ -19,87 +19,109 @@ export class DataSearchService {
   hostUrl: any = `http://35.229.120.24:9200/${this.index}/_search`;
   user: any = 'elastic';
   password: any = 'changeme';
-  results: Array<ResultItem>;
   parameters: Parameters;
+  results: Array<ResultItem> = new Array<ResultItem>();
 
   constructor(private httpClient: HttpClient) {
-    this.connect();
-    this.getResults();
-  }
-
-  connect() {
+    this.parameters = new Parameters();
+    this.parameters.acceptingNew = true;
+    this.getResultItems().subscribe(s => this.getResults(s));
   }
 
   getDummyRecords(): ResultItem[] {
-    return this.results;
+    return null;
   }
 
-  public getParameters(p: Parameters) {
+  public setParameters(p: Parameters) {
     this.parameters = p;
+    this.parameters.languageMap = new Map<string, boolean>();
+
+    // this.parameters.languageMap.set('English', false);
+    this.parameters.languageMap.set('Arabic', false);
+    this.parameters.languageMap.set('Spanish', false);
+    this.parameters.languageMap.set('German', false);
+    this.parameters.languageMap.set('Romanian', false);
+    this.parameters.languageMap.set('French', false);
+    this.parameters.languageMap.set('Hindi', false);
+    this.parameters.languageMap.set('Italian', false);
+    this.parameters.languageMap.set('Russian', false);
+    this.parameters.languageMap.set('Korean', false);
+    this.parameters.languageMap.set('Portugese', false);
+    this.parameters.languageMap.set('Chinese', false);
+    this.parameters.languageMap.set('Egyptian', false);
+    this.parameters.languageMap.set('Farsi', false);
+    this.parameters.languageMap.set('Polish', false);
+    this.parameters.languageMap.set('Greek', false);
+
+    for (const s of p.languageSponeken) {
+      this.parameters.languageMap.set(s, true);
+    }
+
+    this.parameters.specializationMap = new Map<string, boolean>();
+
+    this.parameters.specializationMap.set('OralSurgeon', false);
+    this.parameters.specializationMap.set('Endodontist', false);
+    this.parameters.specializationMap.set('Maxillofacial Surgeon', false);
+    this.parameters.specializationMap.set('Pediatric', false);
+
+    for (const s of p.specialization) {
+      this.parameters.specializationMap.set(s, true);
+    }
+
+    console.log(this.parameters);
+  }
+  public getParameters() {
+    return this.parameters;
   }
 
-  public getResults(): Observable<ResultItem[]> {
-    const searchParams: RequestParams.Search = {
-        query: {
-          match: { city: 'chicago' }
-        }
-    };
-    const matchQ = {
-      // state: 'AK',
-      npi: '1720135999'
-    };
+  public getResults(js: JsonObject): ResultItem[] {
+    const resItems = new Array<ResultItem>();
+    // console.log(js);
+    // @ts-ignore
+    for ( const j of js.hits.hits) {
+      resItems.push(j._source);
+    }
 
-    this.results = new Array<ResultItem>();
-    const query0: RequestParams.Search = {
+    this.results = resItems;
+    return resItems;
+  }
+
+  public getResult(js: JsonObject): ResultItem {
+    let resItem: ResultItem;
+    // console.log(js);
+    // @ts-ignore
+    for ( const j of js.hits.hits) {
+      resItem = j._source;
+    }
+    return resItem;
+  }
+
+  // public getRecordByNPI(npi: string): ResultItem {
+  //   // tslint:disable-next-line:prefer-for-of
+  //   // for ( let i = 0; i < this.results.length; i++) {
+  //   //   if (this.results[i].npi === npi) {
+  //   //     return this.results[i];
+  //   //   }
+  //   // }
+  // }
+
+  public getRecordByNPIOb(npiValue: string): Observable<JsonObject> {
+    npiValue = '1568877207';
+    // tslint:disable-next-line:prefer-for-of
+    const query: RequestParams = {
       query: {
-        bool : {
-          must: {
-            match: matchQ
-          },
-          filter : {
-            geo_distance : {
-              distance : '1km',
-              location : '61.22016475,-149.7336659'
-            }
+        must : {
+          match: {
+            npi: npiValue
           }
         }
       }
     };
-
-    query0.size = 5;
-    query0.from = 0;
-    // query0.bool.must.match.add('npi', '1720135999');
-
-    const query: RequestParams = {
-      size: 10,
-      from: 0
-    };
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers).subscribe(s => {
-      // @ts-ignore
-      for (const k of s.hits.hits) {
-        // console.log(k);
-        let res = new ResultItem();
-        // console.log(k._source);
-        res = k._source;
-        this.results.push(res);
-       }
-      // console.log(this.results);
-      return s.hits.hits._source;
-    });
+    return this.httpClient.post<JsonObject>(this.hostUrl, query, headers);
   }
 
-  public getRecordByNPI(npi: string): ResultItem {
-    // tslint:disable-next-line:prefer-for-of
-    for ( let i = 0; i < this.results.length; i++) {
-      if (this.results[i].npi === npi) {
-        return this.results[i];
-      }
-    }
-  }
-
-
-  public getResultItems() {
+  public getResultItems(): Observable<JsonObject> {
     const searchParams: RequestParams.Search = {
       query: {
         match: { city: 'chicago' }
@@ -109,8 +131,44 @@ export class DataSearchService {
       // state: 'AK',
       npi: '1720135999'
     };
+    // @ts-ignore
+    const AND_LOGICS = [
+        '{ "match": { "state":"AK"}}',
+        '{ "match": { "handicapAccessible" : "N"}}'
+      ];
+    const OR_LOGICS = [
+      '{ "match": { "languages":"English"}}',
+      '{ "match": { "languages":"Egyptian"}}'
+    ];
+    const dist = '10000km';
+    const loc = '62.298254,-149.87542';
+    const paraQuery: RequestParams.Search = {
+      query: {
+      bool: {
+        must: AND_LOGICS,
+        should: OR_LOGICS,
+        filter: {
+          geo_distance : {
+            distance : dist,
+            location : loc
+          }
+        }
+      }
+    }
+    };
 
-    this.results = new Array<ResultItem>();
+    // plans: string;
+    // location: string;
+    // distanceFromYourAddress: string;
+    // specialization: string[];
+    // acceptingNew: boolean;
+    // firstName: string;
+    // lastName: string;
+    // extendedHrsWeek: boolean;
+    // extendedHrsSat: boolean;
+    // gender: string;
+    // handicapAccessible: boolean;
+    // languageSponeken: string[];
     const query0: RequestParams.Search = {
       query: {
         bool : {
@@ -119,7 +177,7 @@ export class DataSearchService {
           },
           filter : {
             geo_distance : {
-              distance : '1km',
+              distance : '100km',
               location : '61.22016475,-149.7336659'
             }
           }
@@ -127,15 +185,23 @@ export class DataSearchService {
       }
     };
 
-    query0.size = 5;
+    query0.size = 50;
     query0.from = 0;
     // query0.bool.must.match.add('npi', '1720135999');
 
     const query: RequestParams = {
-      size: 10,
-      from: 0
+      size: 10
     };
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(this.hostUrl, query0, headers);
+    return this.httpClient.post<JsonObject>(this.hostUrl, query, headers);
+  }
+
+  getRecordByNPI(npi: string): ResultItem {
+    for (const item of this.results) {
+      if (item.npi === npi) {
+        return item;
+      }
+    }
+    return null;
   }
 }

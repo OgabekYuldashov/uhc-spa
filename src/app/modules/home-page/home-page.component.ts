@@ -129,7 +129,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     console.log('list of all selected lang' + this.langs);
 
     // this.dataSearchService.getDummyRecords(this.parameter_list)
-    this.dataSearchService.getParameters(this.parameter_list);
+    this.dataSearchService.setParameters(this.parameter_list);
     this.route.navigate((['results']));
 
   }

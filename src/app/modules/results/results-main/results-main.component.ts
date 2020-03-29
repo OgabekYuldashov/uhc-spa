@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import {DataSearchService} from '../../../services/data-search.service';
+import {ResultItem} from '../../../models/ResultItem';
+import {Parameters} from '../../../models/parameters';
 
 @Component({
   selector: 'app-results-main',
@@ -12,7 +14,8 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   lat = 37.730610;
   lng = -73.935242;
 
-  resItems: any;
+  resItems: ResultItem[];
+  searchParams: Parameters;
 
   coordinates = new google.maps.LatLng(this.lat, this.lng);
 
@@ -20,7 +23,6 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
     center: this.coordinates,
     zoom: 8,
   };
-
 
   marker = new google.maps.Marker({
     position: this.coordinates,
@@ -47,9 +49,16 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
 
 
   constructor(private dataService: DataSearchService) {
-    this.resItems = dataService.getResults();
-    console.log('res:');
-    console.log(this.resItems);
+    this.searchParams = dataService.getParameters();
+    console.log('Search Params:');
+    console.log(this.searchParams);
+
+    dataService.getResultItems().subscribe(r => {
+      this.resItems = this.dataService.getResults(r);
+      console.log('res:');
+      console.log(this.resItems);
+    });
+
   }
 
   ngOnInit(): void {
@@ -99,4 +108,10 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
     });
   }
 
+  selectMaleFilter() {
+    this.searchParams.gender = 'M';
+  }
+  selectFemaleFilter() {
+    this.searchParams.gender = 'F';
+  }
 }
