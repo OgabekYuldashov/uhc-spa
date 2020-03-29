@@ -17,7 +17,7 @@ export class DataSearchService {
   hostUrl: any = `http://35.229.120.24:9200/${this.index}/_search`;
   user: any = 'elastic';
   password: any = 'changeme';
-  results: Array<ResultItem>;
+  results: Array<ResultItem> = new Array();
 
   constructor(private httpClient: HttpClient) {
     this.connect();
