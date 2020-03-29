@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import {DataSearchService} from "../../../services/data-search.service";
+import {DataSearchService} from '../../../services/data-search.service';
+import {ResultItem} from '../../../models/ResultItem';
 
 @Component({
   selector: 'app-results-main',
@@ -11,6 +12,8 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   map: google.maps.Map;
   lat = 40.730610;
   lng = -73.935242;
+
+  results: ResultItem[];
 
   coordinates = new google.maps.LatLng(this.lat, this.lng);
 
