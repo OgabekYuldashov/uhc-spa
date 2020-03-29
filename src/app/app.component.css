@@ -8,3 +8,6 @@
   margin-bottom: 10px;
   cursor: pointer;
 }
+header {
+  border-bottom: 1pt solid #e6e6e6;
+}

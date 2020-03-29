@@ -106,6 +106,12 @@ li > h4 {
 .workHours {
   border-spacing: 6pt!important;
 }
+.resultItemHoverable {
+  border-left: solid 1pt #d1d1d1;
+  border-right: solid 1pt #d1d1d1;
+  border-bottom: solid 1pt #d1d1d1;
+  border-top: solid 1pt #d1d1d1;
+}
 .resultItemHoverable:hover {
   cursor: pointer;
   background-color: rgba(228, 240, 250, 0.42);
