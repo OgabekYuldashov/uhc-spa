@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import {DataSearchService} from "../../../services/data-search.service";
 
 @Component({
   selector: 'app-results-main',
@@ -42,7 +43,9 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   ];
 
 
-  constructor() { }
+  constructor(private dataService: DataSearchService) {
+    dataService.getDummyRecords();
+  }
 
   ngOnInit(): void {
   }
