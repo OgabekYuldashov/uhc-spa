@@ -23,6 +23,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   // tslint:disable-next-line:variable-name
   Choose_Dental_Plan: string;
 
+  togglebutton : number = 1;
 
   constructor(private route: Router, private dataSearchService: DataSearchService) {
     // tslint:disable-next-line:variable-name
@@ -108,14 +109,22 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.isAdvancedSearchButtonCliked = false;
 
     // this.dataSearchService.getDummyRecords(this.parameter_list)
-    this.dataSearchService.getDummyRecords();
+    this.dataSearchService.getParameters(this.parameter_list);
     this.route.navigate((['results']));
 
   }
 
 
   advancedSearch() {
-    this.isAdvancedSearchButtonCliked = true;
+    // tslint:disable-next-line:triple-equals
+    if(this.togglebutton % 2 == 0) {
+      this.isAdvancedSearchButtonCliked =  false;
+      this.togglebutton = this.togglebutton + 1;
+    } else {
+      this.isAdvancedSearchButtonCliked = true;
+      this.togglebutton = this.togglebutton + 1;
+    }
+    // this.isAdvancedSearchButtonCliked = true;
     // this.parameter_list.plans=
     //   this.parameter_list.location= this.
     if ((this.oralSureon === 'Y') && (this.endodontist === 'Y')) { // @ts-ignore
