@@ -20,6 +20,7 @@ export class DataSearchService {
   user: any = 'elastic';
   password: any = 'changeme';
   parameters: Parameters;
+  results: Array<ResultItem> = new Array<ResultItem>();
 
   constructor(private httpClient: HttpClient) {
     this.parameters = new Parameters();
@@ -46,6 +47,8 @@ export class DataSearchService {
     for ( const j of js.hits.hits) {
       resItems.push(j._source);
     }
+
+    this.results = resItems;
     return resItems;
   }
 
@@ -154,5 +157,14 @@ export class DataSearchService {
     };
     // @ts-ignore
     return this.httpClient.post<JsonObject>(this.hostUrl, query, headers);
+  }
+
+  getRecordByNPI(npi: string): ResultItem {
+    for (const item of this.results) {
+      if (item.npi === npi) {
+        return item;
+      }
+    }
+    return null;
   }
 }

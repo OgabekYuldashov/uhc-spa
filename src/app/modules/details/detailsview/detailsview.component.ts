@@ -31,7 +31,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
   handicapAccessible: boolean;
   officeTimings: string[];
   id: string;
-  resultItem: Observable<ResultItem[]>;
+  resultItem: ResultItem;
 
   map: google.maps.Map;
   lat: number = 61.216112;
@@ -45,7 +45,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
 
     // this.resultItem = this.service.getResults();
     // console.log(this.resultItem.subscribe);
-    this.resultItem = this.service.getRecordByNPI("1720135999");
+    this.resultItem = this.service.getRecordByNPI('1568877207');
     console.log(this.resultItem);
     this.specialty = this.resultItem.specialization;
     this.fullName = this.resultItem.fullName;
