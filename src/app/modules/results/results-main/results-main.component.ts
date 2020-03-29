@@ -48,9 +48,11 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
 
   constructor(private dataService: DataSearchService) {
 
-    this.resItems = dataService.getResults();
-    console.log('res:');
-    console.log(this.resItems);
+    dataService.getResults().subscribe(r => {
+      console.log('res:');
+      console.log(r);
+    });
+
   }
 
   ngOnInit(): void {
