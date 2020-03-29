@@ -34,6 +34,40 @@ export class DataSearchService {
 
   public setParameters(p: Parameters) {
     this.parameters = p;
+    this.parameters.languageMap = new Map<string, boolean>();
+
+    // this.parameters.languageMap.set('English', false);
+    this.parameters.languageMap.set('Arabic', false);
+    this.parameters.languageMap.set('Spanish', false);
+    this.parameters.languageMap.set('German', false);
+    this.parameters.languageMap.set('Romanian', false);
+    this.parameters.languageMap.set('French', false);
+    this.parameters.languageMap.set('Hindi', false);
+    this.parameters.languageMap.set('Italian', false);
+    this.parameters.languageMap.set('Russian', false);
+    this.parameters.languageMap.set('Korean', false);
+    this.parameters.languageMap.set('Portugese', false);
+    this.parameters.languageMap.set('Chinese', false);
+    this.parameters.languageMap.set('Egyptian', false);
+    this.parameters.languageMap.set('Farsi', false);
+    this.parameters.languageMap.set('Polish', false);
+    this.parameters.languageMap.set('Greek', false);
+
+    for (const s of p.languageSponeken) {
+      this.parameters.languageMap.set(s, true);
+    }
+
+    this.parameters.specializationMap = new Map<string, boolean>();
+
+    this.parameters.specializationMap.set('OralSurgeon', false);
+    this.parameters.specializationMap.set('Endodontist', false);
+    this.parameters.specializationMap.set('Maxillofacial Surgeon', false);
+    this.parameters.specializationMap.set('Pediatric', false);
+
+    for (const s of p.specialization) {
+      this.parameters.specializationMap.set(s, true);
+    }
+
     console.log(this.parameters);
   }
   public getParameters() {
@@ -98,26 +132,29 @@ export class DataSearchService {
       npi: '1720135999'
     };
     // @ts-ignore
+    const AND_LOGICS = [
+        '{ "match": { "state":"AK"}}',
+        '{ "match": { "handicapAccessible" : "N"}}'
+      ];
+    const OR_LOGICS = [
+      '{ "match": { "languages":"English"}}',
+      '{ "match": { "languages":"Egyptian"}}'
+    ];
+    const dist = '10000km';
+    const loc = '62.298254,-149.87542';
     const paraQuery: RequestParams.Search = {
       query: {
-        filtered: {
-          query: {
-            match_all: {}
-          },
-          filter: {
-            term: {plans: this.parameters.plans === undefined ? '*' : this.parameters.plans[0]}
-            // term: {specialization:  this.parameters.firstName === undefined ? '*' : this.parameters.specialization[0]},
-            // term: {acceptingNew: (this.parameters.acceptingNew === true) ? 'Y' : '*'},
-            // term: {firstName: this.parameters.firstName === undefined ? '*' : this.parameters.firstName},
-            // term: {lastName: this.parameters.lastName === undefined ? '*' : this.parameters.lastName},
-            // term: {extendedHrsWeek: this.parameters.extendedHrsWeek === true ? 'Y' : '*'},
-            // term: {extendedHrsSat: this.parameters.extendedHrsSat === true ? 'Y' : '*'},
-            // term: {gender: this.parameters.gender},
-            // term: {handicapAccessible: this.parameters.handicapAccessible === true ? 'Y' : '*'},
-            // term: {languageSponeken: this.parameters.languageSponeken === undefined ? '*' : this.parameters.languageSponeken[0]}
+      bool: {
+        must: AND_LOGICS,
+        should: OR_LOGICS,
+        filter: {
+          geo_distance : {
+            distance : dist,
+            location : loc
           }
         }
       }
+    }
     };
 
     // plans: string;

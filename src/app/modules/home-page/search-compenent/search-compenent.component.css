@@ -1,23 +1,28 @@
 
 .DENTAL-PLAN {
-    width: 250px;
-    height: 35px;
-    font-family: SourceSansPro-Regular;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.71;
-    letter-spacing: 1.17px;
-    color: #9b9b9b;
+  width: 113px;
+  height: 20px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1px;
+  color: #9b9b9b;
+  margin-top: 0px;
+  /*margin-bottom: 12px;*/
+  /*margin-top: 12px;*/
+  /*margin-left: 15px;*/
+  border: 0px;
+  margin-top:0px
+;
+
 }
 
 .AdvancedSEARCH_div {
-  width: 125px;
+  width: 94px;
   height: 48px;
-  object-fit: contain;
-  border-radius: 4px;
-  background-color: #1772ff;
   font-family: SourceSansPro-Regular;
   font-size: 14px;
   font-weight: normal;
@@ -27,13 +32,15 @@
   letter-spacing: 1px;
   text-align: center;
   color: #ffffff;
+  background-color: #0058c3;
+  border: 0px;
 }
 
 .Rectangle-3-Copy-3 {
   /*width: 959px;*/
   width: 843px;
   /*height: 121px;*/
-  height: 91px;
+  height: 50px;
   object-fit: contain;
   border-radius: 4px;
   box-shadow: 0 2px 13px 0 rgba(14, 21, 45, 0.16);
@@ -56,8 +63,8 @@
 }
 
 .YOUR-location {
-  width: 360px;
-  height: 35px;
+  width: 230px;
+  height: 24px;
   font-family: SourceSansPro-Regular;
   font-size: 14px;
   font-weight: normal;
@@ -65,9 +72,11 @@
   font-style: normal;
   line-height: 1.71;
   letter-spacing: 1.17px;
-  color: #9b9b9b;
-}
+  /*color: #9b9b9b;*/
 
+  border: 1px;
+  padding-left: 12px;
+}
 
 .Advanced-search {
   width: 150px;
@@ -82,7 +91,7 @@
   color: #9b9b9b;
   background-color: white;
   margin-top: 13px;
-  margin-left: 10px;
+  margin-left: 1px;
   border: 0px;
 }
 
@@ -92,16 +101,15 @@
   border-radius: 16px;
   box-shadow: 0 4px 18px 0 rgba(17, 29, 41, 0.1);
   background-color: #ffffff;
-  margin: 10px;
+  padding-left: 44px;
 
 }
 
 .footer {
-  margin-left: 300px;
+  margin-left: 20px;
   z-index: -1;
   position: absolute;
-  margin-top: 400px;
-
+  width: 1200px;
   /*height: 498px ;*/
   /*margin-top: 100px;*/
   /*margin-left: 170px;*/
@@ -117,7 +125,7 @@
 }
 
 .horizontal-line {
-  width: 970px;
+  width: 757px;
   margin-left: 10px;
   /*margin-top: 5px;*/
 }
@@ -153,7 +161,7 @@
 .availability {
   width: 153px;
   height: 24px;
-  font-family: SourceSansPro-Regular;
+  font-family: SourceSansPro-Bold;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -167,13 +175,12 @@
   /*width: 40%;*/
   margin-left: 200px;
   display: inline-block;
-  margin-top: 5px;
 }
 
 .Specialization {
   width: 153px;
   height: 24px;
-  font-family: SourceSansPro-Regular;
+  font-family: SourceSansPro-Bold;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -187,7 +194,7 @@
 .AccessebilityTimeframe {
   width: 220px;
   display: inline-block;
-  margin-left: 45px;
+  margin-left: 15px;
 }
 
 .Extended-Hours {
@@ -234,8 +241,8 @@
 .accessibility_div {
   display: inline-block;
   width: 50%;
-  margin-left: 185px;
-
+  margin-left: 80px;
+  margin-top: 10px;
 
 
 }
@@ -243,7 +250,7 @@
 .accessibility {
   width: 153px;
   height: 24px;
-  font-family: SourceSansPro-Regular;
+  font-family: SourceSansPro-Bold;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -273,16 +280,6 @@
 
 .DoctorName_div {
   display: inline-block;
-  width: 352px;
-  height: 24px;
-  font-family: SourceSansPro-Regular;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: 1.17px;
-  color: #0058c3;
 }
 
 .SECOND-NAME {
@@ -368,7 +365,7 @@
 .Languages-Spoken {
   width: 200px;
   height: 24px;
-  font-family: SourceSansPro-Regular;
+  font-family: SourceSansPro-Bold;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -435,23 +432,12 @@
 }
 
 .Rectangle-739-Copy {
-  width: 225px;
+  width: 185px;
   height: 3px;
   /*border-radius: 100px;*/
   /*background-color: #06a0ff;*/
   display: inline-block;
-  margin-left: 15px;
-
-}
-.Rectangle-739-Copy >span {
-  font-family: SourceSansPro-Regular;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.71;
-  letter-spacing: 1.17px;
-  color: #9b9b9b;
+  /*margin-right: 10px;*/
 
 }
 
@@ -464,14 +450,14 @@
   width: 1439px;
   height: 240px;
   margin-top: 85px;
-  margin-left: 380px;
+  margin-left: 200px;
   z-index: 1;
   /*position: absolute;*/
 
 }
 
 #map {
-  width: 106%;
+  width: 1450px;
   height: 320px;
   /*margin-top: 100px;*/
   /*margin-left: 170px;*/
@@ -532,13 +518,13 @@
 }
 
 .doctorProfile_div {
-  margin-left: 30px;
+  margin-left: 15px;
 }
 
 .avaialbility_div {
   margin-top: 8px;
   display: inline-block;
-  margin-left: 45px;
+  margin-left: 15px;
 }
 
 
