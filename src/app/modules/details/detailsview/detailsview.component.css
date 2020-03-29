@@ -11,6 +11,7 @@
   width: 186px;
   height: 186px;
   object-fit: contain;
+  margin-left: 30px;
 }
 .res-item-header {
   margin: 15pt;
@@ -91,6 +92,34 @@
   color: #5a7898;
   padding-top: 16px;
 }
+.categoryName {
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+  padding-top: 22px;
+  padding-left: 22px;
+}
+.subCategories {
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.64;
+  color: #5a7898;
+}
+.subCValues {
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  line-height: 1.64;
+  color: #5a7898;
+}
+
 
 .headerDetails > h4 {
   width: 288px;
@@ -137,3 +166,12 @@ li > h4 {
   /*letter-spacing: normal;*/
   color: #5a7898;
 }
+#map {
+  width: 1110px;
+  height: 252px;
+  border-radius: 4px;
+  border: solid 1px #e6e6e6;
+  margin-left: 55px;
+  margin-bottom: 50px;
+  padding-right: 50px;
+ }
