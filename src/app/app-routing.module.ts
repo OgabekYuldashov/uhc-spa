@@ -9,9 +9,9 @@ import {SearchCompenentComponent} from './modules/home-page/search-compenent/sea
 
 const routes: Routes = [
   {path: 'results', component: ResultsMainComponent},
-  // {path: '', component: HomePageComponent}, // Replace with your own main component
+  {path: '', component: HomePageComponent}, // Replace with your own main component
   {path: 'details/:npi', component: DetailsviewComponent},
-  {path: '', component: SearchCompenentComponent}
+  // {path: '', component: SearchCompenentComponent}
 ];
 
 @NgModule({

@@ -1,8 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {MatSliderModule} from '@angular/material/slider';
-
-import {AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 import {Parameters} from '../../../models/parameters';
 
 @Component({
