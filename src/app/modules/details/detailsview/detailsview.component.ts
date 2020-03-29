@@ -28,7 +28,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
   licence ="DDS - MI-2901016937";
   education = "MBBS";
   id: string;
-  resultItem: Observable<ResultItem[]>;
+  resultItem: ResultItem;
 
   map: google.maps.Map;
   lat = 40.730610;
@@ -45,13 +45,14 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
 
     console.log(this.id)
 
-
-
-    this.resultItem = this.service.getResults();
-    let item = this.service.getRecordByNPI("1720135999");
-    console.log(item);
-
+    // this.resultItem = this.service.getResults();
+    // console.log(this.resultItem.subscribe);
+    this.resultItem = this.service.getRecordByNPI("1720135999");
+    console.log("##############")
     console.log(this.resultItem);
+    console.log(this.resultItem.firstName);
+
+   // console.log(this.resultItem);
 
 
 
