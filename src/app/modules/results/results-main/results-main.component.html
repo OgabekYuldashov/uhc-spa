@@ -14,8 +14,8 @@
         <div id="collapseSpecialization" class="panel-collapse collapse show">
 
           <label class="containerLabel" for="cbxOralSurgeon">Oral Surgeon
-            <input *ngIf="searchParams.specialization" type="checkbox" checked id="cbxOralSurgeon">
-<!--            <input type="checkbox" checked id="cbxOralSurgeon">-->
+            <input *ngIf="searchParams.specializationMap['OralSurgeon']" type="checkbox" checked id="cbxOralSurgeon">
+            <input *ngIf="searchParams.specializationMap['OralSurgeon'] == false"  type="checkbox" id="cbxOralSurgeon">
             <span class="checkmark"></span>
           </label>
 
