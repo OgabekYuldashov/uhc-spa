@@ -4,6 +4,8 @@ import {Parameters} from '../../models/parameters';
 import {DataSearchService} from '../../services/data-search.service';
 import {MatSliderModule} from '@angular/material/slider';
 
+import {AfterViewInit, ViewChild, ElementRef} from '@angular/core';
+
 // ==========================model=======
 
 @Component({
@@ -11,15 +13,21 @@ import {MatSliderModule} from '@angular/material/slider';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, AfterViewInit {
   canSpeackArabic: string;
   canSpeakSpanish: string;
   canSpeapkgermany: string;
-  canSpeakItaly: string ;
+  canSpeakItaly: string;
   canSpeakPortuese: string;
   canSpeakFarsi: string;
+  // tslint:disable-next-line:variable-name
+  Choose_Dental_Plan: string;
+
 
   constructor(private route: Router, private dataSearchService: DataSearchService) {
+    // tslint:disable-next-line:variable-name
+    this.Choose_Dental_Plan = 'Choose Dental Plan';
+    this.parameter_list.plans = 'Choose Dental Plan';
   }
 
 
@@ -52,13 +60,43 @@ export class HomePageComponent implements OnInit {
   handicapAccecebility: any;
 
 
-  // tslint:disable-next-line:variable-name
-  Choose_Dental_Plan = 'Choose Dental Plan';
+// =========Map Section===============
+
+  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
+  map: google.maps.Map;
+  lat = 40.73061;
+  lng = -73.935242;
+
+  coordinates = new google.maps.LatLng(this.lat, this.lng);
+
+  mapOptions: google.maps.MapOptions = {
+    center: this.coordinates,
+    zoom: 8
+  };
+
+  marker = new google.maps.Marker({
+    position: this.coordinates,
+    map: this.map,
+  });
+
+  ngAfterViewInit() {
+    this.mapInitializer();
+  }
+
+  mapInitializer() {
+    this.map = new google.maps.Map(this.gmap.nativeElement,
+      this.mapOptions);
+    this.marker.setMap(this.map);
+  }
+
+
+  // ========================
 
   onChange(e) {
     this.parameter_list.plans = e.target.value.toString();
 
   }
+
 
   filterByPlan_And_Location_Distance() {
 
@@ -69,11 +107,11 @@ export class HomePageComponent implements OnInit {
     console.log(this.parameter_list);
     this.isAdvancedSearchButtonCliked = false;
 
-    this.dataSearchService.getResults(this.parameter_list)
+    // this.dataSearchService.getDummyRecords(this.parameter_list)
+    this.dataSearchService.getDummyRecords();
     this.route.navigate((['results']));
 
   }
-
 
 
   advancedSearch() {
@@ -102,13 +140,16 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getSliderTickInterval(): string {
+  getSliderTickInterval(): number {
     if (this.showTicks) {
-      return this.autoTicks ? 'auto' : this.tickInterval + 'mi';
+      let value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
+      this.parameter_list.distanceFromYourAddress = this.value + 'mi';
+      return this.value;
     }
 
-    return '0';
+    return 0;
   }
+
   valueChange(e: string) {
     this.parameter_list.location = e.trim().toString();
     console.log('your location is ==========' + this.parameter_list.location);
