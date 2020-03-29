@@ -1,3 +1,4 @@
+import { DataSearchService } from './../../../services/data-search.service';
 import { Component, OnInit } from '@angular/core';
 import {AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -24,6 +25,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
   npi = "178761346";
   licence ="DDS - MI-2901016937";
   education = "MBBS";
+  id: number;
 
   map: google.maps.Map;
   lat = 40.730610;
@@ -34,7 +36,14 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
     zoom: 8,
   };
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private service: DataSearchService) {
+
+    this.route.params.subscribe(params => {this.id = +params['npi']; });
+
+    console.log(this.id)
+
+    // console.log(this.service.getDummyRecords);
+  }
 
   ngOnInit(): void {
     let url = '';

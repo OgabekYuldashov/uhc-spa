@@ -15,7 +15,7 @@ import { DetailsModule } from './modules/details/details.module';
     BrowserModule,
     AppRoutingModule,
     ResultsModule,
-    HttpClientModule
+    HttpClientModule,
     DetailsModule
   ],
   providers: [],
