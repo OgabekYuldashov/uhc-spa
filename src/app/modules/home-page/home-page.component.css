@@ -133,7 +133,7 @@
 .Accepting-new-patien {
   width: 148px;
   height: 18px;
-  font-family: SourceSansPro;
+  font-family: SourceSansPro-Regular;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -165,7 +165,7 @@
 .Specialization {
   width: 153px;
   height: 24px;
-  font-family: SourceSansPro;
+  font-family: SourceSansPro-Bold;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -248,7 +248,7 @@
 .Handicap-Accessible {
   width: 148px;
   height: 18px;
-  font-family: SourceSansPro;
+  font-family: SourceSansPro-Regular;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
