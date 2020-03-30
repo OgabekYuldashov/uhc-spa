@@ -40,7 +40,8 @@
     background-color: #ffffff;
     /*margin-right: 121px;*/
     /*margin-right: 242px;*/
-    margin-left: 0px;
+    /*margin-left: 0px;*/
+    margin: 0 auto;
 }
 
 .DENTAL-PLAN-Select {
@@ -160,7 +161,7 @@
 
 .Specialization_div {
     /*width: 40%;*/
-    margin-left: 200px;
+    margin-left: 50px;
     display: inline-block;
     margin-top: 5px;
 }
@@ -181,7 +182,7 @@
 .AccessebilityTimeframe {
     width: 220px;
     display: inline-block;
-    margin-left: 45px;
+    margin-left: 34px;
 }
 
 .Extended-Hours {
@@ -225,8 +226,7 @@
 
 .accessibility_div {
     display: inline-block;
-    width: 50%;
-    margin-left: 185px;
+    /*width: 50%;*/
 }
 
 .accessibility {
@@ -417,12 +417,12 @@
 }
 
 .Rectangle-739-Copy {
-  width: 225px;
-  height: 3px;
-  /*border-radius: 100px;*/
-  /*background-color: #06a0ff;*/
-  display: inline-block;
-  margin-left: 15px;
+    width: 225px;
+    height: 3px;
+    /*border-radius: 100px;*/
+    /*background-color: #06a0ff;*/
+    display: inline-block;
+    margin-left: 15px;
 }
 
 .Rectangle-739-Copy>span {
@@ -444,8 +444,8 @@
     width: 1439px;
     height: 240px;
     margin-top: 85px;
-    margin-left: 15%;
     z-index: 1;
+    margin: 0 auto;
     /*position: absolute;*/
 }
 
@@ -512,9 +512,8 @@
 }
 
 .avaialbility_div {
-    margin-top: 8px;
     display: inline-block;
-    margin-left: 45px;
+    /*margin-left: 45px;*/
 }
 
 .Languages-Spoken_css {

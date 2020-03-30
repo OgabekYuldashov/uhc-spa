@@ -5,11 +5,11 @@ export class Parameters {
   location: string;
   distanceFromYourAddress: string;
   specialization: string[];
-  acceptingNew: boolean;
+  acceptingNew = false;
   firstName: string;
   lastName: string;
-  extendedHrsWeek: boolean;
-  extendedHrsSat: boolean;
+  extendedHrsWeek = false;
+  extendedHrsSat = false;
   gender: string;
   handicapAccessible = false;
   languageSponeken: string[];

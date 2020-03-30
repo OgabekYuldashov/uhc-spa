@@ -46,13 +46,12 @@
 
     <!--    /////////              Availability        ////-->
 
-    <div class="zIndex" [hidden]="!isAdvancedSearchButtonCliked" style="width: 71%; position: relative; bottom: 16px;">
+    <div class="zIndex" [hidden]="!isAdvancedSearchButtonCliked" style="width: 71%; position: relative; bottom: 16px; margin: 0 auto;">
       <hr class="horizontal-line"/>
       <div class="row">
-        <div class="avaialbility_div">
+        <!--<div class="avaialbility_div">
           <div class="availability">AVAILABILITY</div>
           <label class="Accepting-new-patien"> Accepting new patients</label>
-
           <div style="display: inline-block">
             <label>
               <input
@@ -65,44 +64,86 @@
               />
             </label>
           </div>
-        </div>
+        </div>-->
 
         <div class="Specialization_div " style="display: inline-block">
           <label class="Specialization"> SPECIALIZATION</label>
           <div>
             <div style="display:inline-block">
 
-              <label class="containerLabel" for="cbxOralSurgeon">Oral Surgeon
-                <input *ngIf="searchParams.specializationMap.get('OralSurgeon')" type="checkbox" checked
-                       id="cbxOralSurgeon" (change)="onSpecializationCheckboxChanged('OralSurgeon')">
-                <input *ngIf="!searchParams.specializationMap.get('OralSurgeon')" type="checkbox" id="cbxOralSurgeon"
-                       (change)="onSpecializationCheckboxChanged('OralSurgeon')">
+              <label class="containerLabel" for="cbxGeneralPractice"
+                     (change)="onSpecializationCheckboxChanged('General Practice')">General Practice
+                <input *ngIf="searchParams.specializationMap.get('General Practice')" checked type="checkbox"
+                       id="cbxGeneralPractice">
+                <input *ngIf="!searchParams.specializationMap.get('General Practice')" type="checkbox"
+                       id="cbxGeneralPractice">
                 <span class="checkmark"></span>
               </label>
 
-              <label class="containerLabel" for="cbxEndodontist">Endodontist
-                <input *ngIf="searchParams.specializationMap.get('Endodontist')" checked type="checkbox"
-                       id="cbxEndodontist" (change)="onSpecializationCheckboxChanged('Endodontist')">
-                <input *ngIf="!searchParams.specializationMap.get('Endodontist')" type="checkbox" id="cbxEndodontist"
-                       (change)="onSpecializationCheckboxChanged('Endodontist')">
+              <label class="containerLabel" for="cbxOrthodonticsDentofacialOrthopedics" (change)="onSpecializationCheckboxChanged('Orthodontics and Dentofacial Orthopedics')">Orthodontics & Dentofacial Orthopedics
+                <input *ngIf="searchParams.specializationMap.get('Orthodontics and Dentofacial Orthopedics')" checked type="checkbox"
+                       id="cbxOrthodonticsDentofacialOrthopedics">
+                <input *ngIf="!searchParams.specializationMap.get('Orthodontics and Dentofacial Orthopedics')" type="checkbox" id="cbxOrthodonticsDentofacialOrthopedics">
+                <span class="checkmark"></span>
+              </label>
+
+              <label class="containerLabel" for="cbxPediatric" (change)="onSpecializationCheckboxChanged('Pediatric Dentistry')">Pediatric Dentistry
+                <input *ngIf="searchParams.specializationMap.get('Pediatric Dentistry')" checked type="checkbox"
+                       id="cbxPediatric">
+                <input *ngIf="!searchParams.specializationMap.get('Pediatric Dentistry')" type="checkbox" id="cbxPediatric">
+                <span class="checkmark"></span>
+              </label>
+
+
+            </div>
+
+            <div style="margin-left:10px; display: inline-block">
+              <label class="containerLabel" for="cbxMaxiSurgeon"
+                     (change)="onSpecializationCheckboxChanged('Oral and Maxillofacial Surgery')">Oral and Maxillofacial Surgery
+                <input *ngIf="searchParams.specializationMap.get('Oral and Maxillofacial Surgery')" checked type="checkbox"
+                       id="cbxMaxiSurgeon">
+                <input *ngIf="!searchParams.specializationMap.get('Oral and Maxillofacial Surgery')" type="checkbox"
+                       id="cbxMaxiSurgeon">
+                <span class="checkmark"></span>
+              </label>
+
+              <label class="containerLabel" for="cbxPeriodontics">Periodontics
+                <input *ngIf="searchParams.specializationMap.get('Periodontics')" type="checkbox" checked
+                       id="cbxPeriodontics" (change)="onSpecializationCheckboxChanged('Periodontics')">
+                <input *ngIf="!searchParams.specializationMap.get('Periodontics')" type="checkbox" id="cbxPeriodontics"
+                       (change)="onSpecializationCheckboxChanged('Periodontics')">
+                <span class="checkmark"></span>
+              </label>
+
+              <label class="containerLabel" for="cbxEndodontics">Endodontics
+                <input *ngIf="searchParams.specializationMap.get('Endodontics')" checked type="checkbox"
+                       id="cbxEndodontics" (change)="onSpecializationCheckboxChanged('Endodontics')">
+                <input *ngIf="!searchParams.specializationMap.get('Endodontics')" type="checkbox" id="cbxEndodontics"
+                       (change)="onSpecializationCheckboxChanged('Endodontics')">
                 <span class="checkmark"></span>
               </label>
             </div>
 
             <div style="margin-left:10px; display: inline-block">
-              <label class="containerLabel" for="cbxMaxiSurgeon"
-                     (change)="onSpecializationCheckboxChanged('MaxillofacialSurgeon')">Maxillofacial Surgeon
-                <input *ngIf="searchParams.specializationMap.get('MaxillofacialSurgeon')" checked type="checkbox"
-                       id="cbxMaxiSurgeon">
-                <input *ngIf="!searchParams.specializationMap.get('MaxillofacialSurgeon')" type="checkbox"
-                       id="cbxMaxiSurgeon">
+
+              <label class="containerLabel" for="cbxProsthodontics" (change)="onSpecializationCheckboxChanged('Prosthodontics')">Prosthodontics
+                <input *ngIf="searchParams.specializationMap.get('Prosthodontics')" checked type="checkbox"
+                       id="cbxProsthodontics">
+                <input *ngIf="!searchParams.specializationMap.get('Prosthodontics')" type="checkbox" id="cbxProsthodontics">
                 <span class="checkmark"></span>
               </label>
 
-              <label class="containerLabel" for="cbxPediatric" (change)="onSpecializationCheckboxChanged('Pediatric')">Pediatric
-                <input *ngIf="searchParams.specializationMap.get('Pediatric')" checked type="checkbox"
-                       id="cbxPediatric">
-                <input *ngIf="!searchParams.specializationMap.get('Pediatric')" type="checkbox" id="cbxPediatric">
+              <label class="containerLabel" for="cbxDentalPublicHealth" (change)="onSpecializationCheckboxChanged('Dental Public Health')">Dental Public Health
+                <input *ngIf="searchParams.specializationMap.get('Dental Public Health')" checked type="checkbox"
+                       id="cbxDentalPublicHealth">
+                <input *ngIf="!searchParams.specializationMap.get('Dental Public Health')" type="checkbox" id="cbxDentalPublicHealth">
+                <span class="checkmark"></span>
+              </label>
+
+              <label class="containerLabel" for="cbxOralandMaxillofacialPathology" (change)="onSpecializationCheckboxChanged('OralandMaxillofacialPathology')">Oral and Maxillofacial Pathology
+                <input *ngIf="searchParams.specializationMap.get('OralandMaxillofacialPathology')" checked type="checkbox"
+                       id="cbxOralandMaxillofacialPathology">
+                <input *ngIf="!searchParams.specializationMap.get('OralandMaxillofacialPathology')" type="checkbox" id="cbxOralandMaxillofacialPathology">
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -113,31 +154,62 @@
       <!--    ================= Times Attributies         ==================-->
       <hr class="horizontal-line" style="margin-left: 12px;"/>
       <div class="row">
-        <div class="AccessebilityTimeframe">
-          <label class="Extended-Hours"> EXTENDED HOURS</label>
-          <br/>
-          <label class="Saturday"> Saturday</label>
-          <input style="height:12px" type="checkbox" id="extendedhourse_saturday" #inputElement4
-                 (change)="isThereExtendedhourse_saturday(inputElement4.checked)"
-                 name="extendedhourse_saturday" data-toggle="toggle"/>
-          <br/>
-          <br/>
-          <label class="Weekday"> Weekday</label>
-          <input type="checkbox" id="extendedhourse_weekday" #inputElement6
-                 (change)="isWeekdayWorking(inputElement6.checked)" name="extendedhourse_weekday" data-toggle="toggle"/>
+
+        <div class="col-md">
+
+          <div class="AccessebilityTimeframe">
+            <label class="Extended-Hours"> EXTENDED HOURS</label>
+            <br/>
+            <label class="Saturday"> Saturday</label>
+            <input style="height:12px" type="checkbox" id="extendedhourse_saturday" #inputElement4
+                   (change)="isThereExtendedhourse_saturday(inputElement4.checked)"
+                   name="extendedhourse_saturday" data-toggle="toggle"/>
+            <br/>
+            <label class="Weekday"> Weekday</label>
+            <input type="checkbox" id="extendedhourse_weekday" #inputElement6
+                   (change)="isWeekdayWorking(inputElement6.checked)" name="extendedhourse_weekday" data-toggle="toggle"/>
+          </div>
         </div>
 
-        <!--              ===============    Accessibility==============-->
-        <div class="accessibility_div">
-          <label class="accessibility"> ACCESSIBILITY </label>
-          <br/>
-          <label class="Handicap-Accessible"> Handicap Accessible</label>
-          <!--          <input type="checkbox" id="handicapAccecebility" name="handicapAccecebility" data-toggle="toggle"toggle>-->
-          <input type="checkbox" #inputElement7
-                 (change)="ishandicapAccecebility(inputElement7.checked)" data-toggle="toggle"/>
-          <span></span>
-          <br/>
+        <div class="col-md">
+
+          <!--              ===============    Accessibility==============-->
+          <div class="accessibility_div">
+            <label class="accessibility"> ACCESSIBILITY </label>
+            <br/>
+            <label class="Handicap-Accessible"> Handicap Accessible</label>
+            <!--          <input type="checkbox" id="handicapAccecebility" name="handicapAccecebility" data-toggle="toggle"toggle>-->
+            <input type="checkbox" #inputElement7
+                   (change)="ishandicapAccecebility(inputElement7.checked)" data-toggle="toggle"/>
+
+          </div>
         </div>
+
+        <div class="col-md">
+
+          <!--        3       -->
+          <div class="avaialbility_div">
+            <div class="availability">AVAILABILITY</div>
+            <label class="Accepting-new-patien"> Accepting new patients</label>
+
+            <div style="display: inline-block">
+              <label>
+                <input
+                  type="checkbox"
+                  #inputE1
+                  id="accessebility"
+                  (change)="isacceptingNew(inputE1.checked)"
+                  name="newPatientAccessibility"
+                  data-toggle="toggle"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+
+
+
+
       </div>
       <hr class="horizontal-line" style="margin-left: 12px;"/>
       <!--    ===============    Doctor Profile ==================================-->
@@ -161,17 +233,17 @@
           <label class="GENDER"> GENDER</label>
           <br/>
           <div *ngIf="searchParams.gender == 'F'" class="btn-group btn-toggle gender">
-            <input type="button" name="gender" class="btn btn-default" value="Male" (click)="changeGender('M')">
-            <input type="button" name="gender" class="btn btn-primary active" value="Female"
+            <input type="button" name="gender" class="btn genderBtn btn-default" value="Male" (click)="changeGender('M')">
+            <input type="button" name="gender" class="btn genderBtn btn-primary active" value="Female"
                    (click)="changeGender('F')">
           </div>
           <div *ngIf="searchParams.gender == 'M'" class="btn-group btn-toggle gender">
-            <input type="button" name="gender" class="btn btn-primary active" value="Male" (click)="changeGender('M')">
-            <input type="button" name="gender" class="btn btn-default" value="Female" (click)="changeGender('F')">
+            <input type="button" name="gender" class="btn genderBtn btn-primary active" value="Male" (click)="changeGender('M')">
+            <input type="button" name="gender" class="btn genderBtn btn-default" value="Female" (click)="changeGender('F')">
           </div>
           <div *ngIf="!searchParams.gender" class="btn-group btn-toggle gender">
-            <input type="button" name="gender" class="btn btn-default" value="Male" (click)="changeGender('M')">
-            <input type="button" name="gender" class="btn btn-default" value="Female" (click)="changeGender('F')">
+            <input type="button" name="gender" class="btn genderBtn btn-default" value="Male" (click)="changeGender('M')">
+            <input type="button" name="gender" class="btn genderBtn btn-default" value="Female" (click)="changeGender('F')">
           </div>
         </div>
 
