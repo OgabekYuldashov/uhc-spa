@@ -95,9 +95,9 @@ export class DataSearchService {
     const resItems = new Array<ResultItem>();
     console.log('elastic data:');
     console.log(js);
-    console.log('Search Summary: \n' +
+    /*console.log('Search Summary: \n' +
     'time taken:' + js.took + ' msec.\n' +
-    'total records:' + ((js.hits.total.value === 10000) ? '9999 plus.' : js.hits.total.value));
+    'total records:' + ((js.hits.total.value === 10000) ? '9999 plus.' : js.hits.total.value));*/
 
     // @ts-ignore
     for ( const j of js.hits.hits) {
