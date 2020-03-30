@@ -227,7 +227,7 @@ export class DataSearchService {
 
     // this.parameters.distanceFromYourAddress = '9';
     // this.parameters.location = '62.298254,-149.87542';
-    if ( this.parameters.distanceFromYourAddress !== undefined && latlong === true) {
+    if ( this.parameters.distanceFromYourAddress !== undefined && latlong === true && this.parameters.distanceFromYourAddress !== '0') {
       dist = '' + this.parameters.distanceFromYourAddress + 'km';
     }
 
