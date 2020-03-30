@@ -24,7 +24,6 @@ export class DataSearchService {
 
   constructor(private httpClient: HttpClient) {
     this.parameters = new Parameters();
-    this.parameters.acceptingNew = true;
     this.getResultItems().subscribe(s => this.getResults(s));
   }
 
@@ -158,7 +157,7 @@ export class DataSearchService {
     }
 
     for (const key of this.parameters.specializationMap.keys()) {
-      if (this.parameters.specializationMap.get(key) === true) {
+      if ( key !== undefined && this.parameters.specializationMap.get(key) === true) {
         AND_LOGIC.push({ match: { specialization: key}});
       }
     }

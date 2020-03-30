@@ -41,7 +41,7 @@
   background-color: #ffffff;
   /*margin-right: 121px;*/
   /*margin-right: 242px;*/
-  margin-left: 40px;
+  margin-left: 0px;
 
 }
 
@@ -82,7 +82,7 @@
   color: #9b9b9b;
   background-color: white;
   margin-top: 13px;
-  margin-left: 10px;
+  margin-left: 0px;
   border: 0px;
 }
 
@@ -113,7 +113,7 @@
   opacity: 1;
   background-color: white;
   width: 761px;
-  margin-left: 40px;
+  /*margin-left: 40px;*/
 }
 
 .horizontal-line {
@@ -464,7 +464,7 @@
   width: 1439px;
   height: 240px;
   margin-top: 85px;
-  margin-left: 380px;
+  margin-left: 15%;
   z-index: 1;
   /*position: absolute;*/
 
