@@ -9,15 +9,14 @@ import {DetailsModule} from './modules/details/details.module';
 import {HomePageComponent} from './modules/home-page/home-page.component';
 import {FormsModule} from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
-import {SearchCompenentComponent} from "./modules/home-page/search-compenent/search-compenent.component";
+import {ModulesModule} from './modules/modules.module';
 
 // @ts-ignore
 // @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    SearchCompenentComponent
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +25,9 @@ import {SearchCompenentComponent} from "./modules/home-page/search-compenent/sea
     HttpClientModule,
     DetailsModule,
     FormsModule,
-    MatSliderModule
+    MatSliderModule,
+    ModulesModule
   ],
-  exports: [SearchCompenentComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
