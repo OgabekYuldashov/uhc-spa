@@ -151,7 +151,7 @@ export class DataSearchService {
       AND_LOGIC.push({ match: { handicapAccessible: this.parameters.handicapAccessible}});
     }
     for (const key of this.parameters.languageMap.keys()) {
-      if (this.parameters.languageMap.get(key) === true) {
+      if ( key !== undefined && this.parameters.languageMap.get(key) === true) {
         OR_LOGIC.push({ match: { languages: key}});
       }
     }
@@ -165,16 +165,24 @@ export class DataSearchService {
     if ( this.parameters.languageSponeken === undefined) {
       OR_LOGIC.push({ match: { languages: 'English'}} );
     }
-    let dist = '10000km';
-    if ( this.parameters.distanceFromYourAddress !== undefined) {
-      dist = this.parameters.distanceFromYourAddress;
-    }
+    const reg = new RegExp(/^\d+(,\d+)*$/);
+    console.log('test');
+    console.log(reg.test('62254,123'));
+    let dist = '99999km';
     let loc = '62.298254,-149.87542';
     if (this.parameters.location !== undefined) {
       loc = this.parameters.location;
     }
+    this.parameters.distanceFromYourAddress = '9';
+    this.parameters.location = '62.298254,-149.87542';
+    if ( this.parameters.distanceFromYourAddress !== undefined && reg.test(loc.replace(/\s/g, '')) === true) {
+      dist = '' + this.parameters.distanceFromYourAddress + 'km';
+    }
+    if (this.parameters.location !== undefined) {
+      loc = this.parameters.location;
+    }
 
-    const NOT_LOGIC = {range: {latConfidence: { lte: 0 }}};
+    const NOT_LOGIC = {range: {latConfidence: { lte: -1 }}};
     const paraQuery: RequestParams.Search = {
       query: {
       bool: {
