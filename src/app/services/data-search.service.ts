@@ -166,7 +166,7 @@ export class DataSearchService {
     }
     if (this.parameters.gender !== undefined) { AND_LOGIC.push({ match: { gender: this.parameters.gender}}); }
     if (this.parameters.handicapAccessible === true) {
-      AND_LOGIC.push({ match: { handicapAccessible: this.parameters.handicapAccessible}});
+      AND_LOGIC.push({ match: { handicapAccessible: 'Y'}});
     }
     const LANG_LOGIC = [];
     LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
