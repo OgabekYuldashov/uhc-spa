@@ -169,12 +169,15 @@ export class DataSearchService {
       AND_LOGIC.push({ match: { handicapAccessible: 'Y'}});
     }
     const LANG_LOGIC = [];
-    LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
     for (const key of this.parameters.languageMap.keys()) {
       if ( key !== undefined && this.parameters.languageMap.get(key) === true) {
         LANG_LOGIC.push({ match_phrase: { languages: key}});
       }
     }
+    if ( LANG_LOGIC.length === 0) {
+      LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
+    }
+
     AND_LOGIC.push({
       bool: {
       must: [{
