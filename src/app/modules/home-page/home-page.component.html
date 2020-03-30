@@ -6,8 +6,8 @@
         <!--    <label class="choose-plan"> Plans </label> <border-radius>-->
         <div class="Rectangle-3-Copy-3" style="width: 71%; height: 121px;">
             <div style="padding-top: 27px; padding-left: 27px; padding-left: 21px;">
-                <select id="plan" [(ngModel)]="this.Choose_Dental_Plan" #plan class="DENTAL-PLAN" (change)="onPlanChange(plan.value)">
-                   <option class="DENTAL-PLAN" value="" selected> DENTAL PLAN</option>
+                <select id="plan" #plan class="DENTAL-PLAN" (change)="onPlanChange(plan.value)">
+                   <option class="DENTAL-PLAN" value="" selected>DENTAL PLAN</option>
                    <option class="DENTAL-PLAN" value="National Options PPO 20"
                    >National Options PPO 20</option>
                    <option class="DENTAL-PLAN" value="National Select Managed Care"
