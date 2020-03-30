@@ -162,7 +162,9 @@ export class DataSearchService {
       }
     }
     AND_LOGIC.push({ match: { languages: 'English'}});
-    OR_LOGIC.push({ match: { languages: 'English'}} );
+    if ( this.parameters.languageSponeken === undefined) {
+      OR_LOGIC.push({ match: { languages: 'English'}} );
+    }
     let dist = '10000km';
     if ( this.parameters.distanceFromYourAddress !== undefined) {
       dist = this.parameters.distanceFromYourAddress;
