@@ -25,7 +25,8 @@ export class DataSearchService {
 
   constructor(private httpClient: HttpClient) {
     this.ZipCodeMap.set('80303|Boulder|CO|39.989135|-105.22883|-7|1|', '39.989135,-105.22883');
-    this.ZipCodeMap.set('55347|Eden Prairie|MN|44.831413|-93.46031|', '-6|1|44.831413,-93.46031');
+    // this.ZipCodeMap.set('55347|Eden Prairie|MN|44.831413|-93.46031|', '-6|1|44.831413,-93.46031');
+    this.ZipCodeMap.set('55347|Eden Prairie|MN|44.831413|-93.46031|-6|1|', '44.831413,-93.46031');
     this.ZipCodeMap.set('48258|Detroit|MI|42.239933|-83.150823|-5|1|', '42.239933,-83.150823');
     this.ZipCodeMap.set('10124|New York|NY|40.780751|-73.977182|-5|1|', '40.780751,-73.977182');
     this.ZipCodeMap.set('60611|Chicago|IL|41.904667|-87.62504|-6|1|', '41.904667,-87.62504');
@@ -41,6 +42,7 @@ export class DataSearchService {
     this.ZipCodeMap.set('84104|Salt Lake City|UT|40.750628|-111.94077|-7|1|', '40.750628,-111.94077');
     this.ZipCodeMap.set('98158|Seattle|WA|47.432251|-121.803388|-8|1|', '47.432251,-121.803388');
     this.ZipCodeMap.set('97230|Portland|OR|45.539473|-122.50488|-8|1|', '45.539473,-122.50488');
+    this.ZipCodeMap.set('02108|Boston|MA|42.357903|-71.06408|-5|1|', '42.357903,-71.06408');
     this.parameters = new Parameters();
     this.getResultItems().subscribe(s => this.getResults(s));
   }
