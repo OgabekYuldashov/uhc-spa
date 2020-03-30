@@ -95,9 +95,9 @@ export class DataSearchService {
     const resItems = new Array<ResultItem>();
     console.log('elastic data:');
     console.log(js);
-    /*console.log('Search Summary: \n' +
-    'time taken:' + js.took + ' msec.\n' +
-    'total records:' + ((js.hits.total.value === 10000) ? '9999 plus.' : js.hits.total.value));*/
+    console.log('Search Summary: \n' +
+    'time taken:' + js.took + ' msec.');
+    // 'total records:' + ((js.hits['total'].value === 10000) ? '9999 plus.' : js.hits['total'].value));
 
     // @ts-ignore
     for ( const j of js.hits.hits) {
@@ -166,7 +166,7 @@ export class DataSearchService {
     }
     if (this.parameters.gender !== undefined) { AND_LOGIC.push({ match: { gender: this.parameters.gender}}); }
     if (this.parameters.handicapAccessible === true) {
-      AND_LOGIC.push({ match: { handicapAccessible: this.parameters.handicapAccessible}});
+      AND_LOGIC.push({ match: { handicapAccessible: 'Y'}});
     }
     const LANG_LOGIC = [];
     LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
