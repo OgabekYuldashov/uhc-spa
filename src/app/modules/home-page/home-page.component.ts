@@ -14,6 +14,12 @@ import {AfterViewInit, ViewChild, ElementRef} from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit, AfterViewInit {
+
+  constructor(private route: Router, private dataSearchService: DataSearchService) {
+    // tslint:disable-next-line:variable-name
+    // this.Choose_Dental_Plan = 'Choose Dental Plan';
+    // this.parameter_list.plans = 'Choose Dental Plan';
+  }
   canSpeackArabic: string;
   canSpeakSpanish: string;
   canSpeapkgermany: string;
@@ -43,34 +49,25 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   // tslint:disable-next-line:no-construct ban-types
   langs: String[]= new Array();
 
-  constructor(private route: Router, private dataSearchService: DataSearchService) {
-    // tslint:disable-next-line:variable-name
-    // this.Choose_Dental_Plan = 'Choose Dental Plan';
-    // this.parameter_list.plans = 'Choose Dental Plan';
-  }
+  private range: number;
 
 
   // Slider attributes
   autoTicks = false;
-  disabled = false;
-  invert = false;
   max = 50;
   min = 0;
-  showTicks = false;
   step = 1;
   thumbLabel = true;
-  value = 0;
-  vertical = false;
+  value34 = 0;
   tickInterval = 1;
 
   isAdvancedSearchButtonCliked = false;
 
   // tslint:disable-next-line:variable-name
   parameter_list: Parameters = new Parameters();
-
+  searchParams: Parameters;
   // ==================== Language Section======================
   oralSureon: string;
-
 ///////////////////////////////////////////
   endodontist: string;
   // tslint:disable-next-line:variable-name
@@ -78,16 +75,13 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   weekday: string;
   handicapAccecebility: any;
 
-
 // =========Map Section===============
 
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
   lat = 45.73061;
   lng = -73.935242;
-
   coordinates = new google.maps.LatLng(this.lat, this.lng);
-
   mapOptions: google.maps.MapOptions = {
     center: this.coordinates,
     zoom: 8
@@ -97,6 +91,10 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     position: this.coordinates,
     map: this.map,
   });
+
+  // ========================
+  maxillofacialSurgeon: string;
+  Pediatric: string;
 
   ngAfterViewInit() {
     this.mapInitializer();
@@ -108,17 +106,11 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.marker.setMap(this.map);
   }
 
-
-  // ========================
-
   onChange(e) {
     this.parameter_list.plans = e.target.value.toString();
-
   }
 
-
   filterByPlan_And_Location_Distance() {
-
     this.isAdvancedSearchButtonCliked = false;
     // tslint:disable-next-line:max-line-length
     this.parameter_list.languageSponeken = [this.canSpeackArabic, this.canSpeakFarsi, this.canSpeakItaly, this.canSpeakPortuese, this.canSpeakSpanish, this.canSpeapkgermany];
@@ -172,18 +164,20 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   getSliderTickInterval(): number {
-    if (this.showTicks) {
-      const value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
-      this.parameter_list.distanceFromYourAddress = this.value + 'mi';
-      return this.value;
-    }
+      this.range =  this.tickInterval ;
+      this.parameter_list.distanceFromYourAddress = this.value34 ;
+    console.log('new distance is ' + this.value34);
 
-    return 0;
+      // alert('================ new distance' + value);
+      return this.value34;
+
   }
 
   valueChange(e: string) {
     this.parameter_list.location = e.trim().toString();
-    console.log('your location is ==========' + this.parameter_list.location);
+
+    console.log('your location is ==========' + this.parameter_list.location );
+    alert('new distance ==========' + this.parameter_list.location );
 
   }
 
@@ -197,6 +191,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   isOralSurgeon(checked: boolean) {
+    const  specialization = 'oralSurgeon' ;
     if (!checked) {
       this.oralSureon = '';
     } else {
@@ -206,12 +201,17 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   isEndodontist(checked: boolean) {
+    const  specialization = 'Endodontist' ;
     if (!checked) {
-      this.endodontist = '';
-    } else {
-      this.endodontist = 'Y';
+     this.parameter_list.specializationMap[specialization] = !this.parameter_list.specializationMap[specialization];
     }
 
+    //
+    // onSpecializationCheckboxChanged(specialization: string) {
+    //   console.log('onSpecializationCheckboxChanged: ' + specialization);
+    //   this.searchParams.specializationMap[specialization] = !this.searchParams.specializationMap[specialization];
+    // }
+    //
   }
 
   isThereExtendedhourse_saturday(checked: boolean) {
@@ -294,5 +294,90 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       console.log(' this langs array=====' + this.langs);
     }
 
+  }
+
+  isMaxillofacial(ch: boolean) {
+    if(ch) {
+      const  specialization = 'maxillofacialSurgeon' ;
+      this.parameter_list.specializationMap[specialization] = !this.parameter_list.specializationMap[specialization];
+      }
+    }
+
+  isPediatric(ch: boolean) {
+    if(ch) {
+      const  specialization = 'Pediatric' ;
+      this.parameter_list.specializationMap[specialization] = !this.parameter_list.specializationMap[specialization];
+    }
+
+  }
+
+  isHindi(ch: boolean) {
+    if (ch) {
+      const  lengSpoken = 'Hindi' ;
+      this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
+    }
+  }
+
+  isItalian(ch: boolean) {
+    if (ch) {
+      const  lengSpoken = 'Italian' ;
+      this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
+    }
+  }
+
+  isRussian(ch: boolean) {
+    if (ch) {
+      const  lengSpoken = this.Russian ;
+      this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
+    }
+  }
+
+  isKorean(ch: boolean) {
+    const  lengSpoken = this.Korean;
+    this.parameter_list.languageMap[lengSpoken] =!this.parameter_list.languageMap[lengSpoken];
+
+  }
+
+  isPortugese(ch: boolean) {
+    if(ch){
+      const  lengSpoken = this.Polish;
+      this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
+    }
+
+  }
+
+  isChinse(ch: boolean) {
+    if(ch){
+      const  lengSpoken = this.Chinese;
+      this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
+    }
+
+  }
+
+  isEgyptsin(ch: boolean) {
+
+    if(ch){
+      const  lengSpoken = this.Egyptian;
+      this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
+    }
+  }
+
+  isFarsi(ch: boolean) {
+    if(ch){
+      const  lengSpoken = this.Farsi;
+      this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
+    }
+  }
+
+  isPolish(ch: boolean) {
+    if(ch){
+      const  lengSpoken = this.Polish;
+      this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
+    }
+  }
+
+  isGreek(ch: boolean) {
+    const  lengSpoken = this.Greek;
+    this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
   }
 }

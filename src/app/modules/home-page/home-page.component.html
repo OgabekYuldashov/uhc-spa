@@ -25,7 +25,7 @@
           [step]="step"
           [thumbLabel]="thumbLabel"
           [tickInterval]="getSliderTickInterval()"
-          [(ngModel)]="value"
+          [(ngModel)]="value34"
         >
         </mat-slider>
       </div>
@@ -83,12 +83,14 @@
 
           <div style="margin-left:10px; display: inline-block" >
             <label class="containerLabel" for="LoremIpsum2"> Maxillofacial Surgeon
-            <input  type="checkbox" id="LoremIpsum2">
+            <input  type="checkbox" id="LoremIpsum2"#ip33 [(ngModel)]="maxillofacialSurgeon"
+                    (change)="isMaxillofacial(ip33.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for ="Pediatric1"> Pediatric
-            <input  type="checkbox" id="Pediatric1">
+            <input  type="checkbox" id="Pediatric1"#ip34 [(ngModel)]="Pediatric"
+                    (change)="isPediatric(ip34.checked)">
 <!--            <label class="Lorem-Ipsum">Pediatric-->
               <span class="checkmark"></span>
             </label>
@@ -169,16 +171,16 @@
 
           <div class="Languages-Spoken_coln">
             <label class="containerLabel" for="arabic">Arabic
-              <input type="checkbox" #ip11 [(ngModel)]="Arabic" (change)="isArabic(ip11.checked)"id="arabic">
+              <input type="checkbox" #ip11  (change)="isArabic(ip11.checked)"id="arabic">
               <span class="checkmark"></span>
             </label>
             <label class="containerLabel" for="spanish">Spanish
-              <input type="checkbox" id="spanish" #ip12 [(ngModel)]="Spanish"(change)="isSpanis(ip12.checked)">
+              <input type="checkbox" id="spanish" #ip12 (change)="isSpanis(ip12.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="german">German
-              <input type="checkbox" #ip15 [(ngModel)]="German" (change)="isGermany(ip15.checked)" id="german">
+              <input type="checkbox" #ip15 (change)="isGermany(ip15.checked)" id="german">
               <span class="checkmark"></span>
             </label>
 
@@ -187,17 +189,17 @@
           <!--          ============column 2========-->
           <div class="Languages-Spoken_coln">
             <label class="containerLabel" for="cbxRomanian">Romanian
-              <input type="checkbox"  #ip20 [(ngModel)]="Romanian" (change)="isRomanian(ip20.checked)" id="cbxRomanian">
+              <input type="checkbox"   id="cbxRomanian" #ip20  (change)="isRomanian(ip20.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxFrench">French
-              <input type="checkbox" id="cbxFrench" #ip21 [(ngModel)]="French" (change)="isFrench(ip21.checked)">
+              <input type="checkbox" id="cbxFrench" #ip21 (change)="isFrench(ip21.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxHindi">Hindi
-              <input type="checkbox" id="cbxHindi">
+              <input type="checkbox" id="cbxHindi" #ip22 (change)="isHindi(ip22.checked)">
               <span class="checkmark"></span>
             </label>
 
@@ -217,17 +219,17 @@
           <!--          ============column 3========-->
           <div class="Languages-Spoken_coln">
             <label class="containerLabel" for="cbxItalian">Italian
-              <input type="checkbox" id="cbxItalian">
+              <input type="checkbox" id="cbxItalian"#ip24 (change)="isItalian(ip24.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxRussian">Russian
-              <input type="checkbox" id="cbxRussian">
+              <input type="checkbox" id="cbxRussian" #ip25 (change)="isRussian(ip25.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxKorean">Korean
-              <input type="checkbox" id="cbxKorean">
+              <input type="checkbox" id="cbxKorean" #ip26 (change)="isKorean(ip26.checked)">
               <span class="checkmark"></span>
             </label>
 
@@ -246,17 +248,17 @@
           <!--          ============column 4========-->
           <div class="Languages-Spoken_coln">
             <label class="containerLabel" for="cbxPortugese">Portugese
-              <input type="checkbox" id="cbxPortugese">
+              <input type="checkbox" id="cbxPortugese" #ip28 (change)="isPortugese(ip28.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxChinese">Chinese
-              <input type="checkbox" id="cbxChinese">
+              <input type="checkbox" id="cbxChinese" #ip29 (change)="isChinse(ip29.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxEgyptian">Egyptian
-              <input type="checkbox" id="cbxEgyptian">
+              <input type="checkbox" id="cbxEgyptian" #ip30 (change)="isEgyptsin(ip30.checked)">
               <span class="checkmark"></span>
             </label>
 
@@ -274,17 +276,17 @@
           <!--          ============column 5========-->
           <div class="Languages-Spoken_coln">
             <label class="containerLabel" for="cbxFarsi">Farsi
-              <input type="checkbox" id="cbxFarsi">
+              <input type="checkbox" id="cbxFarsi"#ip31 (change)="isFarsi(ip30.checked)">>
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxPolish">Polish
-              <input type="checkbox" id="cbxPolish">
+              <input type="checkbox" id="cbxPolish"#ip33 (change)="isPolish(ip31.checked)">
               <span class="checkmark"></span>
             </label>
 
             <label class="containerLabel" for="cbxGreek">Greek
-              <input type="checkbox" id="cbxGreek">
+              <input type="checkbox" id="cbxGreek"#ip37 (change)="isGreek(ip31.checked)">
               <span class="checkmark"></span>
             </label>
 

@@ -9,7 +9,11 @@ import {DetailsModule} from './modules/details/details.module';
 import {HomePageComponent} from './modules/home-page/home-page.component';
 import {FormsModule} from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
-import {SearchCompenentComponent} from "./modules/home-page/search-compenent/search-compenent.component";
+import {SearchCompenentComponent} from './modules/home-page/search-compenent/search-compenent.component';
+import {SliderButtonComponent} from './modules/home-page/slider-button/slider-button.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 // @ts-ignore
 // @ts-ignore
@@ -17,7 +21,8 @@ import {SearchCompenentComponent} from "./modules/home-page/search-compenent/sea
   declarations: [
     AppComponent,
     HomePageComponent,
-    SearchCompenentComponent
+    SearchCompenentComponent,
+    SliderButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,10 @@ import {SearchCompenentComponent} from "./modules/home-page/search-compenent/sea
     HttpClientModule,
     DetailsModule,
     FormsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatCheckboxModule
   ],
   exports: [SearchCompenentComponent],
   providers: [],

@@ -30,8 +30,8 @@ export class SearchCompenentComponent implements OnInit {
   }
   getSliderTickInterval(): number {
     if (this.showTicks) {
-      const value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
-      this.parameter_list.distanceFromYourAddress = this.value + 'mi';
+      const value = this.autoTicks ? 'auto' : this.tickInterval ;
+      this.parameter_list.distanceFromYourAddress = this.value ;
       return this.value;
     }
 

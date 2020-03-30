@@ -37,8 +37,6 @@
     </section>
 
     <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="vertical">Vertical</mat-checkbox>
-      <mat-checkbox class="example-margin" [(ngModel)]="invert">Inverted</mat-checkbox>
     </section>
 
     <section class="example-section">
@@ -50,22 +48,18 @@
 
 <mat-card class="example-result-card">
   <mat-card-content>
-    <h2>Result</h2>
-
-<!-- h2   <mat-slider-->
-<!--      class="example-margin"-->
-<!--      [disabled]="disabled"-->
-<!--      [invert]="invert"-->
-<!--      [max]="max"-->
-<!--      [min]="min"-->
-<!--      [step]="step"-->
-<!--      [thumbLabel]="thumbLabel"-->
-<!--      [tickInterval]="getSliderTickInterval()"-->
-<!--      [(ngModel)]="value"-->
-<!--      [vertical]="vertical">-->
-<!--    </mat-slider>-->
-<!--  </mat-card-content>-->
-<!--</mat-card>-->
+   <mat-slider
+      class="example-margin"
+      [max]="max"
+      [min]="min"
+      [step]="step"
+      [thumbLabel]="thumbLabel"
+      [tickInterval]="getSliderTickInterval()"
+      [(ngModel)]="value"
+      [vertical]="vertical">
+    </mat-slider>
+  </mat-card-content>
+</mat-card>
 
 
 <!-- Copyright 2019 Google LLC. All Rights Reserved.

@@ -3,7 +3,7 @@ import {Language} from './language';
 export class Parameters {
   plans: string;
   location: string;
-  distanceFromYourAddress: string;
+  distanceFromYourAddress: Number;
   specialization: string[];
   acceptingNew: boolean;
   firstName: string;
