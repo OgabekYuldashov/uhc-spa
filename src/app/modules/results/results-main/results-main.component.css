@@ -8,6 +8,7 @@ section {
 #filtersContainer {
   border-right: 1pt solid #e6e6e6;
   padding-right: 0;
+  overflow-y: scroll;
 }
 
 #filtersContainer .panel-group {

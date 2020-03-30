@@ -1,14 +1,16 @@
 <div class="resultItemHoverable" (click)="onResultItemClick()">
   <div class="res-item-header row">
-    <img src="../../../assets/imgs/dentist-female.png" class="imgDentist"/>
+    <img *ngIf="resItem.gender == 'F'" src="../../../assets/imgs/dentist-female.png" class="imgDentist"/>
+    <img *ngIf="resItem.gender == 'M'" src="../../../assets/imgs/dentist-male.png" class="imgDentist"/>
     <div class="headerDetails">
       <h3 class="dentistName" (click)="onResultItemClick()">{{resItem.displayName}}</h3>
       <h4>Specialty: <span>{{resItem.specialization}}</span></h4>
       <span>{{resItem.fullAddress}}</span>
       <div>
         <span><span class="font-weight-bold">Phone:</span> {{resItem.phone}}</span>
-        <span><span class="font-weight-bold">Email:</span> {{resItem.firstName + '@gmail.com'}}</span>
-        <span><span class="font-weight-bold">Web: </span> <a href="{{resItem.firstName + '.com'}}" [target]="resItem.firstName + '.com'">{{resItem.firstName + '.com'}}</a></span>
+
+        <!--<span><span class="font-weight-bold">Email:</span> {{resItem.firstName + '@gmail.com'}}</span>
+        <span><span class="font-weight-bold">Web: </span> <a href="{{resItem.firstName + '.com'}}" [target]="resItem.firstName + '.com'">{{resItem.firstName + '.com'}}</a></span>-->
         <span><span class="font-weight-bold">Gender:</span> <span *ngIf="resItem.gender == 'M'"> Male</span> <span *ngIf="resItem.gender == 'F'"> Female</span></span>
       </div>
     </div>
