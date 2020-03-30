@@ -80,8 +80,6 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   onPlanChange(e) {
     this.searchParams.plans = e;
     console.log('selected plan is ' + this.searchParams.plans);
-
-
   }
 
   filterByPlan_And_Location_Distance() {
@@ -179,7 +177,9 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
 
   onSpecializationCheckboxChanged(specialization: string) {
     console.log('Before onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
+
     this.searchParams.specializationMap.set(specialization, !this.searchParams.specializationMap.get(specialization));
+
     console.log('After onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
   }
 }
