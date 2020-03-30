@@ -20,6 +20,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     // this.Choose_Dental_Plan = 'Choose Dental Plan';
     // this.parameter_list.plans = 'Choose Dental Plan';
   }
+
   canSpeackArabic: string;
   canSpeakSpanish: string;
   canSpeapkgermany: string;
@@ -47,7 +48,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   Polish = 'Polish';
   Greek = 'Greek';
   // tslint:disable-next-line:no-construct ban-types
-  langs: String[]= new Array();
+  langs: String[] = new Array();
 
   private range: number;
 
@@ -113,8 +114,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   filterByPlan_And_Location_Distance() {
     this.isAdvancedSearchButtonCliked = false;
     // tslint:disable-next-line:max-line-length
-    this.parameter_list.languageSponeken = [this.canSpeackArabic, this.canSpeakFarsi, this.canSpeakItaly, this.canSpeakPortuese, this.canSpeakSpanish, this.canSpeapkgermany];
-    this.parameter_list.specialization = [this.oralSureon, this.endodontist];
+    // this.parameter_list.languageSponeken = [this.canSpeackArabic, this.canSpeakFarsi, this.canSpeakItaly, this.canSpeakPortuese, this.canSpeakSpanish, this.canSpeapkgermany];
+    // this.parameter_list.specialization = [this.oralSureon, this.endodontist];
     console.log(this.parameter_list);
     this.isAdvancedSearchButtonCliked = false;
 
@@ -125,7 +126,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.route.navigate((['results']));
 
   }
-
 
   advancedSearch() {
     // tslint:disable-next-line:triple-equals
@@ -164,20 +164,20 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   getSliderTickInterval(): number {
-      this.range =  this.tickInterval ;
-      this.parameter_list.distanceFromYourAddress = this.value34 ;
+    this.range = this.tickInterval;
+    this.parameter_list.distanceFromYourAddress = this.value34;
     console.log('new distance is ' + this.value34);
 
-      // alert('================ new distance' + value);
-      return this.value34;
+    // alert('================ new distance' + value);
+    return this.value34;
 
   }
 
   valueChange(e: string) {
     this.parameter_list.location = e.trim().toString();
 
-    console.log('your location is ==========' + this.parameter_list.location );
-    alert('new distance ==========' + this.parameter_list.location );
+    console.log('your location is ==========' + this.parameter_list.location);
+    alert('new distance ==========' + this.parameter_list.location);
 
   }
 
@@ -190,54 +190,43 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   }
 
-  isOralSurgeon(checked: boolean) {
-    const  specialization = 'oralSurgeon' ;
-    if (!checked) {
-      this.oralSureon = '';
-    } else {
-      this.oralSureon = 'Y';
-    }
-
+  isOralSurgeon(ch: boolean) {
+    const specialization = 'OralSurgeon';
+    if (ch)
+      this.parameter_list.specializationMap[specialization] = !this.parameter_list.specializationMap[specialization];
   }
 
-  isEndodontist(checked: boolean) {
-    const  specialization = 'Endodontist' ;
-    if (!checked) {
-     this.parameter_list.specializationMap[specialization] = !this.parameter_list.specializationMap[specialization];
-    }
-
-    //
-    // onSpecializationCheckboxChanged(specialization: string) {
-    //   console.log('onSpecializationCheckboxChanged: ' + specialization);
-    //   this.searchParams.specializationMap[specialization] = !this.searchParams.specializationMap[specialization];
-    // }
-    //
+  isEndodontist(ch: boolean) {
+    const specialization = 'Endodontist';
+    this.parameter_list.specializationMap[specialization] = !this.parameter_list.specializationMap[specialization];
   }
+
 
   isThereExtendedhourse_saturday(checked: boolean) {
-    if (!checked) {
-      this.Extendedhourse_saturday = 'N';
-    } else {
+    if (checked) {
       this.Extendedhourse_saturday = 'Y';
+      this.parameter_list.extendedHrsSat = this.Extendedhourse_saturday;
+    } else {
+      this.parameter_list.extendedHrsSat = 'N';
     }
 
   }
 
   isWeekdayWorking(checked: boolean) {
-    if (!checked) {
-      this.weekday = 'N';
+    if (checked) {
+      this.parameter_list.extendedHrsWeek = 'Y';
     } else {
-      this.weekday = 'Y';
+      this.parameter_list.extendedHrsWeek = 'N';
     }
 
   }
 
   ishandicapAccecebility(checked: boolean) {
 
-    if (!checked) {
-      this.handicapAccecebility = 'N';
+    if (checked) {
+      this.parameter_list.handicapAccessible = true;
     } else {
-      this.handicapAccecebility = 'Y';
+      this.parameter_list.handicapAccessible = false;
     }
 
   }
@@ -254,14 +243,13 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.parameter_list.plans = e;
     console.log('selected plan is ' + e);
     this.Choose_Dental_Plan = e;
-
-
   }
 
   isArabic(c: boolean) {
     if (c) {
       this.Arabic = 'Arabic';
       this.langs.push(this.Arabic);
+      // this.parameter_list.languageMap[this.Arabic]=!this.
     }
   }
 
@@ -282,30 +270,31 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     }
 
   }
-
   isRomanian(ch: boolean) {
     if (ch) {
-    this.langs.push(this.Romanian);
+      this.langs.push(this.Romanian)
+      this.parameter_list.languageMap[this.Romanian] = this.parameter_list.specializationMap[this.Romanian];;
     }
   }
+
   isFrench(checked: boolean) {
     if (checked) {
-      this.langs.push(this.French)
+      this.parameter_list.languageMap[this.French] = this.parameter_list.specializationMap[this.French];
       console.log(' this langs array=====' + this.langs);
     }
 
   }
 
   isMaxillofacial(ch: boolean) {
-    if(ch) {
-      const  specialization = 'maxillofacialSurgeon' ;
+    if (ch) {
+      const specialization = 'maxillofacialSurgeon';
       this.parameter_list.specializationMap[specialization] = !this.parameter_list.specializationMap[specialization];
-      }
     }
+  }
 
   isPediatric(ch: boolean) {
-    if(ch) {
-      const  specialization = 'Pediatric' ;
+    if (ch) {
+      const specialization = 'Pediatric';
       this.parameter_list.specializationMap[specialization] = !this.parameter_list.specializationMap[specialization];
     }
 
@@ -313,42 +302,42 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   isHindi(ch: boolean) {
     if (ch) {
-      const  lengSpoken = 'Hindi' ;
+      const lengSpoken = 'Hindi';
       this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
     }
   }
 
   isItalian(ch: boolean) {
     if (ch) {
-      const  lengSpoken = 'Italian' ;
+      const lengSpoken = 'Italian';
       this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
     }
   }
 
   isRussian(ch: boolean) {
     if (ch) {
-      const  lengSpoken = this.Russian ;
+      const lengSpoken = this.Russian;
       this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
     }
   }
 
   isKorean(ch: boolean) {
-    const  lengSpoken = this.Korean;
-    this.parameter_list.languageMap[lengSpoken] =!this.parameter_list.languageMap[lengSpoken];
+    const lengSpoken = this.Korean;
+    this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
 
   }
 
   isPortugese(ch: boolean) {
-    if(ch){
-      const  lengSpoken = this.Polish;
+    if (ch) {
+      const lengSpoken = this.Polish;
       this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
     }
 
   }
 
   isChinse(ch: boolean) {
-    if(ch){
-      const  lengSpoken = this.Chinese;
+    if (ch) {
+      const lengSpoken = this.Chinese;
       this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
     }
 
@@ -356,28 +345,28 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   isEgyptsin(ch: boolean) {
 
-    if(ch){
-      const  lengSpoken = this.Egyptian;
+    if (ch) {
+      const lengSpoken = this.Egyptian;
       this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
     }
   }
 
   isFarsi(ch: boolean) {
-    if(ch){
-      const  lengSpoken = this.Farsi;
+    if (ch) {
+      const lengSpoken = this.Farsi;
       this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
     }
   }
 
   isPolish(ch: boolean) {
-    if(ch){
-      const  lengSpoken = this.Polish;
+    if (ch) {
+      const lengSpoken = this.Polish;
       this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
     }
   }
 
   isGreek(ch: boolean) {
-    const  lengSpoken = this.Greek;
+    const lengSpoken = this.Greek;
     this.parameter_list.languageMap[lengSpoken] = !this.parameter_list.languageMap[lengSpoken];
   }
 }

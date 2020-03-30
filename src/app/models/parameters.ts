@@ -8,8 +8,8 @@ export class Parameters {
   acceptingNew: boolean;
   firstName: string;
   lastName: string;
-  extendedHrsWeek: boolean;
-  extendedHrsSat: boolean;
+  extendedHrsWeek: string;
+  extendedHrsSat: string;
   gender: string;
   handicapAccessible: boolean;
   languageSponeken: string[];
