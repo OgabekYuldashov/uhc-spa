@@ -29,8 +29,8 @@ export class DataSearchService {
     this.ZipCodeMap.set('48258|Detroit|MI|42.239933|-83.150823|-5|1|', '42.239933,-83.150823');
     this.ZipCodeMap.set('10124|New York|NY|40.780751|-73.977182|-5|1|', '40.780751,-73.977182');
     this.ZipCodeMap.set('60611|Chicago|IL|41.904667|-87.62504|-6|1|', '41.904667,-87.62504');
-    this.ZipCodeMap.set('94175|San Francisco|CA|37.784827|-122.727802|', '-8|1|37.784827,-122.727802');
-    this.ZipCodeMap.set('89006|Boulder City|NV|35.927901|-114.972061|', '-8|1|35.927901,-114.972061');
+    this.ZipCodeMap.set('94175|San Francisco|CA|37.784827|-122.727802|-8|1|', '37.784827,-122.727802');
+    this.ZipCodeMap.set('89006|Boulder City|NV|35.927901|-114.972061|-8|1|', '35.927901,-114.972061');
     this.ZipCodeMap.set('90062|Los Angeles|CA|34.003213|-118.3078|-8|1|', '34.003213,-118.3078');
     this.ZipCodeMap.set('85038|Phoenix|AZ|33.276539|-112.18717|-7|0|', '33.276539,-112.18717');
     this.ZipCodeMap.set('43232|Columbus|OH|39.924213|-82.86563|-5|1|', '39.924213,-82.86563');
@@ -195,12 +195,12 @@ export class DataSearchService {
     let dist = '99999km';
     let loc = '62.298254,-149.87542';
     let latlong = false;
-    if (this.parameters.location !== undefined) {
+    if (this.parameters.location !== undefined && this.parameters.location.trim() !== '') {
+      const city_state = this.parameters.location.toLowerCase().split(',', 2);
       if (reg.test(this.parameters.location.replace(/\s/g, '')) === true) {
         AND_LOGIC.push({ match_phrase: { zip: this.parameters.location}});
       } else {
         // tslint:disable-next-line:variable-name
-        const city_state = this.parameters.location.toLowerCase().split(',', 2);
         for (const k of this.ZipCodeMap.keys()) {
           // console.log(k.toLowerCase().includes(city_state[0]));
           // console.log(k.toLowerCase().includes(city_state[1]));
@@ -213,6 +213,10 @@ export class DataSearchService {
             console.log('found!!!!');
             break;
           }
+        }
+        if ( latlong === false) {
+          AND_LOGIC.push({ match_phrase: { city: city_state[0].toUpperCase().trim()}});
+          AND_LOGIC.push({ match_phrase: { state: city_state[1].trim()}});
         }
         console.log('Lat longs');
         console.log(city_state);
