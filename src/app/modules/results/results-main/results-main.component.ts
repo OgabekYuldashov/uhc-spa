@@ -162,16 +162,24 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   }
 
   changeGender(gender: string) {
-    this.searchParams.gender = gender;
+    console.log('Before changeGender: ' + this.searchParams.gender);
+    if (this.searchParams.gender === gender) {
+      this.searchParams.gender = undefined;
+    } else {
+      this.searchParams.gender = gender;
+    }
+    console.log('After changeGender: ' + this.searchParams.gender);
   }
 
   onLangCheckboxChanged(language: string) {
-    console.log('onLangCheckboxChanged: ' + language);
-    this.searchParams.languageMap[language] = !this.searchParams.languageMap[language];
+    console.log('Before onLangCheckboxChanged: ' + this.searchParams.languageMap.get(language));
+    this.searchParams.languageMap.set(language, !this.searchParams.languageMap.get(language));
+    console.log('After onLangCheckboxChanged: ' + this.searchParams.languageMap.get(language));
   }
 
   onSpecializationCheckboxChanged(specialization: string) {
-    console.log('onSpecializationCheckboxChanged: ' + specialization);
-    this.searchParams.specializationMap[specialization] = !this.searchParams.specializationMap[specialization];
+    console.log('Before onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
+    this.searchParams.specializationMap.set(specialization, !this.searchParams.specializationMap.get(specialization));
+    console.log('After onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
   }
 }
