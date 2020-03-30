@@ -187,8 +187,8 @@ export class DataSearchService {
           should: [ LANG_LOGIC ]
         }
       }]
-    }
-  });
+      }
+    });
 
     for (const key of this.parameters.specializationMap.keys()) {
       if ( key !== undefined && this.parameters.specializationMap.get(key) === true) {
