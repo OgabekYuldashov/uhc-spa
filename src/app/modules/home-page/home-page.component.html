@@ -118,12 +118,12 @@
           <br/>
           <label class="Saturday"> Saturday</label>
           <input style="height:12px" type="checkbox" id="extendedhourse_saturday" #inputElement4
-                 [(ngModel)]="Extendedhourse_saturday" (change)="isThereExtendedhourse_saturday(inputElement4.checked)"
+                 (change)="isThereExtendedhourse_saturday(inputElement4.checked)"
                  name="extendedhourse_saturday" data-toggle="toggle"/>
           <br/>
           <br/>
           <label class="Weekday"> Weekday</label>
-          <input type="checkbox" id="extendedhourse_weekday" #inputElement6 [(ngModel)]="weekday"
+          <input type="checkbox" id="extendedhourse_weekday" #inputElement6
                  (change)="isWeekdayWorking(inputElement6.checked)" name="extendedhourse_weekday" data-toggle="toggle"/>
         </div>
 
@@ -133,7 +133,7 @@
           <br/>
           <label class="Handicap-Accessible"> Handicap Accessible</label>
           <!--          <input type="checkbox" id="handicapAccecebility" name="handicapAccecebility" data-toggle="toggle"toggle>-->
-          <input type="checkbox" #inputElement7 [(ngModel)]="handicapAccecebility"
+          <input type="checkbox" #inputElement7
                  (change)="ishandicapAccecebility(inputElement7.checked)" data-toggle="toggle"/>
           <span></span>
           <br/>
