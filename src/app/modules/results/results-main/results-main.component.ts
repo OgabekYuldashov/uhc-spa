@@ -48,6 +48,59 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   ];
 
 
+
+
+  //
+  // Slider attributes
+  autoTicks = false;
+  disabled = false;
+  invert = false;
+  max = 50;
+  min = 0;
+  showTicks = false;
+  step = 1;
+  thumbLabel = true;
+  value = 0;
+  vertical = false;
+  tickInterval = 1;
+  // tslint:disable-next-line:variable-name
+  Choose_Dental_Plan: string;
+  // tslint:disable-next-line:variable-name
+  parameter_list: Parameters = new Parameters();
+
+  getSliderTickInterval(): number {
+    if (this.showTicks) {
+      const value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
+      this.searchParams.distanceFromYourAddress = this.value + 'mi';
+      return this.value;
+    }
+
+    return 0;
+  }
+  onPlanChange(e) {
+    this.searchParams.plans = e;
+    console.log('selected plan is ' + this.searchParams.plans);
+
+
+  }
+
+  filterByPlan_And_Location_Distance() {
+    this.dataService.getResultItems().subscribe(r => {
+      this.resItems = this.dataService.getResults(r);
+      console.log('res:');
+      console.log(this.resItems);
+    });
+
+    this.searchParams = this.dataService.getParameters();
+    console.log('Search Params:');
+    console.log(this.searchParams);
+  }
+  //
+
+
+
+
+
   constructor(private dataService: DataSearchService) {
     this.searchParams = dataService.getParameters();
     console.log('Search Params:');

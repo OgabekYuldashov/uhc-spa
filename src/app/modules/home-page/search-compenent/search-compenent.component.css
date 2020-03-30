@@ -40,11 +40,13 @@
   /*width: 959px;*/
   width: 843px;
   /*height: 121px;*/
+  margin-top: 10pt;
+  margin-bottom: 10pt;
   height: 50px;
   object-fit: contain;
   border-radius: 4px;
-  box-shadow: 0 2px 13px 0 rgba(14, 21, 45, 0.16);
-  border: solid 1px var(--white);
+  /*box-shadow: 0 2px 13px 0 rgba(14, 21, 45, 0.16);*/
+  border: solid 1px #e6e6e6;
   background-color: #ffffff;
   /*margin-right: 121px;*/
   /*margin-right: 242px;*/

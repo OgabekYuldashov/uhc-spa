@@ -9,7 +9,7 @@
       <option class="DENTAL-PLAN" value="National Options PPO 30"> National Options PPO 30</option>
     </select>
 
-    <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="YOUR LOCATION">
+    <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="YOUR LOCATION" value="{{searchParams.location}}">
     <!--      <mat-card class="example-result-card">-->
 
     <label class="distancetoSearch"> Distance  </label>
@@ -20,11 +20,11 @@
         [step]="step"
         [thumbLabel]="thumbLabel"
         [tickInterval]="getSliderTickInterval()"
-        [(ngModel)]="value"
+        [(ngModel)]="searchParams.distanceFromYourAddress"
       >
       </mat-slider>
     </div>
 
     <!--===============================================-->
-    <button class="AdvancedSEARCH_div" (click)="filterByPlan_And_Location_Distance()"> Search</button>
+    <button class="AdvancedSEARCH_div btn btn-primary" (click)="filterByPlan_And_Location_Distance()"> Search</button>
   </div>
