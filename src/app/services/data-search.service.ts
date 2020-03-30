@@ -95,6 +95,10 @@ export class DataSearchService {
     const resItems = new Array<ResultItem>();
     console.log('elastic data:');
     console.log(js);
+    console.log('Search Summary: \n' +
+    'time taken:' + js.took + ' msec.\n' +
+    'total records:' + ((js.hits.total.value === 10000) ? '9999 plus.' : js.hits.total.value));
+
     // @ts-ignore
     for ( const j of js.hits.hits) {
       resItems.push(j._source);
@@ -140,23 +144,14 @@ export class DataSearchService {
   }
 
   public getResultItems(): Observable<JsonObject> {
-    const searchParams: RequestParams.Search = {
-      query: {
-        match: { city: 'chicago' }
-      }
-    };
-    const matchQ = {
-      // state: 'AK',
-      npi: '1720135999'
-    };
     // @ts-ignore
     const AND_LOGIC = [];
     const OR_LOGIC = [];
     // const AND_LOGIC = [{ match: { state: 'AK'}},{ match: { handicapAccessible : 'N'}}];
     // const OR_LOGIC = [{match: { languages:'English'}},{ match: { languages:'Egyptian'}}];
-    if (this.parameters.plans !== undefined) { AND_LOGIC.push({ match_phrase: { plans: this.parameters.plans}});}
+    if (this.parameters.plans !== undefined) { AND_LOGIC.push({ match_phrase: { plans: this.parameters.plans}}); }
     // if (this.parameters.specialization !== undefined) { AND_LOGIC.push({ match: { specialization: this.parameters.specialization}});}
-    if (this.parameters.acceptingNew === true) { AND_LOGIC.push({ match: { acceptingNew: 'Y'}});}
+    if (this.parameters.acceptingNew === true) { AND_LOGIC.push({ match: { acceptingNew: 'Y'}}); }
     if (this.parameters.firstName !== undefined && this.parameters.firstName === '') {
       AND_LOGIC.push({ match: { firstName: this.parameters.firstName}});
     }
@@ -169,36 +164,50 @@ export class DataSearchService {
     if (this.parameters.extendedHrsSat === true) {
       AND_LOGIC.push({ match: { extendedHrsSat: 'Y'}});
     }
-    if (this.parameters.gender !== undefined) { AND_LOGIC.push({ match: { gender: this.parameters.gender}});}
+    if (this.parameters.gender !== undefined) { AND_LOGIC.push({ match: { gender: this.parameters.gender}}); }
     if (this.parameters.handicapAccessible === true) {
       AND_LOGIC.push({ match: { handicapAccessible: this.parameters.handicapAccessible}});
     }
+    const LANG_LOGIC = [];
+    LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
     for (const key of this.parameters.languageMap.keys()) {
       if ( key !== undefined && this.parameters.languageMap.get(key) === true) {
-        OR_LOGIC.push({ match: { languages: key}});
+        LANG_LOGIC.push({ match_phrase: { languages: key}});
       }
     }
+    AND_LOGIC.push({
+      bool: {
+      must: [{
+        bool: {
+          should: [ LANG_LOGIC ]
+        }
+      }]
+      }
+    });
 
     for (const key of this.parameters.specializationMap.keys()) {
       if ( key !== undefined && this.parameters.specializationMap.get(key) === true) {
         AND_LOGIC.push({ match_phrase: { specialization: key}});
       }
     }
-    AND_LOGIC.push({ match: { languages: 'English'}});
+    // AND_LOGIC.push({ match: { languages: 'English'}});
     if ( OR_LOGIC.length === 0) {
       OR_LOGIC.push({ match: { languages: 'English'}} );
     }
-    // const reg = new RegExp(/^\d+(,\d+)*$/);
     const reg = new RegExp(/^\d*$/);
-    console.log('good zip test');
-    console.log(reg.test(this.parameters.location));
+    if (reg.test(this.parameters.location)) {
+      console.log(`${this.parameters.location} must be a zip code`);
+    }
     let dist = '99999km';
     let loc = '62.298254,-149.87542';
     let latlong = false;
     if (this.parameters.location !== undefined && this.parameters.location.trim() !== '') {
-      const city_state = this.parameters.location.toLowerCase().split(',', 2);
+      // tslint:disable-next-line:variable-name
+      const city_state: string[] = this.parameters.location.toLowerCase().split(',', 2);
       if (reg.test(this.parameters.location.replace(/\s/g, '')) === true) {
         AND_LOGIC.push({ match_phrase: { zip: this.parameters.location}});
+      } else if (city_state.length === 1) {
+        AND_LOGIC.push({ match_phrase: { city: city_state[0].toUpperCase().trim()}});
       } else {
         // tslint:disable-next-line:variable-name
         for (const k of this.ZipCodeMap.keys()) {
@@ -207,20 +216,22 @@ export class DataSearchService {
           const key = k.toLowerCase();
           if (key.includes(city_state[0].trim()) && key.includes('|' + city_state[1].trim() + '|')) {
             loc = this.ZipCodeMap.get(k);
-            console.log( 'latlong is:' + this.ZipCodeMap.get(k))
+            console.log( 'latlong is:' + this.ZipCodeMap.get(k));
             dist = '5km';
             latlong = true;
-            console.log('found!!!!');
+            // console.log('found!!!!');
             break;
           }
         }
         if ( latlong === false) {
           AND_LOGIC.push({ match_phrase: { city: city_state[0].toUpperCase().trim()}});
-          AND_LOGIC.push({ match_phrase: { state: city_state[1].trim()}});
+          if (city_state.length === 2 && city_state[0].trim() !== '' ) {
+            AND_LOGIC.push({ match_phrase: { state: city_state[1].toUpperCase().trim()}});
+          }
         }
-        console.log('Lat longs');
+        console.log('used Lat longs');
         console.log(city_state);
-        console.log(loc+','+dist);
+        console.log(loc + ',' + dist);
       }
     }
 
@@ -228,7 +239,7 @@ export class DataSearchService {
     // this.parameters.distanceFromYourAddress = '9';
     // this.parameters.location = '62.298254,-149.87542';
     if ( this.parameters.distanceFromYourAddress !== undefined && latlong === true && this.parameters.distanceFromYourAddress !== '0') {
-      dist = '' + this.parameters.distanceFromYourAddress + 'km';
+      dist = '' + this.parameters.distanceFromYourAddress + 'mi';
     }
 
     const NOT_LOGIC = {range: {latConfidence: { lte: -1 }}};
@@ -249,7 +260,7 @@ export class DataSearchService {
     };
 
     console.log(paraQuery);
-    const size = '50';
+    const size = '25';
     // @ts-ignore
     return this.httpClient.post<JsonObject>(`${this.hostUrl}?size=${size}`, paraQuery, headers);
   }
