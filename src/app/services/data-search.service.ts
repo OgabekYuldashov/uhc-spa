@@ -169,12 +169,15 @@ export class DataSearchService {
       AND_LOGIC.push({ match: { handicapAccessible: 'Y'}});
     }
     const LANG_LOGIC = [];
-    LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
     for (const key of this.parameters.languageMap.keys()) {
       if ( key !== undefined && this.parameters.languageMap.get(key) === true) {
         LANG_LOGIC.push({ match_phrase: { languages: key}});
       }
     }
+    if ( LANG_LOGIC.length === 0) {
+      LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
+    }
+
     AND_LOGIC.push({
       bool: {
       must: [{
@@ -185,10 +188,25 @@ export class DataSearchService {
       }
     });
 
+    const SPEC_LOGIC = [];
     for (const key of this.parameters.specializationMap.keys()) {
       if ( key !== undefined && this.parameters.specializationMap.get(key) === true) {
-        AND_LOGIC.push({ match_phrase: { specialization: key}});
+        SPEC_LOGIC.push({ match_phrase: { specialization: key}});
       }
+    }
+
+    console.log(SPEC_LOGIC);
+
+    if (SPEC_LOGIC.length > 0) {
+      AND_LOGIC.push({
+        bool: {
+          must: [{
+            bool: {
+              should: [ SPEC_LOGIC ]
+            }
+          }]
+        }
+      });
     }
     // AND_LOGIC.push({ match: { languages: 'English'}});
     if ( OR_LOGIC.length === 0) {
