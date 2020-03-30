@@ -154,9 +154,9 @@ export class DataSearchService {
     const OR_LOGIC = [];
     // const AND_LOGIC = [{ match: { state: 'AK'}},{ match: { handicapAccessible : 'N'}}];
     // const OR_LOGIC = [{match: { languages:'English'}},{ match: { languages:'Egyptian'}}];
-    if (this.parameters.plans !== undefined) { AND_LOGIC.push({ match_phrase: { plans: this.parameters.plans}});}
+    if (this.parameters.plans !== undefined) { AND_LOGIC.push({ match_phrase: { plans: this.parameters.plans}}); }
     // if (this.parameters.specialization !== undefined) { AND_LOGIC.push({ match: { specialization: this.parameters.specialization}});}
-    if (this.parameters.acceptingNew === true) { AND_LOGIC.push({ match: { acceptingNew: 'Y'}});}
+    if (this.parameters.acceptingNew === true) { AND_LOGIC.push({ match: { acceptingNew: 'Y'}}); }
     if (this.parameters.firstName !== undefined && this.parameters.firstName === '') {
       AND_LOGIC.push({ match: { firstName: this.parameters.firstName}});
     }
@@ -169,15 +169,26 @@ export class DataSearchService {
     if (this.parameters.extendedHrsSat === true) {
       AND_LOGIC.push({ match: { extendedHrsSat: 'Y'}});
     }
-    if (this.parameters.gender !== undefined) { AND_LOGIC.push({ match: { gender: this.parameters.gender}});}
+    if (this.parameters.gender !== undefined) { AND_LOGIC.push({ match: { gender: this.parameters.gender}}); }
     if (this.parameters.handicapAccessible === true) {
       AND_LOGIC.push({ match: { handicapAccessible: this.parameters.handicapAccessible}});
     }
+    const LANG_LOGIC = [];
+    LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
     for (const key of this.parameters.languageMap.keys()) {
       if ( key !== undefined && this.parameters.languageMap.get(key) === true) {
-        OR_LOGIC.push({ match: { languages: key}});
+        LANG_LOGIC.push({ match_phrase: { languages: key}});
       }
     }
+    AND_LOGIC.push({
+      bool: {
+      must: [{
+        bool: {
+          should: [ LANG_LOGIC ]
+        }
+      }]
+    }
+  });
 
     for (const key of this.parameters.specializationMap.keys()) {
       if ( key !== undefined && this.parameters.specializationMap.get(key) === true) {
@@ -207,7 +218,7 @@ export class DataSearchService {
           const key = k.toLowerCase();
           if (key.includes(city_state[0].trim()) && key.includes('|' + city_state[1].trim() + '|')) {
             loc = this.ZipCodeMap.get(k);
-            console.log( 'latlong is:' + this.ZipCodeMap.get(k))
+            console.log( 'latlong is:' + this.ZipCodeMap.get(k));
             dist = '5km';
             latlong = true;
             console.log('found!!!!');
@@ -216,11 +227,13 @@ export class DataSearchService {
         }
         if ( latlong === false) {
           AND_LOGIC.push({ match_phrase: { city: city_state[0].toUpperCase().trim()}});
-          AND_LOGIC.push({ match_phrase: { state: city_state[1].trim()}});
+          if (city_state.length === 2 && city_state[0].trim() !== '' ) {
+            AND_LOGIC.push({ match_phrase: { state: city_state[1].toUpperCase().trim()}});
+          }
         }
         console.log('Lat longs');
         console.log(city_state);
-        console.log(loc+','+dist);
+        console.log(loc + ',' + dist);
       }
     }
 
