@@ -41,7 +41,8 @@ import { SearchCompenentComponent } from './home-page/search-compenent/search-co
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    SearchCompenentComponent
   ]
 })
 export class ModulesModule { }
