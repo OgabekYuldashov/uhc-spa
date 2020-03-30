@@ -34,6 +34,7 @@ export class ResultItem {
   licenseNumber: string;
   extendedHrsWeek: string;
   lastName: string;
+  allData: any;
 
 
   constructor() {
