@@ -33,7 +33,7 @@ export class DataSearchService {
 
   public setParameters(p: Parameters) {
     this.parameters = p;
-    this.parameters.languageMap = new Map<string, boolean>();
+    /*this.parameters.languageMap = new Map<string, boolean>();
 
     // this.parameters.languageMap.set('English', false);
     this.parameters.languageMap.set('Arabic', false);
@@ -65,7 +65,7 @@ export class DataSearchService {
 
     for (const s of p.specialization) {
       this.parameters.specializationMap.set(s, true);
-    }
+    }*/
 
     console.log(this.parameters);
   }

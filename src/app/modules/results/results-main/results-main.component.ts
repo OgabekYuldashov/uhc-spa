@@ -162,7 +162,13 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   }
 
   changeGender(gender: string) {
-    this.searchParams.gender = gender;
+    console.log('Before changeGender: ' + this.searchParams.gender);
+    if (this.searchParams.gender === gender) {
+      this.searchParams.gender = undefined;
+    } else {
+      this.searchParams.gender = gender;
+    }
+    console.log('After changeGender: ' + this.searchParams.gender);
   }
 
   onLangCheckboxChanged(language: string) {

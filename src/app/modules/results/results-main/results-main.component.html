@@ -81,8 +81,12 @@
         <input type="button" name="gender" class="btn btn-default" value="Male" (click)="changeGender('M')">
         <input type="button" name="gender" class="btn btn-primary active" value="Female" (click)="changeGender('F')">
       </div>
-      <div *ngIf="searchParams.gender !== 'F'" class="btn-group btn-toggle gender">
+      <div *ngIf="searchParams.gender == 'M'" class="btn-group btn-toggle gender">
         <input type="button" name="gender" class="btn btn-primary active" value="Male" (click)="changeGender('M')">
+        <input type="button" name="gender" class="btn btn-default" value="Female" (click)="changeGender('F')">
+      </div>
+      <div *ngIf="!searchParams.gender" class="btn-group btn-toggle gender">
+        <input type="button" name="gender" class="btn btn-default" value="Male" (click)="changeGender('M')">
         <input type="button" name="gender" class="btn btn-default" value="Female" (click)="changeGender('F')">
       </div>
     </div>
