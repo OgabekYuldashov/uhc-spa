@@ -5,6 +5,7 @@ import {DataSearchService} from '../../services/data-search.service';
 import {MatSliderModule} from '@angular/material/slider';
 
 import {AfterViewInit, ViewChild, ElementRef} from '@angular/core';
+import { ThrowStmt } from '@angular/compiler';
 
 // ==========================model=======
 
@@ -42,8 +43,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   Greek = 'Greek';
   // tslint:disable-next-line:no-construct ban-types
   langs: String[]= new Array();
-  genderM: boolean = false;
-  genderF: boolean = false;
+  genderM:boolean;
+  genderF: boolean;
 
   constructor(private route: Router, private dataSearchService: DataSearchService) {
     // tslint:disable-next-line:variable-name
@@ -251,7 +252,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   isFemale($event: MouseEvent) {
     this.parameter_list.gender = 'F';
-    this.genderF = ! this.genderF;
+    this.genderF = !this.genderF;
   }
 
   onPlanChange(e) {

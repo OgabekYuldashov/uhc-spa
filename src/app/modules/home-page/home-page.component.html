@@ -153,23 +153,39 @@
                 <div class="GENDER_div">
                     <label class="GENDER"> GENDER</label>
                     <br />
-                    <div>
-                    <div *ngIf="!genderM" class="btn-group btn-toggle gender">                        
-                        <input type="button" name="gender" class="MALE btn-defalut active" value="Male" (click)="isMale($event)" />
+                    <div *ngIf="genderF && !genderM" class="btn-group btn-toggle gender">
+                        <input type="button" name="gender" class="MALE btn btn-default" value="" (click)="isMale($event)">
+                        <input type="button" name="gender" class="FEMALE btn btn-primary active" value="Female" (click)="isFemale($event)">
                     </div>
-                    <div *ngIf="genderM" class="btn-group btn-toggle gender">
-                      <input type="button" name="gender" class=" MALE btn btn-primary active" value="" (click)="isMale($event)" />
+                    <div *ngIf="genderM && !genderF" class="btn-group btn-toggle gender">
+                        <input type="button" name="gender" class="MALE btn btn-primary active" value="Male" (click)="isMale($event)">
+                        <input type="button" name="gender" class="FEMALE btn btn-default" value="" (click)="isFemale($event)">
                     </div>
+                    <div *ngIf="genderF && genderM" class="btn-group btn-toggle gender">
+                        <input type="button" name="gender" class="MALE btn btn-primary active" value="Male" (click)="isMale($event)">
+                        <input type="button" name="gender" class="FEMALE btn btn-primary active" value="Female" (click)="isFemale($event)">
                     </div>
-                      
-                    <div>
-                      <div *ngIf="!genderF" class="btn-group btn-toggle gender">                        
-                          <input type="button" name="gender" class=" FEMALE btn-default active" value="Female" (click)="isFemale($event)" />
-                      </div>
-                      <div *ngIf="!genderF" class="btn-group btn-toggle gender">
-                        <input type="button" name="gender" class=" FEMALE btn btn-primary active" value="" (click)="isFemale($event)" />
-                      </div>
-                      </div>
+                    <div *ngIf="!genderF && !genderM" class="btn-group btn-toggle gender">
+                        <input type="button" name="gender" class="MALE btn btn-default" value="" (click)="isMale($event)">
+                        <input type="button" name="gender" class="FEMALE btn btn-default" value="" (click)="isFemale($event)">
+                    </div>
+                    <!-- <div class="btn-group btn-toggle gender">
+                        <div *ngIf="!genderM">
+                            <input type="button" name="gender" class="MALE btn-defalut " value="Male" (click)="isMale($event)" />
+                        </div>
+                        <div *ngIf="genderM">
+                            <input type="button" name="gender" class=" MALE btn btn-primary active" value="" (click)="isMale($event)" />
+                        </div>
+                    </div>
+
+                    <div class="btn-group btn-toggle gender">
+                        <div *ngIf="!genderF">
+                            <input type="button" name="gender" class=" FEMALE btn-default" value="Female" (click)="isFemale($event)" />
+                        </div>
+                        <div *ngIf="!genderF">
+                            <input type="button" name="gender" class=" FEMALE btn btn-primary active" value="" (click)="isFemale($event)" />
+                        </div>
+                    </div> -->
                 </div>
                 <!-- <button (click)="isMale($event)" class="MALE" id="male" name="male">
             MALE
