@@ -10,6 +10,7 @@ import {HomePageComponent} from './modules/home-page/home-page.component';
 import {FormsModule} from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
 import {ModulesModule} from './modules/modules.module';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 // @ts-ignore
 // @ts-ignore
@@ -26,7 +27,8 @@ import {ModulesModule} from './modules/modules.module';
     DetailsModule,
     FormsModule,
     MatSliderModule,
-    ModulesModule
+    ModulesModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
