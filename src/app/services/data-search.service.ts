@@ -162,7 +162,7 @@ export class DataSearchService {
       }
     }
     AND_LOGIC.push({ match: { languages: 'English'}});
-    if ( this.parameters.languageSponeken === undefined) {
+    if ( OR_LOGIC.length === 0) {
       OR_LOGIC.push({ match: { languages: 'English'}} );
     }
     const reg = new RegExp(/^\d+(,\d+)*$/);
