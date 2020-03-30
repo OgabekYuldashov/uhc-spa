@@ -167,19 +167,16 @@ export class DataSearchService {
     }
     const reg = new RegExp(/^\d+(,\d+)*$/);
     console.log('test');
-    console.log(reg.test('62254,123'));
+    console.log(reg.test(this.parameters.location));
     let dist = '99999km';
     let loc = '62.298254,-149.87542';
-    if (this.parameters.location !== undefined) {
+    if (this.parameters.location !== undefined && reg.test(this.parameters.location.replace(/\s/g, '')) === true) {
       loc = this.parameters.location;
     }
-    this.parameters.distanceFromYourAddress = '9';
-    this.parameters.location = '62.298254,-149.87542';
-    if ( this.parameters.distanceFromYourAddress !== undefined && reg.test(loc.replace(/\s/g, '')) === true) {
+    // this.parameters.distanceFromYourAddress = '9';
+    // this.parameters.location = '62.298254,-149.87542';
+    if ( this.parameters.distanceFromYourAddress !== undefined) {
       dist = '' + this.parameters.distanceFromYourAddress + 'km';
-    }
-    if (this.parameters.location !== undefined) {
-      loc = this.parameters.location;
     }
 
     const NOT_LOGIC = {range: {latConfidence: { lte: -1 }}};
