@@ -11,7 +11,7 @@ export class Parameters {
   extendedHrsWeek: boolean;
   extendedHrsSat: boolean;
   gender: string;
-  handicapAccessible: boolean;
+  handicapAccessible = false;
   languageSponeken: string[];
   languageMap: Map<string, boolean> = new Map<string, boolean>();
   specializationMap: Map<string, boolean> = new Map<string, boolean>();

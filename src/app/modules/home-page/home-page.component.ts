@@ -208,31 +208,15 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
 
   isThereExtendedhourse_saturday(checked: boolean) {
-    if (!checked) {
-      this.Extendedhourse_saturday = 'N';
-    } else {
-      this.Extendedhourse_saturday = 'Y';
-    }
-
+    this.searchParams.extendedHrsSat = checked;
   }
 
   isWeekdayWorking(checked: boolean) {
-    if (!checked) {
-      this.weekday = 'N';
-    } else {
-      this.weekday = 'Y';
-    }
-
+    this.searchParams.extendedHrsWeek = checked;
   }
 
   ishandicapAccecebility(checked: boolean) {
-
-    if (!checked) {
-      this.handicapAccecebility = 'N';
-    } else {
-      this.handicapAccecebility = 'Y';
-    }
-
+    this.searchParams.handicapAccessible = checked;
   }
 
 
@@ -240,8 +224,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.searchParams.plans = e;
     console.log('selected plan is ' + e);
     this.Choose_Dental_Plan = e;
-
-
   }
 
 }
