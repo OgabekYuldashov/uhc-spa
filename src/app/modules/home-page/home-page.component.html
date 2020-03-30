@@ -7,17 +7,14 @@
         <div class="Rectangle-3-Copy-3" style="width: 71%; height: 121px;">
             <div style="padding-top: 27px; padding-left: 27px; padding-left: 21px;">
                 <select id="plan" [(ngModel)]="this.Choose_Dental_Plan" #plan class="DENTAL-PLAN" (change)="onPlanChange(plan.value)">
-          <option class="DENTAL-PLAN" value="" selected> DENTAL PLAN</option>
-          <option class="DENTAL-PLAN" value="National Options PPO 20"
-            >National Options PPO 20</option
-          >
-          <option class="DENTAL-PLAN" value="National Select Managed Care"
-            >National Select Managed Care</option
-          >
-          <option class="DENTAL-PLAN" value="National Options PPO 30">
-            National Options PPO 30</option
-          >
-        </select>
+                   <option class="DENTAL-PLAN" value="" selected> DENTAL PLAN</option>
+                   <option class="DENTAL-PLAN" value="National Options PPO 20"
+                   >National Options PPO 20</option>
+                   <option class="DENTAL-PLAN" value="National Select Managed Care"
+                   >National Select Managed Care</option>
+                   <option class="DENTAL-PLAN" value="National Options PPO 30">
+                   National Options PPO 30</option>
+                </select>
 
                 <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="       YOUR LOCATION" />
                 <!--      <mat-card class="example-result-card">-->
@@ -156,14 +153,23 @@
                 <div class="GENDER_div">
                     <label class="GENDER"> GENDER</label>
                     <br />
-                    <div *ngIf="gender" class="btn-group btn-toggle gender">
-                        <input type="button" name="gender" class=" MALE btn btn-default" value="Male" (click)="isMale($event)">
-                        <input type="button" name="gender" class=" FEMALE btn-primary active" value="Female" (click)="isFemale($event)">
+                    <div>
+                    <div *ngIf="!genderM" class="btn-group btn-toggle gender">                        
+                        <input type="button" name="gender" class="MALE btn-defalut active" value="Male" (click)="isMale($event)" />
                     </div>
-                    <div *ngIf="!gender" class="btn-group btn-toggle gender">
-                        <input type="button" name="gender" class=" MALE btn btn-primary active" value="Male" (click)="isMale($event)">
-                        <input type="button" name="gender" class="FEMALE btn btn-default" value="Female" (click)="isFemale($event)">
+                    <div *ngIf="genderM" class="btn-group btn-toggle gender">
+                      <input type="button" name="gender" class=" MALE btn btn-primary active" value="" (click)="isMale($event)" />
                     </div>
+                    </div>
+                      
+                    <div>
+                      <div *ngIf="!genderF" class="btn-group btn-toggle gender">                        
+                          <input type="button" name="gender" class=" FEMALE btn-default active" value="Female" (click)="isFemale($event)" />
+                      </div>
+                      <div *ngIf="!genderF" class="btn-group btn-toggle gender">
+                        <input type="button" name="gender" class=" FEMALE btn btn-primary active" value="" (click)="isFemale($event)" />
+                      </div>
+                      </div>
                 </div>
                 <!-- <button (click)="isMale($event)" class="MALE" id="male" name="male">
             MALE
@@ -176,7 +182,6 @@
           >
             FEMALE
           </button> -->
-
             </div>
 
             <!--      ===================   Languages attributes ================================-->
