@@ -14,32 +14,47 @@ import {AfterViewInit, ViewChild, ElementRef} from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit, AfterViewInit {
-  canSpeackArabic: string;
-  canSpeakSpanish: string;
-  canSpeapkgermany: string;
-  canSpeakItaly: string;
-  canSpeakPortuese: string;
-  canSpeakFarsi: string;
+
+  // =========================================================
+
+  searchParams = new Parameters();
+
+  changeGender(gender: string) {
+    console.log('Before changeGender: ' + this.searchParams.gender);
+
+    if (this.searchParams.gender === gender) {
+      this.searchParams.gender = undefined;
+    } else {
+      this.searchParams.gender = gender;
+    }
+    console.log('After changeGender: ' + this.searchParams.gender);
+  }
+
+  onLangCheckboxChanged(language: string) {
+    console.log('Before onLangCheckboxChanged: ' + this.searchParams.languageMap.get(language));
+    this.searchParams.languageMap.set(language, !this.searchParams.languageMap.get(language));
+    console.log('After onLangCheckboxChanged: ' + this.searchParams.languageMap.get(language));
+  }
+
+  onSpecializationCheckboxChanged(specialization: string) {
+    console.log('Before onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
+
+    this.searchParams.specializationMap.set(specialization, !this.searchParams.specializationMap.get(specialization));
+
+    console.log('After onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
+  }
+
+
+
+
+  // =========================================================
+
+
   // tslint:disable-next-line:variable-name
   Choose_Dental_Plan: string;
 
   togglebutton: number = 1;
 
-  Arabic = 'Arabic';
-  Spanish = 'Spanish';
-  German = 'German';
-  Romanian = 'Romanian';
-  French = 'French';
-  Hindi = 'Hindi';
-  Italian = 'Italian';
-  Russian = 'Russian';
-  Korean = 'Korean';
-  Portugese = 'Portugese';
-  Chinese = 'Chinese'
-  Egyptian = 'Egyptian';
-  Farsi = 'Farsi';
-  Polish = 'Polish';
-  Greek = 'Greek';
   // tslint:disable-next-line:no-construct ban-types
   langs: String[]= new Array();
   gender: boolean = false;
@@ -60,14 +75,13 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   showTicks = false;
   step = 1;
   thumbLabel = true;
-  value = 0;
+  distanceValue = 0;
   vertical = false;
   tickInterval = 1;
 
   isAdvancedSearchButtonCliked = false;
 
   // tslint:disable-next-line:variable-name
-  parameter_list: Parameters = new Parameters();
 
   // ==================== Language Section======================
   oralSureon: string;
@@ -112,25 +126,21 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   // ========================
 
-  onChange(e) {
-    this.parameter_list.plans = e.target.value.toString();
-
-  }
 
 
   filterByPlan_And_Location_Distance() {
 
     this.isAdvancedSearchButtonCliked = false;
     // tslint:disable-next-line:max-line-length
-    this.parameter_list.languageSponeken = [this.canSpeackArabic, this.canSpeakFarsi, this.canSpeakItaly, this.canSpeakPortuese, this.canSpeakSpanish, this.canSpeapkgermany];
-    this.parameter_list.specialization = [this.oralSureon, this.endodontist];
-    console.log(this.parameter_list);
-    this.isAdvancedSearchButtonCliked = false;
+    // this.searchParams.languageSponeken = [this.canSpeackArabic, this.canSpeakFarsi, this.canSpeakItaly, this.canSpeakPortuese, this.canSpeakSpanish, this.canSpeapkgermany];
+    // this.searchParams.specialization = [this.oralSureon, this.endodontist];
+    // console.log(this.searchParams);
+    // this.isAdvancedSearchButtonCliked = false;
 
-    console.log('list of all selected lang' + this.langs);
+    // console.log('list of all selected lang' + this.langs);
 
     // this.dataSearchService.getDummyRecords(this.parameter_list)
-    this.dataSearchService.setParameters(this.parameter_list);
+    this.dataSearchService.setParameters(this.searchParams);
     this.route.navigate((['results']));
 
   }
@@ -149,22 +159,16 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     // this.parameter_list.plans=
     //   this.parameter_list.location= this.
     if ((this.oralSureon === 'Y') && (this.endodontist === 'Y')) { // @ts-ignore
-      this.parameter_list.specialization = [this.oralSureon, this.endodontist];
+      this.searchParams.specialization = [this.oralSureon, this.endodontist];
     }
     if ((this.oralSureon === 'Y') && (this.endodontist === 'N')) { // @ts-ignore
-      this.parameter_list.specialization = [this.oralSureon];
+      this.searchParams.specialization = [this.oralSureon];
     }
 
     if ((this.oralSureon === 'N') && (this.endodontist === 'Y')) { // @ts-ignore
-      this.parameter_list.specialization = [this.endodontist];
+      this.searchParams.specialization = [this.endodontist];
     }
 
-    this.canSpeackArabic = 'Arabic';
-    this.canSpeakSpanish = 'Spanish'
-    this.canSpeapkgermany = 'Germany'
-    this.canSpeakItaly = 'Italy'
-    this.canSpeakPortuese = 'Portugese'
-    this.canSpeakFarsi = 'Farsi';
   }
 
   ngOnInit(): void {
@@ -173,47 +177,35 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   getSliderTickInterval(): number {
-    if (this.showTicks) {
+    // this.range = this.tickInterval;
+    this.searchParams.distanceFromYourAddress = this.distanceValue.toString();
+    // console.log('new distance is ' + this.distanceValue);
+
+    // alert('================ new distance' + value);
+    return this.distanceValue;
+
+
+    /*if (this.showTicks) {
       const value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
-      this.parameter_list.distanceFromYourAddress = this.value + 'mi';
+      this.searchParams.distanceFromYourAddress = this.value + 'mi';
       return this.value;
     }
 
-    return 0;
+    return 0;*/
   }
 
   valueChange(e: string) {
-    this.parameter_list.location = e.trim().toString();
-    console.log('your location is ==========' + this.parameter_list.location);
+    this.searchParams.location = e.trim().toString();
+    console.log('your location is ==========' + this.searchParams.location);
 
   }
 
   isacceptingNew(isChecked) {
-
-    if (isChecked) {
-      this.parameter_list.acceptingNew = isChecked;
-    }
-
-
+    console.log('Before isacceptingNew: ' + this.searchParams.acceptingNew);
+    this.searchParams.acceptingNew = isChecked;
+    console.log('After isacceptingNew: ' + this.searchParams.acceptingNew);
   }
 
-  isOralSurgeon(checked: boolean) {
-    if (!checked) {
-      this.oralSureon = '';
-    } else {
-      this.oralSureon = 'Y';
-    }
-
-  }
-
-  isEndodontist(checked: boolean) {
-    if (!checked) {
-      this.endodontist = '';
-    } else {
-      this.endodontist = 'Y';
-    }
-
-  }
 
   isThereExtendedhourse_saturday(checked: boolean) {
     if (!checked) {
@@ -243,59 +235,13 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   }
 
-  isMale(e) {
-    this.parameter_list.gender = 'M';
-    this.gender = !this.gender;
-  }
-
-  isFemale($event: MouseEvent) {
-    this.parameter_list.gender = 'F';
-    this.gender = ! this.gender;
-  }
 
   onPlanChange(e) {
-    this.parameter_list.plans = e;
+    this.searchParams.plans = e;
     console.log('selected plan is ' + e);
     this.Choose_Dental_Plan = e;
 
 
   }
 
-  isArabic(c: boolean) {
-    if (c) {
-      this.Arabic = 'Arabic';
-      this.langs.push(this.Arabic);
-    }
-  }
-
-  isSpanis(c: boolean) {
-
-    if (c) {
-      this.Spanish = 'Spanish';
-      this.langs.push(this.Spanish);
-    }
-  }
-
-
-  isGermany(c: boolean) {
-    if (c) {
-
-      this.German = 'German'
-      this.langs.push(this.German);
-    }
-
-  }
-
-  isRomanian(ch: boolean) {
-    if (ch) {
-    this.langs.push(this.Romanian);
-    }
-  }
-  isFrench(checked: boolean) {
-    if (checked) {
-      this.langs.push(this.French)
-      console.log(' this langs array=====' + this.langs);
-    }
-
-  }
 }
