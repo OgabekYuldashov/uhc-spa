@@ -113,7 +113,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   filterByPlan_And_Location_Distance() {
     this.isAdvancedSearchButtonCliked = false;
-    // tslint:disable-next-line:max-line-length
     // this.parameter_list.languageSponeken = [this.canSpeackArabic, this.canSpeakFarsi, this.canSpeakItaly, this.canSpeakPortuese, this.canSpeakSpanish, this.canSpeapkgermany];
     // this.parameter_list.specialization = [this.oralSureon, this.endodontist];
     console.log(this.parameter_list);
