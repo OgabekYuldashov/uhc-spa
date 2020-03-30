@@ -185,10 +185,25 @@ export class DataSearchService {
       }
     });
 
+    const SPEC_LOGIC = [];
     for (const key of this.parameters.specializationMap.keys()) {
       if ( key !== undefined && this.parameters.specializationMap.get(key) === true) {
-        AND_LOGIC.push({ match_phrase: { specialization: key}});
+        SPEC_LOGIC.push({ match_phrase: { specialization: key}});
       }
+    }
+
+    console.log(SPEC_LOGIC);
+
+    if (SPEC_LOGIC.length > 0) {
+      AND_LOGIC.push({
+        bool: {
+          must: [{
+            bool: {
+              should: [ SPEC_LOGIC ]
+            }
+          }]
+        }
+      });
     }
     // AND_LOGIC.push({ match: { languages: 'English'}});
     if ( OR_LOGIC.length === 0) {
