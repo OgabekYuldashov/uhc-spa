@@ -3,19 +3,23 @@
 
   <div class="Rectangle-3-Copy-3">
 
-    <select id="plan" [(ngModel)]="searchParams.plans" #plan class="DENTAL-PLAN-Select"
-            (change)="onPlanChange(plan.value)">
-<!--      <option class="DENTAL-PLAN" value ="" selected> Choose Dental Plan</option>-->
+    <select id="plan" [(ngModel)]="searchParams.plans" #plan class="DENTAL-PLAN">
+<!--      <option class="DENTAL-PLAN" value="" selected> DENTAL PLAN</option>-->
       <option class="DENTAL-PLAN" value="National Options PPO 20">National Options PPO 20</option>
-      <option class="DENTAL-PLAN" value="National Select Managed Care" selected>National Select Managed Care</option>
-      <option class="DENTAL-PLAN" value="National Options PPO 30"> National Options PPO 30</option>
+      <option class="DENTAL-PLAN" value="National Select Managed Care">National Select Managed Care</option>
+      <option class="DENTAL-PLAN" value="National Options PPO 30">National Options PPO 30</option>
+      <option class="DENTAL-PLAN" value="CA Select Managed Care DHMO Plan">CA Select Managed Care DHMO Plan</option>
+      <option class="DENTAL-PLAN" value="CA Select Managed Care Direct Compensation">CA Select Managed Care Direct Compensation</option>
+      <option class="DENTAL-PLAN" value="FL Managed Care Solstice Plan">FL Managed Care Solstice Plan</option>
+      <option class="DENTAL-PLAN" value="NV Select Managed Care/NV Pacific Dental">NV Select Managed Care/NV Pacific Dental</option>
+      <option class="DENTAL-PLAN" value="TX DHMO">TX DHMO</option>
     </select>
 
     <input class="YOUR-location" [(ngModel)]="searchParams.location" placeholder="Your Location" value="{{searchParams.location}}">
     <!--      <mat-card class="example-result-card">-->
 
-    <label class="distancetoSearch"> Distance  </label>
     <div class="Rectangle-739-Copy">
+      <span>Range </span>
       <mat-slider
         [max]="max"
         [min]="min"
@@ -25,6 +29,7 @@
         [(ngModel)]="searchParams.distanceFromYourAddress"
       >
       </mat-slider>
+      <span> mi</span>
     </div>
 
     <!--===============================================-->
