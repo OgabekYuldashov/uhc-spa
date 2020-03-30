@@ -4,7 +4,9 @@
   </svg></span> Back to List</button></div>
     <div style="border: solid 1px #d1d1d1">
         <div class="res-item-header row">
-            <img src="../../../assets/imgs/dentist-female.png" class="imgDentist" />
+            <img *ngIf="gender=='Female'" src="../../../assets/imgs/dentist-female.png" class="imgDentist" />
+            <img *ngIf="gender=='Male'" src="../../../assets/imgs/dentist-male.png" class="imgDentist" />
+
             <div class="headerD headerDetails">
                 <h3 class="dentistName">{{fullName}}</h3>
                 <h4 class="specialization">{{ specialty }}</h4>
@@ -24,6 +26,10 @@
                         <div class="info">{{ phone }}</div>
                     </div>
                     <div class="info text1">
+                        Gender:
+                        <div class="info">{{ gender }}</div>
+                    </div>
+                    <div class="info text1">
                         Email:
                         <div class="info">{{ email }}</div>
                     </div>
@@ -33,10 +39,7 @@
               <a href="{{ websiteUrl }}" [target]="website">{{ website }}</a>
             </div>
           </div> -->
-                    <div class="info text1">
-                        Gender:
-                        <div class="info">{{ gender }}</div>
-                    </div>
+
                 </div>
             </div>
         </div>
