@@ -1,18 +1,12 @@
 <div class="maindiv">
-  <!--    ==============Plan  Selection==================================-->
-  <div #mapContainer id="map"></div>
+    <!--    ==============Plan  Selection==================================-->
+    <div #mapContainer id="map"></div>
 
-  <div class="Captura-de-Pantalla-2020-03-25-a-las-155236">
-    <!--    <label class="choose-plan"> Plans </label> <border-radius>-->
-    <div class="Rectangle-3-Copy-3" style="width: 71%; height: 121px;">
-      <div style="padding-top: 27px; padding-left: 27px; padding-left: 21px;">
-        <select
-          id="plan"
-          [(ngModel)]="this.Choose_Dental_Plan"
-          #plan
-          class="DENTAL-PLAN"
-          (change)="onPlanChange(plan.value)"
-        >
+    <div class="Captura-de-Pantalla-2020-03-25-a-las-155236">
+        <!--    <label class="choose-plan"> Plans </label> <border-radius>-->
+        <div class="Rectangle-3-Copy-3" style="width: 71%; height: 121px;">
+            <div style="padding-top: 27px; padding-left: 27px; padding-left: 21px;">
+                <select id="plan" [(ngModel)]="this.Choose_Dental_Plan" #plan class="DENTAL-PLAN" (change)="onPlanChange(plan.value)">
           <option class="DENTAL-PLAN" value="" selected> DENTAL PLAN</option>
           <option class="DENTAL-PLAN" value="National Options PPO 20"
             >National Options PPO 20</option
@@ -25,64 +19,42 @@
           >
         </select>
 
-        <input
-          class="YOUR-location"
-          [(ngModel)]="parameter_list.location"
-          placeholder="       YOUR LOCATION"
-        />
-        <!--      <mat-card class="example-result-card">-->
-        <div class="Rectangle-739-Copy">
-          <span>Range </span>
-          <mat-slider
-            [max]="max"
-            [min]="min"
-            [step]="step"
-            [thumbLabel]="thumbLabel"
-            [tickInterval]="getSliderTickInterval()"
-            [(ngModel)]="value"
-          >
-          </mat-slider>
-          <span> mi</span>
-        </div>
+                <input class="YOUR-location" [(ngModel)]="parameter_list.location" placeholder="       YOUR LOCATION" />
+                <!--      <mat-card class="example-result-card">-->
+                <div class="Rectangle-739-Copy">
+                    <span>Range </span>
+                    <mat-slider [max]="max" [min]="min" [step]="step" [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="value">
+                    </mat-slider>
+                    <span> mi</span>
+                </div>
 
-        <!--      <input class="YOUR-location" id="distance" name="distance" placeholder="distance">-->
+                <!--      <input class="YOUR-location" id="distance" name="distance" placeholder="distance">-->
 
-        <!--===============================================-->
-        <button
-          class="AdvancedSEARCH_div"
-          (click)="filterByPlan_And_Location_Distance()"
-        >
+                <!--===============================================-->
+                <button class="AdvancedSEARCH_div" (click)="filterByPlan_And_Location_Distance()">
           SEARCH
         </button>
-      </div>
-      <!--  ====================Advanced search Button=======-->
-      <div>
-        <button class="Advanced-search" (click)="advancedSearch()">
+            </div>
+            <!--  ====================Advanced search Button=======-->
+            <div>
+                <button class="Advanced-search" (click)="advancedSearch()">
           Advanced search
         </button>
-        <img
-          src="../../../assets/icons/page-1-copy.png"
-          height="7"
-          width="12"
-        />
-      </div>
-    </div>
+                <img src="../../../assets/icons/page-1-copy.png" height="7" width="12" />
+            </div>
+        </div>
 
-    <!--    /////////              Availability        ////-->
+        <!--    /////////              Availability        ////-->
 
-    <div
-      class="zIndex"
-      [hidden]="!isAdvancedSearchButtonCliked"
-      style="width: 71%; position: relative; bottom: 16px;"
-    >
-      <hr class="horizontal-line" />
-      <div class="row">
-        <div class="avaialbility_div">
-          <div class="availability">AVAILABILITY</div>
-          <label class="Accepting-new-patien"> Accessing new Patients</label>
+        <div class="zIndex" [hidden]="!isAdvancedSearchButtonCliked" style="width: 71%; position: relative; bottom: 16px;">
+            <hr class="horizontal-line" />
+            <div class="row">
+                <div class="avaialbility_div">
+                    <div class="availability">AVAILABILITY</div>
+                    <label class="Accepting-new-patien"> Accessing new Patients</label>
 
-          <div style="display: inline-block">
-            <label>
+                    <div style="display: inline-block">
+                        <label>
               <input
                 type="checkbox"
                 #inputE1
@@ -93,14 +65,14 @@
                 data-toggle="toggle"
               />
             </label>
-          </div>
-        </div>
+                    </div>
+                </div>
 
-        <div class="Specialization_div " style="display: inline-block">
-          <label class="Specialization"> SPECIALIZATION</label>
-          <div>
-            <div style="display:inline-block">
-              <label class="containerLabel" for="oralSurgeon">
+                <div class="Specialization_div " style="display: inline-block">
+                    <label class="Specialization"> SPECIALIZATION</label>
+                    <div>
+                        <div style="display:inline-block">
+                            <label class="containerLabel" for="oralSurgeon">
                 <input
                   type="checkbox"
                   #inputE2
@@ -111,8 +83,7 @@
                 <span class="checkmark"></span>
                 Oral Surgeon
               </label>
-              <label class="containerLabel" for="endodontist"
-                >Endodontist
+                            <label class="containerLabel" for="endodontist">Endodontist
                 <input
                   type="checkbox"
                   id="endodontist"
@@ -122,108 +93,79 @@
                 />
                 <span class="checkmark"></span>
               </label>
-            </div>
+                        </div>
 
-            <div style="margin-left:10px; display: inline-block">
-              <label class="containerLabel" for="LoremIpsum2"
-                >Maxillofacial Surgeon
+                        <div style="margin-left:10px; display: inline-block">
+                            <label class="containerLabel" for="LoremIpsum2">Maxillofacial Surgeon
                 <input type="checkbox" id="LoremIpsum2" />
                 <span class="checkmark"></span>
               </label>
 
-              <label class="containerLabel" for="Pediatric1">
+                            <label class="containerLabel" for="Pediatric1">
                 Pediatric
                 <input type="checkbox" id="Pediatric1" />
                 <!--            <label class="Lorem-Ipsum">Pediatric-->
                 <span class="checkmark"></span>
               </label>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!--    ================= Times Attributies         ==================-->
-      <hr class="horizontal-line" style="margin-left: 12px;" />
-      <div class="row">
-        <div class="AccessebilityTimeframe">
-          <label class="Extended-Hours"> EXTENDED HOURS</label>
-          <br />
-          <label class="Saturday"> Saturday</label>
-          <input
-            style="height:12px"
-            type="checkbox"
-            id="extendedhourse_saturday"
-            #inputElement4
-            [(ngModel)]="Extendedhourse_saturday"
-            (change)="isThereExtendedhourse_saturday(inputElement4.checked)"
-            name="extendedhourse_saturday"
-            data-toggle="toggle"
-          />
-          <br />
-          <br />
-          <label class="Weekday"> Weekday</label>
-          <input
-            type="checkbox"
-            id="extendedhourse_weekday"
-            #inputElement6
-            [(ngModel)]="weekday"
-            (change)="isWeekdayWorking(inputElement6.checked)"
-            name="extendedhourse_weekday"
-            data-toggle="toggle"
-          />
-        </div>
+            <!--    ================= Times Attributies         ==================-->
+            <hr class="horizontal-line" style="margin-left: 12px;" />
+            <div class="row">
+                <div class="AccessebilityTimeframe">
+                    <label class="Extended-Hours"> EXTENDED HOURS</label>
+                    <br />
+                    <label class="Saturday"> Saturday</label>
+                    <input style="height:12px" type="checkbox" id="extendedhourse_saturday" #inputElement4 [(ngModel)]="Extendedhourse_saturday" (change)="isThereExtendedhourse_saturday(inputElement4.checked)" name="extendedhourse_saturday" data-toggle="toggle" />
+                    <br />
+                    <br />
+                    <label class="Weekday"> Weekday</label>
+                    <input type="checkbox" id="extendedhourse_weekday" #inputElement6 [(ngModel)]="weekday" (change)="isWeekdayWorking(inputElement6.checked)" name="extendedhourse_weekday" data-toggle="toggle" />
+                </div>
 
-        <!--              ===============    Accessibility==============-->
-        <div class="accessibility_div">
-          <label class="accessibility"> ACCESSIBILITY </label>
-          <br />
-          <label class="Handicap-Accessible"> Handicap Accessible</label>
-          <!--          <input type="checkbox" id="handicapAccecebility" name="handicapAccecebility" data-toggle="toggle"toggle>-->
-          <input
-            type="checkbox"
-            #inputElement7
-            [(ngModel)]="handicapAccecebility"
-            (change)="ishandicapAccecebility(inputElement7.checked)"
-            data-toggle="toggle"
-          />
-          <span></span>
-          <br />
-        </div>
-      </div>
-      <hr class="horizontal-line" style="margin-left: 12px;"  />
-      <!--    ===============    Doctor Profile ==================================-->
-      <div class="doctorProfile_div">
-
-        <div class="DoctorName_div">
-          <label> DOCTOR NAME</label>
-          <br />
-          <div class="row" style="margin-left: 0px;">
-            <div>
-              <input
-                class="FIRST-NAME"
-                [(ngModel)]="parameter_list.firstName"
-                type="text"
-                id="firstName"
-                name="firstName"
-                placeholder="FIRST NAME"
-              />
+                <!--              ===============    Accessibility==============-->
+                <div class="accessibility_div">
+                    <label class="accessibility"> ACCESSIBILITY </label>
+                    <br />
+                    <label class="Handicap-Accessible"> Handicap Accessible</label>
+                    <!--          <input type="checkbox" id="handicapAccecebility" name="handicapAccecebility" data-toggle="toggle"toggle>-->
+                    <input type="checkbox" #inputElement7 [(ngModel)]="handicapAccecebility" (change)="ishandicapAccecebility(inputElement7.checked)" data-toggle="toggle" />
+                    <span></span>
+                    <br />
+                </div>
             </div>
-            <div>
-              <input
-                class="SECOND-NAME"
-                [(ngModel)]="parameter_list.lastName"
-                type="text"
-                id="LastName"
-                name="lastName"
-                placeholder="LAST NAME"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="GENDER_div">
-          <label class="GENDER"> GENDER</label>
-          <br />
-          <button (click)="isMale($event)" class="MALE" id="male" name="male">
+            <hr class="horizontal-line" style="margin-left: 12px;" />
+            <!--    ===============    Doctor Profile ==================================-->
+            <div class="doctorProfile_div">
+                <div class="DoctorName_div">
+                    <label> DOCTOR NAME</label>
+                    <br />
+                    <div class="row" style="margin-left: 0px;">
+                        <div>
+                            <input class="FIRST-NAME" [(ngModel)]="parameter_list.firstName" type="text" id="firstName" name="firstName" placeholder="FIRST NAME" />
+                        </div>
+                        <div>
+                            <input class="SECOND-NAME" [(ngModel)]="parameter_list.lastName" type="text" id="LastName" name="lastName" placeholder="LAST NAME" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="GENDER_div">
+                    <label class="GENDER"> GENDER</label>
+                    <br />
+                    <div *ngIf="gender" class="btn-group btn-toggle gender">
+                        <input type="button" name="gender" class=" MALE btn btn-default" value="Male" (click)="isMale($event)">
+                        <input type="button" name="gender" class=" FEMALE btn-primary active" value="Female" (click)="isFemale($event)">
+                    </div>
+                    <div *ngIf="!gender" class="btn-group btn-toggle gender">
+                        <input type="button" name="gender" class=" MALE btn btn-primary active" value="Male" (click)="isMale($event)">
+                        <input type="button" name="gender" class="FEMALE btn btn-default" value="Female" (click)="isFemale($event)">
+                    </div>
+                </div>
+                <!-- <button (click)="isMale($event)" class="MALE" id="male" name="male">
             MALE
           </button>
           <button
@@ -233,60 +175,53 @@
             name="female"
           >
             FEMALE
-          </button>
-        </div>
-      </div>
+          </button> -->
 
-      <!--      ===================   Languages attributes ================================-->
-      <hr class="horizontal-line" style="margin-left: 12px;"  />
-      <div style="margin-left: 15px;">
-        <label class="Languages-Spoken"> LANGUAGE SPOKEN</label>
+            </div>
 
-        <div>
-          <!--          ============column 1========-->
+            <!--      ===================   Languages attributes ================================-->
+            <hr class="horizontal-line" style="margin-left: 12px;" />
+            <div style="margin-left: 15px;">
+                <label class="Languages-Spoken"> LANGUAGE SPOKEN</label>
 
-          <div class="Languages-Spoken_coln">
-            <label class="containerLabel" for="arabic"
-              >Arabic
+                <div>
+                    <!--          ============column 1========-->
+
+                    <div class="Languages-Spoken_coln">
+                        <label class="containerLabel" for="arabic">Arabic
               <input type="checkbox" id="arabic" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="spanish"
-              >Spanish
+                        <label class="containerLabel" for="spanish">Spanish
               <input type="checkbox" id="spanish" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="german"
-              >German
+                        <label class="containerLabel" for="german">German
               <input type="checkbox" id="german" />
               <span class="checkmark"></span>
             </label>
+                    </div>
 
-          </div>
-
-          <!--          ============column 2========-->
-          <div class="Languages-Spoken_coln">
-            <label class="containerLabel" for="cbxRomanian"
-              >Romanian
+                    <!--          ============column 2========-->
+                    <div class="Languages-Spoken_coln">
+                        <label class="containerLabel" for="cbxRomanian">Romanian
               <input type="checkbox" id="cbxRomanian" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="cbxFrench"
-              >French
+                        <label class="containerLabel" for="cbxFrench">French
               <input type="checkbox" id="cbxFrench" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="cbxHindi"
-              >Hindi
+                        <label class="containerLabel" for="cbxHindi">Hindi
               <input type="checkbox" id="cbxHindi" />
               <span class="checkmark"></span>
             </label>
 
-            <!--<input type="checkbox" id="romanian">
+                        <!--<input type="checkbox" id="romanian">
             <label class="Languages-Spoken_css"> Romanian </label>
             <br>
             <input type="checkbox" id="french">
@@ -295,29 +230,26 @@
             <br>
             <input type="checkbox" id="hindi">
             <label class="Languages-Spoken_css"> Hindi</label>-->
-          </div>
+                    </div>
 
-          <!--          ============column 3========-->
-          <div class="Languages-Spoken_coln">
-            <label class="containerLabel" for="cbxItalian"
-              >Italian
+                    <!--          ============column 3========-->
+                    <div class="Languages-Spoken_coln">
+                        <label class="containerLabel" for="cbxItalian">Italian
               <input type="checkbox" id="cbxItalian" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="cbxRussian"
-              >Russian
+                        <label class="containerLabel" for="cbxRussian">Russian
               <input type="checkbox" id="cbxRussian" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="cbxKorean"
-              >Korean
+                        <label class="containerLabel" for="cbxKorean">Korean
               <input type="checkbox" id="cbxKorean" />
               <span class="checkmark"></span>
             </label>
 
-            <!--<input type="checkbox" id="italian">
+                        <!--<input type="checkbox" id="italian">
             <label class="Languages-Spoken_css"> Italian</label>
             <br>
             <input type="checkbox" id="russian">
@@ -326,29 +258,26 @@
             <br>
             <input type="checkbox" id="korean">
             <label class="Languages-Spoken_css">Korean</label>-->
-          </div>
+                    </div>
 
-          <!--          ============column 4========-->
-          <div class="Languages-Spoken_coln">
-            <label class="containerLabel" for="cbxPortugese"
-              >Portugese
+                    <!--          ============column 4========-->
+                    <div class="Languages-Spoken_coln">
+                        <label class="containerLabel" for="cbxPortugese">Portugese
               <input type="checkbox" id="cbxPortugese" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="cbxChinese"
-              >Chinese
+                        <label class="containerLabel" for="cbxChinese">Chinese
               <input type="checkbox" id="cbxChinese" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="cbxEgyptian"
-              >Egyptian
+                        <label class="containerLabel" for="cbxEgyptian">Egyptian
               <input type="checkbox" id="cbxEgyptian" />
               <span class="checkmark"></span>
             </label>
 
-            <!--<input type="checkbox" id="portuguese">
+                        <!--<input type="checkbox" id="portuguese">
             <label class="Languages-Spoken_css">Portuguese</label>
             <br>
             <input type="checkbox" id="chinese">
@@ -356,29 +285,26 @@
             <br>
             <input type="checkbox" id="egyptian">
             <label class="Languages-Spoken_css">Egyptian</label>-->
-          </div>
+                    </div>
 
-          <!--          ============column 5========-->
-          <div class="Languages-Spoken_coln">
-            <label class="containerLabel" for="cbxFarsi"
-              >Farsi
+                    <!--          ============column 5========-->
+                    <div class="Languages-Spoken_coln">
+                        <label class="containerLabel" for="cbxFarsi">Farsi
               <input type="checkbox" id="cbxFarsi" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="cbxPolish"
-              >Polish
+                        <label class="containerLabel" for="cbxPolish">Polish
               <input type="checkbox" id="cbxPolish" />
               <span class="checkmark"></span>
             </label>
 
-            <label class="containerLabel" for="cbxGreek"
-              >Greek
+                        <label class="containerLabel" for="cbxGreek">Greek
               <input type="checkbox" id="cbxGreek" />
               <span class="checkmark"></span>
             </label>
 
-            <!--<input type="checkbox" id="farsi">
+                        <!--<input type="checkbox" id="farsi">
             <label  class="Languages-Spoken_css">Farsi</label>
             <br>
 
@@ -387,52 +313,45 @@
             <br>
             <input type="checkbox" id="greek">
             <label class="Languages-Spoken_css">Greek</label>-->
-          </div>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!--===================footter Images=============================-->
+
+    <div class="footer">
+        <div style="display:inline-block">
+            <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png" />
+            <br />
+            <!--      <span> Amly Lee</span>-->
         </div>
 
-        <div></div>
-      </div>
+        <div style="display:inline-block">
+            <img class="footer_Rectangle" src="../../../assets/icons/bitmap2.png" />
+            <br />
+            <!--      <span> Amly Lee</span>-->
+        </div>
+
+        <div style="display:inline-block">
+            <img class="footer_Rectangle" src="../../../assets/icons/bitmap4.png" />
+            <br />
+            <!--      <span> Amly Lee</span>-->
+        </div>
+
+        <div style="display:inline-block">
+            <img class="footer_Rectangle" src="../../../assets/icons/bitmap3.png" height="120" width="180" />
+            <br />
+            <!--      <span> Amly Lee</span>-->
+        </div>
+
+        <div style="display:inline-block">
+            <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png" />
+            <br />
+            <!--      <p class="Amy-Lee"> Amly Lee</p>-->
+        </div>
     </div>
-  </div>
-
-  <!--===================footter Images=============================-->
-
-
-
-  <div class="footer">
-    <div style="display:inline-block">
-      <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png" />
-      <br />
-      <!--      <span> Amly Lee</span>-->
-    </div>
-
-    <div style="display:inline-block">
-      <img class="footer_Rectangle" src="../../../assets/icons/bitmap2.png" />
-      <br />
-      <!--      <span> Amly Lee</span>-->
-    </div>
-
-    <div style="display:inline-block">
-      <img class="footer_Rectangle" src="../../../assets/icons/bitmap4.png" />
-      <br />
-      <!--      <span> Amly Lee</span>-->
-    </div>
-
-    <div style="display:inline-block">
-      <img
-        class="footer_Rectangle"
-        src="../../../assets/icons/bitmap3.png"
-        height="120"
-        width="180"
-      />
-      <br />
-      <!--      <span> Amly Lee</span>-->
-    </div>
-
-    <div style="display:inline-block">
-      <img class="footer_Rectangle" src="../../../assets/icons/bitmap.png" />
-      <br />
-      <!--      <p class="Amy-Lee"> Amly Lee</p>-->
-    </div>
-  </div>
 </div>

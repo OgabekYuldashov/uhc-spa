@@ -42,6 +42,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   Greek = 'Greek';
   // tslint:disable-next-line:no-construct ban-types
   langs: String[]= new Array();
+  gender: boolean = false;
 
   constructor(private route: Router, private dataSearchService: DataSearchService) {
     // tslint:disable-next-line:variable-name
@@ -244,10 +245,12 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   isMale(e) {
     this.parameter_list.gender = 'M';
+    this.gender = !this.gender;
   }
 
   isFemale($event: MouseEvent) {
     this.parameter_list.gender = 'F';
+    this.gender = ! this.gender;
   }
 
   onPlanChange(e) {
