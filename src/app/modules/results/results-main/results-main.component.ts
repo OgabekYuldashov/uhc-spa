@@ -9,6 +9,24 @@ import {Parameters} from '../../../models/parameters';
   styleUrls: ['./results-main.component.css']
 })
 export class ResultsMainComponent implements OnInit, AfterViewInit {
+
+
+  constructor(private dataService: DataSearchService) {
+    this.searchParams = dataService.getParameters();
+    console.log('Search Params:');
+    console.log(this.searchParams);
+
+    dataService.getResultItems().subscribe(r => {
+      this.resItems = this.dataService.getResults(r);
+
+
+      // this.fetchMarkers();
+
+      /*console.log('res:');
+      console.log(this.resItems);*/
+    });
+
+  }
   @ViewChild('resultsMap', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
   lat = 37.730610;
@@ -50,6 +68,8 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
 
 
 
+
+
   //
   // Slider attributes
   autoTicks = false;
@@ -68,51 +88,20 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   // tslint:disable-next-line:variable-name
   parameter_list: Parameters = new Parameters();
 
-  getSliderTickInterval(): number {
-    if (this.showTicks) {
-      const value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
-      this.searchParams.distanceFromYourAddress = this.value + 'mi';
-      return this.value;
-    }
-
-    return 0;
-  }
-  onPlanChange(e) {
-    this.searchParams.plans = e;
-    console.log('selected plan is ' + this.searchParams.plans);
-  }
-
-  filterByPlan_And_Location_Distance() {
-    this.dataService.getResultItems().subscribe(r => {
-      this.resItems = this.dataService.getResults(r);
-      console.log('res:');
-      console.log(this.resItems);
-    });
-
-    this.searchParams = this.dataService.getParameters();
-    console.log('Search Params:');
-    console.log(this.searchParams);
-  }
-  //
-
-
-
-
-
-  constructor(private dataService: DataSearchService) {
-    this.searchParams = dataService.getParameters();
-    console.log('Search Params:');
-    console.log(this.searchParams);
-
-    dataService.getResultItems().subscribe(r => {
-      this.resItems = this.dataService.getResults(r);
-      console.log('res:');
-      console.log(this.resItems);
-    });
-
-  }
-
   ngOnInit(): void {
+  }
+
+  fetchMarkers(): void {
+    console.log('Start fetchMarkers()');
+    for (const res of this.resItems) {
+      this.markers.push({
+        position: new google.maps.LatLng(res.allData.lat, res.allData.lon),
+        map: this.map,
+        title: res.firstName
+      });
+
+    }
+    console.log('After fetchMarkers()' + this.markers);
   }
 
   ngAfterViewInit(): void {
@@ -182,4 +171,34 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
 
     console.log('After onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
   }
+
+  getSliderTickInterval(): number {
+    if (this.showTicks) {
+      const value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
+      this.searchParams.distanceFromYourAddress = this.value + 'mi';
+      return this.value;
+    }
+
+    return 0;
+  }
+  onPlanChange(e) {
+    this.searchParams.plans = e;
+    console.log('selected plan is ' + this.searchParams.plans);
+  }
+
+  filterByPlan_And_Location_Distance() {
+    this.dataService.getResultItems().subscribe(r => {
+      this.resItems = this.dataService.getResults(r);
+      console.log('res:');
+      console.log(this.resItems);
+    });
+
+    this.searchParams = this.dataService.getParameters();
+    console.log('Search Params:');
+    console.log(this.searchParams);
+  }
+  //
+
+
+
 }
