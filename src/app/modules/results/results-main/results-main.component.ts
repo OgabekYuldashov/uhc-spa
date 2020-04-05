@@ -16,16 +16,20 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
     console.log('Search Params:');
     console.log(this.searchParams);
 
-    dataService.getResultItems().subscribe(r => {
-      this.resItems = this.dataService.getResults(r);
-
-
-      // this.fetchMarkers();
-
-      /*console.log('res:');
-      console.log(this.resItems);*/
+    // dataService.getResultItems().subscribe(r => {
+    //   this.resItems = this.dataService.getResults(r);
+    //
+    //
+    //   // this.fetchMarkers();
+    //
+    //   /*console.log('res:');
+    //   console.log(this.resItems);*/
+    // });
+    dataService.getResultItemsES().then(items => {
+      console.log('found it');
+      this.resItems = items;
+      console.log(items);
     });
-
   }
   @ViewChild('resultsMap', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
@@ -187,10 +191,15 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   }
 
   filterByPlan_And_Location_Distance() {
-    this.dataService.getResultItems().subscribe(r => {
-      this.resItems = this.dataService.getResults(r);
-      console.log('res:');
-      console.log(this.resItems);
+    // this.dataService.getResultItems().subscribe(r => {
+    //   this.resItems = this.dataService.getResults(r);
+    //   console.log('res:');
+    //   console.log(this.resItems);
+    // });
+    this.dataService.getResultItemsES().then(items => {
+      console.log('found it');
+      this.resItems = items;
+      console.log(items);
     });
 
     this.searchParams = this.dataService.getParameters();

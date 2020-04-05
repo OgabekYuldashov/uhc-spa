@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import {ResultItem} from '../models/ResultItem';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {RequestParams} from 'elasticsearch';
+import {RequestParams, Client} from 'elasticsearch';
 import {JsonObject} from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 import {Observable} from 'rxjs';
 import {Parameters} from '../models/parameters';
+import aws4 from 'aws4';
+// import {Client} from '@elastic/elasticsearch';
+// import {Endpoint, EnvironmentCredentials, HttpRequest} from 'aws-sdk';
+// import AWS = require('aws-sdk');
+import * as Url from 'url';
 
 const headers = new HttpHeaders({
   'Content-Type': 'application/json'
-  // , Authorization: 'Basic ' + btoa('elastic:altimetrik')
+   // , Authorization: 'Basic ' + btoa('24ccxhkl9a:uobpukgf2f') // 'AWS vlnl1ad9t7:ojf5yi5plh' //
 });
 @Injectable({
   providedIn: 'root'
@@ -16,16 +21,18 @@ const headers = new HttpHeaders({
 export class DataSearchService {
   index = 'uhc_v4';
   // hostUrl: any = `http://localhost:9200/${this.index}/_search`;
-  hostUrl: any = `http://35.229.120.24:9200/${this.index}/_search`;
+  // hostUrl: any = `http://35.229.120.24:9200/${this.index}/_search`;
+  hostUrl: any = `https://24ccxhkl9a:uobpukgf2f@elastic-8383456265.us-east-1.bonsai.io`;
+  // hostUrl: any = `https://elastic-8383456265.us-east-1.bonsaisearch.net/${this.index}/_search`;
   user: any = 'elastic';
   password: any = 'changeme';
   parameters: Parameters;
   results: Array<ResultItem> = new Array<ResultItem>();
   ZipCodeMap: Map<string, string> = new Map();
+  // awsauth = this.aws4..('vlnl1ad9t7', 'ojf5yi5plh', 'us-east-1', 'es')
 
   constructor(private httpClient: HttpClient) {
     this.ZipCodeMap.set('80303|Boulder|CO|39.989135|-105.22883|-7|1|', '39.989135,-105.22883');
-    // this.ZipCodeMap.set('55347|Eden Prairie|MN|44.831413|-93.46031|', '-6|1|44.831413,-93.46031');
     this.ZipCodeMap.set('55347|Eden Prairie|MN|44.831413|-93.46031|-6|1|', '44.831413,-93.46031');
     this.ZipCodeMap.set('48258|Detroit|MI|42.239933|-83.150823|-5|1|', '42.239933,-83.150823');
     this.ZipCodeMap.set('10124|New York|NY|40.780751|-73.977182|-5|1|', '40.780751,-73.977182');
@@ -44,7 +51,7 @@ export class DataSearchService {
     this.ZipCodeMap.set('97230|Portland|OR|45.539473|-122.50488|-8|1|', '45.539473,-122.50488');
     this.ZipCodeMap.set('02108|Boston|MA|42.357903|-71.06408|-5|1|', '42.357903,-71.06408');
     this.parameters = new Parameters();
-    this.getResultItems().subscribe(s => this.getResults(s));
+    // this.getResultItems().subscribe(s => this.getResults(s));
   }
 
   getDummyRecords(): ResultItem[] {
@@ -141,6 +148,7 @@ export class DataSearchService {
         }
       }
     };
+
     // @ts-ignore
     return this.httpClient.post<JsonObject>(this.hostUrl, query, headers);
   }
@@ -151,49 +159,55 @@ export class DataSearchService {
     const OR_LOGIC = [];
     // const AND_LOGIC = [{ match: { state: 'AK'}},{ match: { handicapAccessible : 'N'}}];
     // const OR_LOGIC = [{match: { languages:'English'}},{ match: { languages:'Egyptian'}}];
-    if (this.parameters.plans !== undefined) { AND_LOGIC.push({ match_phrase: { plans: this.parameters.plans}}); }
+    if (this.parameters.plans !== undefined) {
+      AND_LOGIC.push({match_phrase: {plans: this.parameters.plans}});
+    }
     // if (this.parameters.specialization !== undefined) { AND_LOGIC.push({ match: { specialization: this.parameters.specialization}});}
-    if (this.parameters.acceptingNew === true) { AND_LOGIC.push({ match: { acceptingNew: 'Y'}}); }
+    if (this.parameters.acceptingNew === true) {
+      AND_LOGIC.push({match: {acceptingNew: 'Y'}});
+    }
     if (this.parameters.firstName !== undefined && this.parameters.firstName === '') {
-      AND_LOGIC.push({ match: { firstName: this.parameters.firstName}});
+      AND_LOGIC.push({match: {firstName: this.parameters.firstName}});
     }
     if (this.parameters.lastName !== undefined && this.parameters.lastName !== '') {
-      AND_LOGIC.push({ match: { lastName: this.parameters.lastName}});
+      AND_LOGIC.push({match: {lastName: this.parameters.lastName}});
     }
     if (this.parameters.extendedHrsWeek === true) {
-      AND_LOGIC.push({ match: { extendedHrsWeek: 'Y'}});
+      AND_LOGIC.push({match: {extendedHrsWeek: 'Y'}});
     }
     if (this.parameters.extendedHrsSat === true) {
-      AND_LOGIC.push({ match: { extendedHrsSat: 'Y'}});
+      AND_LOGIC.push({match: {extendedHrsSat: 'Y'}});
     }
-    if (this.parameters.gender !== undefined) { AND_LOGIC.push({ match: { gender: this.parameters.gender}}); }
+    if (this.parameters.gender !== undefined) {
+      AND_LOGIC.push({match: {gender: this.parameters.gender}});
+    }
     if (this.parameters.handicapAccessible === true) {
-      AND_LOGIC.push({ match: { handicapAccessible: 'Y'}});
+      AND_LOGIC.push({match: {handicapAccessible: 'Y'}});
     }
     const LANG_LOGIC = [];
     for (const key of this.parameters.languageMap.keys()) {
-      if ( key !== undefined && this.parameters.languageMap.get(key) === true) {
-        LANG_LOGIC.push({ match_phrase: { languages: key}});
+      if (key !== undefined && this.parameters.languageMap.get(key) === true) {
+        LANG_LOGIC.push({match_phrase: {languages: key}});
       }
     }
-    if ( LANG_LOGIC.length === 0) {
-      LANG_LOGIC.push({ match_phrase: { languages: 'English'}});
+    if (LANG_LOGIC.length === 0) {
+      LANG_LOGIC.push({match_phrase: {languages: 'English'}});
     }
 
     AND_LOGIC.push({
       bool: {
-      must: [{
-        bool: {
-          should: [ LANG_LOGIC ]
-        }
-      }]
+        must: [{
+          bool: {
+            should: [LANG_LOGIC]
+          }
+        }]
       }
     });
 
     const SPEC_LOGIC = [];
     for (const key of this.parameters.specializationMap.keys()) {
-      if ( key !== undefined && this.parameters.specializationMap.get(key) === true) {
-        SPEC_LOGIC.push({ match_phrase: { specialization: key}});
+      if (key !== undefined && this.parameters.specializationMap.get(key) === true) {
+        SPEC_LOGIC.push({match_phrase: {specialization: key}});
       }
     }
 
@@ -204,15 +218,15 @@ export class DataSearchService {
         bool: {
           must: [{
             bool: {
-              should: [ SPEC_LOGIC ]
+              should: [SPEC_LOGIC]
             }
           }]
         }
       });
     }
     // AND_LOGIC.push({ match: { languages: 'English'}});
-    if ( OR_LOGIC.length === 0) {
-      OR_LOGIC.push({ match: { languages: 'English'}} );
+    if (OR_LOGIC.length === 0) {
+      OR_LOGIC.push({match: {languages: 'English'}});
     }
     const reg = new RegExp(/^\d*$/);
     if (reg.test(this.parameters.location)) {
@@ -225,9 +239,9 @@ export class DataSearchService {
       // tslint:disable-next-line:variable-name
       const city_state: string[] = this.parameters.location.toLowerCase().split(',', 2);
       if (reg.test(this.parameters.location.replace(/\s/g, '')) === true) {
-        AND_LOGIC.push({ match_phrase: { zip: this.parameters.location}});
+        AND_LOGIC.push({match_phrase: {zip: this.parameters.location}});
       } else if (city_state.length === 1) {
-        AND_LOGIC.push({ match_phrase: { city: city_state[0].toUpperCase().trim()}});
+        AND_LOGIC.push({match_phrase: {city: city_state[0].toUpperCase().trim()}});
       } else {
         // tslint:disable-next-line:variable-name
         for (const k of this.ZipCodeMap.keys()) {
@@ -236,17 +250,17 @@ export class DataSearchService {
           const key = k.toLowerCase();
           if (key.includes(city_state[0].trim()) && key.includes('|' + city_state[1].trim() + '|')) {
             loc = this.ZipCodeMap.get(k);
-            console.log( 'latlong is:' + this.ZipCodeMap.get(k));
+            console.log('latlong is:' + this.ZipCodeMap.get(k));
             dist = '5km';
             latlong = true;
             // console.log('found!!!!');
             break;
           }
         }
-        if ( latlong === false) {
-          AND_LOGIC.push({ match_phrase: { city: city_state[0].toUpperCase().trim()}});
-          if (city_state.length === 2 && city_state[0].trim() !== '' ) {
-            AND_LOGIC.push({ match_phrase: { state: city_state[1].toUpperCase().trim()}});
+        if (latlong === false) {
+          AND_LOGIC.push({match_phrase: {city: city_state[0].toUpperCase().trim()}});
+          if (city_state.length === 2 && city_state[0].trim() !== '') {
+            AND_LOGIC.push({match_phrase: {state: city_state[1].toUpperCase().trim()}});
           }
         }
         console.log('used Lat longs');
@@ -258,21 +272,21 @@ export class DataSearchService {
 
     // this.parameters.distanceFromYourAddress = '9';
     // this.parameters.location = '62.298254,-149.87542';
-    if ( this.parameters.distanceFromYourAddress !== undefined && latlong === true && this.parameters.distanceFromYourAddress !== '0') {
+    if (this.parameters.distanceFromYourAddress !== undefined && latlong === true && this.parameters.distanceFromYourAddress !== '0') {
       dist = '' + this.parameters.distanceFromYourAddress + 'mi';
     }
 
-    const NOT_LOGIC = {range: {latConfidence: { lte: -1 }}};
+    const NOT_LOGIC = {range: {latConfidence: {lte: -1}}};
     const paraQuery: RequestParams.Search = {
       query: {
-      bool: {
-        must: [ AND_LOGIC ],
-        must_not: [ NOT_LOGIC ],
-        should: [ OR_LOGIC ],
-        filter: {
-          geo_distance : {
-            distance : dist,
-            location : loc
+        bool: {
+          must: [AND_LOGIC],
+          must_not: [NOT_LOGIC],
+          should: [OR_LOGIC],
+          filter: {
+            geo_distance: {
+              distance: dist,
+              location: loc
             }
           }
         }
@@ -281,8 +295,64 @@ export class DataSearchService {
 
     console.log(paraQuery);
     const size = '25';
+
+    // // AWS-SDK
+    // const region = 'us-east-1'; // e.g. us-west-1
+    // const domain = ''; // e.g. search-domain.region.es.amazonaws.com
+    // // const index = 'node-test';
+    // const type = '_doc';
+    // const id = '1';
+    // const document = {}
+    //
+    // const endpoint = new AWS.Endpoint(this.hostUrl);
+    // const request = new AWS.HttpRequest(endpoint, region);
+    // request.method = 'GET';
+    // request.path += this.index + '/' + type + '/' + id;
+    // request.body = JSON.stringify(document);
+    // request.headers.host = domain;
+    // request.headers['Content-Type'] = 'application/json';
+    // // Content-Length is only needed for DELETE requests that include a request
+    // // body, but including it for all requests doesn't seem to hurt anything.
+    // // request.headers['Content-Length'] = Buffer.byteLength(request.body);
+    //
+    // const credentials = new AWS.EnvironmentCredentials('AWS');
+    // const signer = new AWS.Signer(request, 'es');
+    // signer.addAuthorization(credentials, new Date());
+    //
+    // // const client = new AWS.HttpClient();
+    // //   client.handleRequest(request, null, function(response) {
+    // //     console.log(response.statusCode + ' ' + response.statusMessage);
+    // //     var responseBody = '';
+    // //     response.on('data', function (chunk) {
+    // //       responseBody += chunk;
+    // //     });
+    // //     response.on('end', function (chunk) {
+    // //       console.log('Response body: ' + responseBody);
+    // //     });
+    // //   }, function(error) {
+    // //     console.log('Error: ' + error);
+    // //   });
+    // // }
+    // AWS Auth sigining...
+    // let opt = {service: 'es', region: 'us-east-1'}
+    // const aws4auth = aws4.sign(opt, {accessKeyId: '24ccxhkl9a', secretAccessKey: 'uobpukgf2f'});
+    // console.log(opt);
+    // headers.append('Authorization', aws4auth);
+
     // @ts-ignore
-    return this.httpClient.post<JsonObject>(`${this.hostUrl}?size=${size}`, paraQuery, headers);
+    const client = new Client({
+      host: this.hostUrl
+      // ,log: 'trace'
+    });
+    console.log(client.search({
+      index: this.index,
+      from: 20,
+      size: 10,
+      body: paraQuery
+    }));
+    // @ts-ignore
+    // return this.httpClient.post<JsonObject>(`${this.hostUrl}?size=${size}`, paraQuery, headers);
+    return this.httpClient.get<JsonObject>(`${this.hostUrl}`, paraQuery, headers);
   }
 
   getRecordByNPI(npi: string): ResultItem {
@@ -292,5 +362,206 @@ export class DataSearchService {
       }
     }
     return null;
+  }
+
+  public async getResultItemsES(): Promise<ResultItem[]> {
+    // @ts-ignore
+    const AND_LOGIC = [];
+    const OR_LOGIC = [];
+    // const AND_LOGIC = [{ match: { state: 'AK'}},{ match: { handicapAccessible : 'N'}}];
+    // const OR_LOGIC = [{match: { languages:'English'}},{ match: { languages:'Egyptian'}}];
+    if (this.parameters.plans !== undefined) {
+      AND_LOGIC.push({match_phrase: {plans: this.parameters.plans}});
+    }
+    // if (this.parameters.specialization !== undefined) { AND_LOGIC.push({ match: { specialization: this.parameters.specialization}});}
+    if (this.parameters.acceptingNew === true) {
+      AND_LOGIC.push({match: {acceptingNew: 'Y'}});
+    }
+    if (this.parameters.firstName !== undefined && this.parameters.firstName === '') {
+      AND_LOGIC.push({match: {firstName: this.parameters.firstName}});
+    }
+    if (this.parameters.lastName !== undefined && this.parameters.lastName !== '') {
+      AND_LOGIC.push({match: {lastName: this.parameters.lastName}});
+    }
+    if (this.parameters.extendedHrsWeek === true) {
+      AND_LOGIC.push({match: {extendedHrsWeek: 'Y'}});
+    }
+    if (this.parameters.extendedHrsSat === true) {
+      AND_LOGIC.push({match: {extendedHrsSat: 'Y'}});
+    }
+    if (this.parameters.gender !== undefined) {
+      AND_LOGIC.push({match: {gender: this.parameters.gender}});
+    }
+    if (this.parameters.handicapAccessible === true) {
+      AND_LOGIC.push({match: {handicapAccessible: 'Y'}});
+    }
+    const LANG_LOGIC = [];
+    for (const key of this.parameters.languageMap.keys()) {
+      if (key !== undefined && this.parameters.languageMap.get(key) === true) {
+        LANG_LOGIC.push({match_phrase: {languages: key}});
+      }
+    }
+    if (LANG_LOGIC.length === 0) {
+      LANG_LOGIC.push({match_phrase: {languages: 'English'}});
+    }
+
+    AND_LOGIC.push({
+      bool: {
+        must: [{
+          bool: {
+            should: [LANG_LOGIC]
+          }
+        }]
+      }
+    });
+
+    const SPEC_LOGIC = [];
+    for (const key of this.parameters.specializationMap.keys()) {
+      if (key !== undefined && this.parameters.specializationMap.get(key) === true) {
+        SPEC_LOGIC.push({match_phrase: {specialization: key}});
+      }
+    }
+
+    console.log(SPEC_LOGIC);
+
+    if (SPEC_LOGIC.length > 0) {
+      AND_LOGIC.push({
+        bool: {
+          must: [{
+            bool: {
+              should: [SPEC_LOGIC]
+            }
+          }]
+        }
+      });
+    }
+    // AND_LOGIC.push({ match: { languages: 'English'}});
+    if (OR_LOGIC.length === 0) {
+      OR_LOGIC.push({match: {languages: 'English'}});
+    }
+    const reg = new RegExp(/^\d*$/);
+    if (reg.test(this.parameters.location)) {
+      console.log(`${this.parameters.location} must be a zip code`);
+    }
+    let dist = '99999km';
+    let loc = '62.298254,-149.87542';
+    let latlong = false;
+    if (this.parameters.location !== undefined && this.parameters.location.trim() !== '') {
+      // tslint:disable-next-line:variable-name
+      const city_state: string[] = this.parameters.location.toLowerCase().split(',', 2);
+      if (reg.test(this.parameters.location.replace(/\s/g, '')) === true) {
+        AND_LOGIC.push({match_phrase: {zip: this.parameters.location}});
+      } else if (city_state.length === 1) {
+        AND_LOGIC.push({match_phrase: {city: city_state[0].toUpperCase().trim()}});
+      } else {
+        // tslint:disable-next-line:variable-name
+        for (const k of this.ZipCodeMap.keys()) {
+          // console.log(k.toLowerCase().includes(city_state[0]));
+          // console.log(k.toLowerCase().includes(city_state[1]));
+          const key = k.toLowerCase();
+          if (key.includes(city_state[0].trim()) && key.includes('|' + city_state[1].trim() + '|')) {
+            loc = this.ZipCodeMap.get(k);
+            console.log('latlong is:' + this.ZipCodeMap.get(k));
+            dist = '5km';
+            latlong = true;
+            // console.log('found!!!!');
+            break;
+          }
+        }
+        if (latlong === false) {
+          AND_LOGIC.push({match_phrase: {city: city_state[0].toUpperCase().trim()}});
+          if (city_state.length === 2 && city_state[0].trim() !== '') {
+            AND_LOGIC.push({match_phrase: {state: city_state[1].toUpperCase().trim()}});
+          }
+        }
+        console.log('used Lat longs');
+        console.log(city_state);
+        console.log(loc + ',' + dist);
+      }
+    }
+
+
+    // this.parameters.distanceFromYourAddress = '9';
+    // this.parameters.location = '62.298254,-149.87542';
+    if (this.parameters.distanceFromYourAddress !== undefined && latlong === true && this.parameters.distanceFromYourAddress !== '0') {
+      dist = '' + this.parameters.distanceFromYourAddress + 'mi';
+    }
+
+    const NOT_LOGIC = {range: {latConfidence: {lte: -1}}};
+    const paraQuery: RequestParams.Search = {
+      query: {
+        bool: {
+          must: [AND_LOGIC],
+          must_not: [NOT_LOGIC],
+          should: [OR_LOGIC],
+          filter: {
+            geo_distance: {
+              distance: dist,
+              location: loc
+            }
+          }
+        }
+      }
+    };
+
+    console.log(paraQuery);
+    const size = '25';
+
+    // // AWS-SDK
+    // const region = 'us-east-1'; // e.g. us-west-1
+    // const domain = ''; // e.g. search-domain.region.es.amazonaws.com
+    // // const index = 'node-test';
+    // const type = '_doc';
+    // const id = '1';
+    // const document = {}
+    //
+    // const endpoint = new AWS.Endpoint(this.hostUrl);
+    // const request = new AWS.HttpRequest(endpoint, region);
+    // request.method = 'GET';
+    // request.path += this.index + '/' + type + '/' + id;
+    // request.body = JSON.stringify(document);
+    // request.headers.host = domain;
+    // request.headers['Content-Type'] = 'application/json';
+    // // Content-Length is only needed for DELETE requests that include a request
+    // // body, but including it for all requests doesn't seem to hurt anything.
+    // // request.headers['Content-Length'] = Buffer.byteLength(request.body);
+    //
+    // const credentials = new AWS.EnvironmentCredentials('AWS');
+    // const signer = new AWS.Signer(request, 'es');
+    // signer.addAuthorization(credentials, new Date());
+    //
+    // // const client = new AWS.HttpClient();
+    // //   client.handleRequest(request, null, function(response) {
+    // //     console.log(response.statusCode + ' ' + response.statusMessage);
+    // //     var responseBody = '';
+    // //     response.on('data', function (chunk) {
+    // //       responseBody += chunk;
+    // //     });
+    // //     response.on('end', function (chunk) {
+    // //       console.log('Response body: ' + responseBody);
+    // //     });
+    // //   }, function(error) {
+    // //     console.log('Error: ' + error);
+    // //   });
+    // // }
+    // AWS Auth sigining...
+    // let opt = {service: 'es', region: 'us-east-1'}
+    // const aws4auth = aws4.sign(opt, {accessKeyId: '24ccxhkl9a', secretAccessKey: 'uobpukgf2f'});
+    // console.log(opt);
+    // headers.append('Authorization', aws4auth);
+
+    // @ts-ignore
+    const client = new Client({
+      host: this.hostUrl
+      ,log: 'trace'
+    });
+    const result = await client.search({
+      index: this.index,
+      from: 20,
+      size: 10,
+      body: paraQuery
+    });
+    console.log(result)
+    return this.getResults(result);
   }
 }
