@@ -47,4 +47,5 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     SearchCompenentComponent
   ]
 })
+
 export class ModulesModule { }

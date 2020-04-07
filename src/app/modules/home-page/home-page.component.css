@@ -97,7 +97,7 @@
     margin-left: 15%;
     z-index: -1;
     position: absolute;
-    margin-top: 30%;
+    margin-top: 15%;
     /*height: 498px ;*/
     /*margin-top: 100px;*/
     /*margin-left: 170px;*/
@@ -445,7 +445,7 @@
     height: 240px;
     margin-top: 85px;
     z-index: 1;
-    margin: 0 auto;
+    margin: 85px auto;
     /*position: absolute;*/
 }
 
@@ -562,4 +562,11 @@
     line-height: 1.71;
     letter-spacing: 1.17px;
     color: #0058c3;
+}
+
+:host /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #1772ff;
+}
+:host /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #1772ff;
 }

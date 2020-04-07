@@ -5,7 +5,6 @@ import {ResultsMainComponent} from './modules/results/results-main/results-main.
 import { DetailsviewComponent } from './modules/details/detailsview/detailsview.component';
 import {HomePageComponent} from './modules/home-page/home-page.component';
 import {SearchCompenentComponent} from './modules/home-page/search-compenent/search-compenent.component';
-import {SliderButtonComponent} from './modules/home-page/slider-button/slider-button.component';
 
 
 const routes: Routes = [
