@@ -8,6 +8,7 @@ section {
 #filtersContainer {
   border-right: 1pt solid #e6e6e6;
   padding-right: 0;
+  overflow-y: scroll;
 }
 
 #filtersContainer .panel-group {
@@ -78,7 +79,601 @@ section {
 /**************************START SEARCHBAR CONTAINER*******************/
 
 #searchBarContainer {
-  height: 90pt;
+  border-bottom: 1pt solid #e6e6e6;
+
 }
 /**************************END SEARCHBAR CONTAINER*******************/
 
+
+
+
+
+
+
+
+
+
+/*=======================REVISE THIS SHIT CODE=========================*/
+
+.DENTAL-PLAN {
+  width: 250px;
+  height: 35px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+}
+
+.AdvancedSEARCH_div {
+  width: 94px;
+  height: 48px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #0058c3;
+  border: 0px;
+}
+
+.Rectangle-3-Copy-3 {
+  /*width: 959px;*/
+  width: 843px;
+  /*height: 121px;*/
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 4px;
+  /*box-shadow: 0 2px 13px 0 rgba(14, 21, 45, 0.16);*/
+  border: solid 1px #e6e6e6;
+  background-color: #ffffff;
+  /*margin-right: 121px;*/
+  /*margin-right: 242px;*/
+  margin-left: 40px;
+
+}
+
+.DENTAL-PLAN-Select {
+  width: 250px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 4px;
+  border: solid 1px #e6e6e6;
+  background-color: #ffffff;
+  padding-left: 21px;
+}
+
+.YOUR-location {
+  width: 230px;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+
+  border: 1px;
+  padding-left: 12px;
+}
+
+.Advanced-search {
+  width: 150px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+  background-color: white;
+  margin-top: 13px;
+  margin-left: 1px;
+  border: 0px;
+}
+
+.footer_Rectangle {
+  width: 239px;
+  height: 158px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px 0 rgba(17, 29, 41, 0.1);
+  background-color: #ffffff;
+  padding-left: 44px;
+
+}
+
+.footer {
+  margin-left: 20px;
+  z-index: -1;
+  position: absolute;
+  width: 1200px;
+  /*height: 498px ;*/
+  /*margin-top: 100px;*/
+  /*margin-left: 170px;*/
+
+}
+
+.zIndex {
+  z-index: 1;
+  opacity: 1;
+  background-color: white;
+  width: 761px;
+  margin-left: 40px;
+}
+
+.horizontal-line {
+  width: 757px;
+  margin-left: 10px;
+  /*margin-top: 5px;*/
+}
+.distancetoSearch{
+  color: #8f99a3;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  padding-right: 8px;
+  /*color: #9b9b9b;*/
+
+  border: 1px;
+  padding-left: 12px;
+}
+.Accepting-new-patien {
+  width: 148px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+.availability {
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+}
+
+.Specialization_div {
+  /*width: 40%;*/
+  margin-left: 200px;
+  display: inline-block;
+}
+
+.Specialization {
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+}
+
+
+.AccessebilityTimeframe {
+  width: 220px;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.Extended-Hours {
+  width: 183px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+}
+
+
+.Saturday {
+  width: 128px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+.Weekday {
+  width: 128px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+
+.accessibility_div {
+  display: inline-block;
+  width: 50%;
+  margin-left: 80px;
+  margin-top: 10px;
+
+
+}
+
+.accessibility {
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;;
+}
+
+.Handicap-Accessible {
+  width: 148px;
+  height: 18px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+}
+
+.GENDER_div {
+  margin-left: 55px;
+  display: inline-block;
+}
+
+.DoctorName_div {
+  display: inline-block;
+}
+
+.SECOND-NAME {
+  width: 130px;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+  border: 0px;
+}
+
+.FIRST-NAME {
+  width: 125px;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+  border: 0px;
+}
+
+.GENDER {
+  width: 148px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+
+}
+
+.MALE {
+  width: 55px;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+  border: 0px;
+}
+
+.FEMALE {
+  width: 75px;
+  height: 24px;
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #ffffff;
+  border: 0px;
+  margin-left: 15px;
+  background-color: #0058c3;
+}
+
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.Languages-Spoken {
+  width: 200px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+  margin-left: 15px;
+}
+
+.Languages-Spoken_coln {
+  display: inline-block;
+  margin-left: 20px;
+  width: 100px;
+
+}
+
+.Oral-Surgeon {
+  width: 96px;
+  height: 18px;
+  /*font-family: SourceSansPro;*/
+  /*font-size: 14px;*/
+  /*font-weight: normal;*/
+  /*font-stretch: normal;*/
+  /*font-style: normal;*/
+  /*line-height: normal;*/
+  /*letter-spacing: normal;*/
+  /*color: #8f99a3;*/
+  padding-left: 8px;
+}
+
+.Endodontist {
+  width: 96px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+  padding-left: 8px;
+}
+
+.Lorem-Ipsum {
+  width: 96px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f99a3;
+  padding-left: 8px;
+}
+
+.Shape {
+  width: 10px;
+  height: 7px;
+  background-color: #0070d2;
+}
+
+.Rectangle-739-Copy {
+  width: 225px;
+  height: 3px;
+  /*border-radius: 100px;*/
+  /*background-color: #06a0ff;*/
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.Rectangle-739-Copy>span {
+  font-family: SourceSansPro-Regular;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #9b9b9b;
+}
+.mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  background-color: blue;
+}
+
+
+.Captura-de-Pantalla-2020-03-25-a-las-155236 {
+  width: 1439px;
+  height: 240px;
+  margin-top: 85px;
+  margin-left: 200px;
+  z-index: 1;
+  /*position: absolute;*/
+
+}
+
+#map {
+  width: 1450px;
+  height: 320px;
+  /*margin-top: 100px;*/
+  /*margin-left: 170px;*/
+  z-index: -1;
+  position: absolute;
+  margin-top: -85px;
+  opacity: 0.8;
+  margin-left: -100px;
+
+}
+
+.maindiv {
+  width: 1439px;
+  height: 1000px;
+  border: 1px;
+  border-color: red;
+
+  margin-top: 1px;
+  /*margin-top: 40px;*/
+  /*background-color: #ffffff;*/
+}
+
+.Lorem-Ipsum-dolor-se {
+  width: 320px;
+  height: 33px;
+  font-family: SourceSansPro-Bold;
+  font-size: 26px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.77px;
+  text-align: center;
+  color: #5f7c9b;
+}
+
+.BodyText2 {
+  font-family: SourceSansPro-Regular;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.53px;
+  text-align: center;
+  color: #5f7c9b;
+
+}
+
+.Body2 {
+  width: 361px;
+  height: 46px;
+  margin-left: 400px;
+  margin-bottom: 73px;
+  z-index: -2;
+  position: relative;
+  margin-top: 50px;
+}
+
+.doctorProfile_div {
+  margin-left: 15px;
+}
+
+.avaialbility_div {
+  margin-top: 8px;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+
+.Languages-Spoken_css {
+  width: 74px;
+  height: 18px;
+  /*font-family: SourceSansPro;*/
+  /*font-size: 14px;*/
+  /*font-weight: normal;*/
+  /*font-stretch: normal;*/
+  /*font-style: normal;*/
+  /*line-height: normal;*/
+  /*letter-spacing: normal;*/
+  /*color: #8f99a3;*/
+  /*padding-left: 8px;*/
+
+
+  position: relative;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  color: #8f99a3;
+}
+
+.Amy-Lee {
+  width: 149px;
+  height: 18px;
+  font-family: SourceSansPro;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+  color: #5a7898;
+  padding-left: 13px;
+}
+
+.doctor2{
+  width: 153px;
+  height: 24px;
+  font-family: SourceSansPro-Bold;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 1.17px;
+  color: #0058c3;
+}

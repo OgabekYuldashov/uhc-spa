@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Parameters} from '../../../models/parameters';
 
 @Component({
@@ -7,6 +7,8 @@ import {Parameters} from '../../../models/parameters';
   styleUrls: ['./search-compenent.component.css']
 })
 export class SearchCompenentComponent implements OnInit {
+
+  @Input() searchParams: Parameters;
 
   // Slider attributes
   autoTicks = false;

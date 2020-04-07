@@ -18,7 +18,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
   specialty: string;
   address: string;
   phone: string;
-  email = 'nicoleleigh@gmail.com';
+  email: string;
   website = 'nicoleleigh.com';
   websiteUrl = 'nicoleleigh.com';
   gender: string;
@@ -51,6 +51,7 @@ export class DetailsviewComponent implements OnInit, AfterViewInit {
     this.fullName = this.resultItem.displayName;
     this.address = this.resultItem.fullAddress;
     this.phone = this.resultItem.phone;
+    this.email = this.resultItem.firstName.toLowerCase() +"."+this.resultItem.lastName.toLowerCase()+"@gmail.com";
 
     if(this.resultItem.gender=='F') {
       this.gender ='Female';

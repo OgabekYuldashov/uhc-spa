@@ -9,20 +9,15 @@ import {DetailsModule} from './modules/details/details.module';
 import {HomePageComponent} from './modules/home-page/home-page.component';
 import {FormsModule} from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
-import {SearchCompenentComponent} from './modules/home-page/search-compenent/search-compenent.component';
-import {SliderButtonComponent} from './modules/home-page/slider-button/slider-button.component';
-import {MatCardModule} from "@angular/material/card";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import {ModulesModule} from './modules/modules.module';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 // @ts-ignore
 // @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    SearchCompenentComponent,
-    SliderButtonComponent
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,11 +27,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     DetailsModule,
     FormsModule,
     MatSliderModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatCheckboxModule
+    ModulesModule,
+    MatSlideToggleModule
   ],
-  exports: [SearchCompenentComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

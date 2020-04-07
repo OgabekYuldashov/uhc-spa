@@ -178,3 +178,6 @@ input:checked + .slider:before {
 }
 
 /*=============END CUSTOM TOGGLE SWITCH STYLING===============*/
+.genderBtn {
+  color: #9b9b9b;
+}

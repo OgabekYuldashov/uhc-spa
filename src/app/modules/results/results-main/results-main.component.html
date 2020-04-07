@@ -1,4 +1,40 @@
 <div id="searchBarContainer">
+<!--  <app-search-compenent [searchParams]="searchParams"></app-search-compenent>-->
+
+  <div class="Rectangle-3-Copy-3">
+
+    <select id="plan" [(ngModel)]="searchParams.plans" #plan class="DENTAL-PLAN">
+<!--      <option class="DENTAL-PLAN" value="" selected> DENTAL PLAN</option>-->
+      <option class="DENTAL-PLAN" value="National Options PPO 20">National Options PPO 20</option>
+      <option class="DENTAL-PLAN" value="National Select Managed Care">National Select Managed Care</option>
+      <option class="DENTAL-PLAN" value="National Options PPO 30">National Options PPO 30</option>
+      <option class="DENTAL-PLAN" value="CA Select Managed Care DHMO Plan">CA Select Managed Care DHMO Plan</option>
+      <option class="DENTAL-PLAN" value="CA Select Managed Care Direct Compensation">CA Select Managed Care Direct Compensation</option>
+      <option class="DENTAL-PLAN" value="FL Managed Care Solstice Plan">FL Managed Care Solstice Plan</option>
+      <option class="DENTAL-PLAN" value="NV Select Managed Care/NV Pacific Dental">NV Select Managed Care/NV Pacific Dental</option>
+      <option class="DENTAL-PLAN" value="TX DHMO">TX DHMO</option>
+    </select>
+
+    <input class="YOUR-location" [(ngModel)]="searchParams.location" placeholder="Your Location" value="{{searchParams.location}}">
+    <!--      <mat-card class="example-result-card">-->
+
+    <div class="Rectangle-739-Copy">
+      <span>Range </span>
+      <mat-slider
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumbLabel]="thumbLabel"
+        [tickInterval]="getSliderTickInterval()"
+        [(ngModel)]="searchParams.distanceFromYourAddress"
+      >
+      </mat-slider>
+      <span> mi</span>
+    </div>
+
+    <!--===============================================-->
+    <button class="AdvancedSEARCH_div btn btn-primary" (click)="filterByPlan_And_Location_Distance()"> Search</button>
+  </div>
 
 </div>
 <div class="row">
@@ -13,24 +49,66 @@
         </div>
         <div id="collapseSpecialization" class="panel-collapse collapse show">
 
-          <label class="containerLabel" for="cbxOralSurgeon">Oral Surgeon
-            <input *ngIf="searchParams.specialization" type="checkbox" checked id="cbxOralSurgeon"  (change)="onSpecializationCheckboxChanged('OralSurgeon')">
-<!--            <input type="checkbox" checked id="cbxOralSurgeon">-->
+          <label class="containerLabel" for="cbxGeneralPractice" (change)="onSpecializationCheckboxChanged('General Practice')">General Practice
+            <input *ngIf="searchParams.specializationMap.get('General Practice')" checked type="checkbox" id="cbxGeneralPractice">
+            <input *ngIf="!searchParams.specializationMap.get('General Practice')" type="checkbox" id="cbxGeneralPractice">
+            <span class="checkmark"></span>
+          </label>
+          <label class="containerLabel" for="cbxOrthodonticsDentofacialOrthopedics" (change)="onSpecializationCheckboxChanged('Orthodontics and Dentofacial Orthopedics')">Orthodontics & Dentofacial Orthopedics
+            <input *ngIf="searchParams.specializationMap.get('Orthodontics and Dentofacial Orthopedics')" checked type="checkbox"
+                   id="cbxOrthodonticsDentofacialOrthopedics">
+            <input *ngIf="!searchParams.specializationMap.get('Orthodontics and Dentofacial Orthopedics')" type="checkbox" id="cbxOrthodonticsDentofacialOrthopedics">
             <span class="checkmark"></span>
           </label>
 
-          <label class="containerLabel" for="cbxEndodontist">Endodontist
-            <input type="checkbox" id="cbxEndodontist" (change)="onSpecializationCheckboxChanged('Endodontist')">
+          <label class="containerLabel" for="cbxPediatric" (change)="onSpecializationCheckboxChanged('Pediatric Dentistry')">Pediatric Dentistry
+            <input *ngIf="searchParams.specializationMap.get('Pediatric Dentistry')" checked type="checkbox"
+                   id="cbxPediatric">
+            <input *ngIf="!searchParams.specializationMap.get('Pediatric Dentistry')" type="checkbox" id="cbxPediatric">
+            <span class="checkmark"></span>
+          </label>
+          <label class="containerLabel" for="cbxMaxiSurgeon"
+                 (change)="onSpecializationCheckboxChanged('Oral and Maxillofacial Surgery')">Oral and Maxillofacial Surgery
+            <input *ngIf="searchParams.specializationMap.get('Oral and Maxillofacial Surgery')" checked type="checkbox"
+                   id="cbxMaxiSurgeon">
+            <input *ngIf="!searchParams.specializationMap.get('Oral and Maxillofacial Surgery')" type="checkbox"
+                   id="cbxMaxiSurgeon">
             <span class="checkmark"></span>
           </label>
 
-          <label class="containerLabel" for="cbxMaxiSurgeon" (change)="onSpecializationCheckboxChanged('MaxillofacialSurgeon')">Maxillofacial Surgeon
-            <input type="checkbox" id="cbxMaxiSurgeon">
+          <label class="containerLabel" for="cbxPeriodontics">Periodontics
+            <input *ngIf="searchParams.specializationMap.get('Periodontics')" type="checkbox" checked
+                   id="cbxPeriodontics" (change)="onSpecializationCheckboxChanged('Periodontics')">
+            <input *ngIf="!searchParams.specializationMap.get('Periodontics')" type="checkbox" id="cbxPeriodontics"
+                   (change)="onSpecializationCheckboxChanged('Periodontics')">
             <span class="checkmark"></span>
           </label>
 
-          <label class="containerLabel" for="cbxPediatric" (change)="onSpecializationCheckboxChanged('Pediatric')">Pediatric
-            <input type="checkbox" id="cbxPediatric">
+          <label class="containerLabel" for="cbxEndodontics">Endodontics
+            <input *ngIf="searchParams.specializationMap.get('Endodontics')" checked type="checkbox"
+                   id="cbxEndodontics" (change)="onSpecializationCheckboxChanged('Endodontics')">
+            <input *ngIf="!searchParams.specializationMap.get('Endodontics')" type="checkbox" id="cbxEndodontics"
+                   (change)="onSpecializationCheckboxChanged('Endodontics')">
+            <span class="checkmark"></span>
+          </label>
+          <label class="containerLabel" for="cbxProsthodontics" (change)="onSpecializationCheckboxChanged('Prosthodontics')">Prosthodontics
+            <input *ngIf="searchParams.specializationMap.get('Prosthodontics')" checked type="checkbox"
+                   id="cbxProsthodontics">
+            <input *ngIf="!searchParams.specializationMap.get('Prosthodontics')" type="checkbox" id="cbxProsthodontics">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxDentalPublicHealth" (change)="onSpecializationCheckboxChanged('Dental Public Health')">Dental Public Health
+            <input *ngIf="searchParams.specializationMap.get('Dental Public Health')" checked type="checkbox"
+                   id="cbxDentalPublicHealth">
+            <input *ngIf="!searchParams.specializationMap.get('Dental Public Health')" type="checkbox" id="cbxDentalPublicHealth">
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="containerLabel" for="cbxOralandMaxillofacialPathology" (change)="onSpecializationCheckboxChanged('OralandMaxillofacialPathology')">Oral and Maxillofacial Pathology
+            <input *ngIf="searchParams.specializationMap.get('OralandMaxillofacialPathology')" checked type="checkbox"
+                   id="cbxOralandMaxillofacialPathology">
+            <input *ngIf="!searchParams.specializationMap.get('OralandMaxillofacialPathology')" type="checkbox" id="cbxOralandMaxillofacialPathology">
             <span class="checkmark"></span>
           </label>
         </div>
@@ -44,12 +122,16 @@
         GENDER
       </h4>
       <div *ngIf="searchParams.gender == 'F'" class="btn-group btn-toggle gender">
-        <input type="button" name="gender" class="btn btn-default" value="Male" (click)="changeGender('M')">
-        <input type="button" name="gender" class="btn btn-primary active" value="Female" (click)="changeGender('F')">
+        <input type="button" name="gender" class="btn genderBtn btn-default" value="Male" (click)="changeGender('M')">
+        <input type="button" name="gender" class="btn genderBtn btn-primary active" value="Female" (click)="changeGender('F')">
       </div>
-      <div *ngIf="searchParams.gender !== 'F'" class="btn-group btn-toggle gender">
-        <input type="button" name="gender" class="btn btn-primary active" value="Male" (click)="changeGender('M')">
-        <input type="button" name="gender" class="btn btn-default" value="Female" (click)="changeGender('F')">
+      <div *ngIf="searchParams.gender == 'M'" class="btn-group btn-toggle gender">
+        <input type="button" name="gender" class="btn genderBtn btn-primary active" value="Male" (click)="changeGender('M')">
+        <input type="button" name="gender" class="btn genderBtn btn-default" value="Female" (click)="changeGender('F')">
+      </div>
+      <div *ngIf="!searchParams.gender" class="btn-group btn-toggle gender">
+        <input type="button" name="gender" class="btn genderBtn btn-default" value="Male" (click)="changeGender('M')">
+        <input type="button" name="gender" class="btn genderBtn btn-default" value="Female" (click)="changeGender('F')">
       </div>
     </div>
 
@@ -66,94 +148,109 @@
         <div id="collapseLanguages" class="panel-collapse collapse show">
 
           <label class="containerLabel" for="cbxArabic">Arabic
-            <input type="checkbox" id="cbxArabic" (change)="onLangCheckboxChanged('Arabic')">
+            <input  *ngIf="searchParams.languageMap.get('Arabic')" type="checkbox" checked id="cbxArabic" (change)="onLangCheckboxChanged('Arabic')">
+            <input  *ngIf="!searchParams.languageMap.get('Arabic')" type="checkbox" id="cbxArabic" (change)="onLangCheckboxChanged('Arabic')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxSpanish">Spanish
-            <input type="checkbox" id="cbxSpanish" (change)="onLangCheckboxChanged('Spanish')">
+            <input *ngIf="searchParams.languageMap.get('Spanish')" checked type="checkbox" id="cbxSpanish" (change)="onLangCheckboxChanged('Spanish')">
+            <input *ngIf="!searchParams.languageMap.get('Spanish')" type="checkbox" id="cbxSpanish" (change)="onLangCheckboxChanged('Spanish')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxGerman">German
-            <input type="checkbox" id="cbxGerman" (change)="onLangCheckboxChanged('German')">
+            <input *ngIf="searchParams.languageMap.get('German')" checked type="checkbox" id="cbxGerman" (change)="onLangCheckboxChanged('German')">
+            <input *ngIf="!searchParams.languageMap.get('German')" type="checkbox" id="cbxGerman" (change)="onLangCheckboxChanged('German')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxRomanian">Romanian
-            <input type="checkbox" id="cbxRomanian" (change)="onLangCheckboxChanged('Romanian')">
+            <input *ngIf="searchParams.languageMap.get('Romanian')" checked type="checkbox" id="cbxRomanian" (change)="onLangCheckboxChanged('Romanian')">
+            <input *ngIf="!searchParams.languageMap.get('Romanian')" type="checkbox" id="cbxRomanian" (change)="onLangCheckboxChanged('Romanian')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxFrench">French
-            <input type="checkbox" id="cbxFrench" (change)="onLangCheckboxChanged('French')">
+            <input *ngIf="searchParams.languageMap.get('French')" checked type="checkbox" id="cbxFrench" (change)="onLangCheckboxChanged('French')">
+            <input *ngIf="!searchParams.languageMap.get('French')" type="checkbox" id="cbxFrench" (change)="onLangCheckboxChanged('French')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxHindi">Hindi
-            <input type="checkbox" id="cbxHindi" (change)="onLangCheckboxChanged('Hindi')">
+            <input *ngIf="searchParams.languageMap.get('Hindi')" checked type="checkbox" id="cbxHindi" (change)="onLangCheckboxChanged('Hindi')">
+            <input *ngIf="!searchParams.languageMap.get('Hindi')" type="checkbox" id="cbxHindi" (change)="onLangCheckboxChanged('Hindi')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxItalian">Italian
-            <input type="checkbox" id="cbxItalian" (change)="onLangCheckboxChanged('Italian')">
+            <input *ngIf="searchParams.languageMap.get('Italian')" checked type="checkbox" id="cbxItalian" (change)="onLangCheckboxChanged('Italian')">
+            <input *ngIf="!searchParams.languageMap.get('Italian')" type="checkbox" id="cbxItalian" (change)="onLangCheckboxChanged('Italian')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxRussian">Russian
-            <input type="checkbox" id="cbxRussian" (change)="onLangCheckboxChanged('Russian')">
+            <input *ngIf="searchParams.languageMap.get('Russian')" checked type="checkbox" id="cbxRussian" (change)="onLangCheckboxChanged('Russian')">
+            <input *ngIf="!searchParams.languageMap.get('Russian')" type="checkbox" id="cbxRussian" (change)="onLangCheckboxChanged('Russian')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxKorean">Korean
-            <input type="checkbox" id="cbxKorean" (change)="onLangCheckboxChanged('Korean')">
+            <input *ngIf="searchParams.languageMap.get('Korean')" checked type="checkbox" id="cbxKorean" (change)="onLangCheckboxChanged('Korean')">
+            <input *ngIf="!searchParams.languageMap.get('Korean')" type="checkbox" id="cbxKorean" (change)="onLangCheckboxChanged('Korean')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxPortugese">Portugese
-            <input type="checkbox" id="cbxPortugese" (change)="onLangCheckboxChanged('Portugese')">
+            <input *ngIf="searchParams.languageMap.get('Portugese')" checked type="checkbox" id="cbxPortugese" (change)="onLangCheckboxChanged('Portugese')">
+            <input *ngIf="!searchParams.languageMap.get('Portugese')" type="checkbox" id="cbxPortugese" (change)="onLangCheckboxChanged('Portugese')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxChinese">Chinese
-            <input type="checkbox" id="cbxChinese" (change)="onLangCheckboxChanged('Chinese')">
+            <input *ngIf="searchParams.languageMap.get('Chinese')" checked type="checkbox" id="cbxChinese" (change)="onLangCheckboxChanged('Chinese')">
+            <input *ngIf="!searchParams.languageMap.get('Chinese')" type="checkbox" id="cbxChinese" (change)="onLangCheckboxChanged('Chinese')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxEgyptian">Egyptian
-            <input type="checkbox" id="cbxEgyptian" (change)="onLangCheckboxChanged('Egyptian')">
+            <input *ngIf="searchParams.languageMap.get('Egyptian')" checked type="checkbox" id="cbxEgyptian" (change)="onLangCheckboxChanged('Egyptian')">
+            <input *ngIf="!searchParams.languageMap.get('Egyptian')" type="checkbox" id="cbxEgyptian" (change)="onLangCheckboxChanged('Egyptian')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxFarsi">Farsi
-            <input type="checkbox" id="cbxFarsi" (change)="onLangCheckboxChanged('Farsi')">
+            <input *ngIf="searchParams.languageMap.get('Farsi')" checked type="checkbox" id="cbxFarsi" (change)="onLangCheckboxChanged('Farsi')">
+            <input *ngIf="!searchParams.languageMap.get('Farsi')" type="checkbox" id="cbxFarsi" (change)="onLangCheckboxChanged('Farsi')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxPolish">Polish
-            <input type="checkbox" id="cbxPolish" (change)="onLangCheckboxChanged('Polish')">
+            <input *ngIf="searchParams.languageMap.get('Polish')" checked type="checkbox" id="cbxPolish" (change)="onLangCheckboxChanged('Polish')">
+            <input *ngIf="!searchParams.languageMap.get('Polish')" type="checkbox" id="cbxPolish" (change)="onLangCheckboxChanged('Polish')">
             <span class="checkmark"></span>
           </label>
 
           <label class="containerLabel" for="cbxGreek">Greek
-            <input type="checkbox" id="cbxGreek" (change)="onLangCheckboxChanged('Greek')">
+            <input *ngIf="searchParams.languageMap.get('Greek')" checked type="checkbox" id="cbxGreek" (change)="onLangCheckboxChanged('Greek')">
+            <input *ngIf="!searchParams.languageMap.get('Greek')" type="checkbox" id="cbxGreek" (change)="onLangCheckboxChanged('Greek')">
             <span class="checkmark"></span>
           </label>
         </div>
       </div>
     </div>
 
-    <hr class="filterDivider">
+    <!--<hr class="filterDivider">
 
     <div class="panel-group">
       <h4 class="panel-title filter-title">
         ACCESSIBILITY
       </h4>
-      <!--<label class="containerLabel" for="tglHandicapAccessible" style="padding-left: 0;">Handicap Accessible
+      &lt;!&ndash;<label class="containerLabel" for="tglHandicapAccessible" style="padding-left: 0;">Handicap Accessible
 &lt;!&ndash;        <input type="checkbox" checked data-toggle="toggle" data-size="xs">&ndash;&gt;
         <input type="checkbox" id="tglHandicapAccessible" checked data-toggle="toggle" data-style="ios" data-height="2" data-width="5" data-size="xs" data-on="Yes" data-off="No" >
 &lt;!&ndash;        <span class="checkmark"></span>&ndash;&gt;
-      </label>-->
+      </label>&ndash;&gt;
       <span>
 
         <label class="switch" for="tglHandicapAccessible"><span>Handicap Accessible</span>
@@ -161,7 +258,7 @@
           <span class="slider round"></span>
         </label>
       </span>
-    </div>
+    </div>-->
   </section>
 
 

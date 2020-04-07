@@ -9,6 +9,24 @@ import {Parameters} from '../../../models/parameters';
   styleUrls: ['./results-main.component.css']
 })
 export class ResultsMainComponent implements OnInit, AfterViewInit {
+
+
+  constructor(private dataService: DataSearchService) {
+    this.searchParams = dataService.getParameters();
+    console.log('Search Params:');
+    console.log(this.searchParams);
+
+    dataService.getResultItems().subscribe(r => {
+      this.resItems = this.dataService.getResults(r);
+
+
+      // this.fetchMarkers();
+
+      /*console.log('res:');
+      console.log(this.resItems);*/
+    });
+
+  }
   @ViewChild('resultsMap', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
   lat = 37.730610;
@@ -48,20 +66,42 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   ];
 
 
-  constructor(private dataService: DataSearchService) {
-    this.searchParams = dataService.getParameters();
-    console.log('Search Params:');
-    console.log(this.searchParams);
 
-    dataService.getResultItems().subscribe(r => {
-      this.resItems = this.dataService.getResults(r);
-      console.log('res:');
-      console.log(this.resItems);
-    });
 
-  }
+
+
+  //
+  // Slider attributes
+  autoTicks = false;
+  disabled = false;
+  invert = false;
+  max = 50;
+  min = 0;
+  showTicks = false;
+  step = 1;
+  thumbLabel = true;
+  value = 0;
+  vertical = false;
+  tickInterval = 1;
+  // tslint:disable-next-line:variable-name
+  Choose_Dental_Plan: string;
+  // tslint:disable-next-line:variable-name
+  parameter_list: Parameters = new Parameters();
 
   ngOnInit(): void {
+  }
+
+  fetchMarkers(): void {
+    console.log('Start fetchMarkers()');
+    for (const res of this.resItems) {
+      this.markers.push({
+        position: new google.maps.LatLng(res.allData.lat, res.allData.lon),
+        map: this.map,
+        title: res.firstName
+      });
+
+    }
+    console.log('After fetchMarkers()' + this.markers);
   }
 
   ngAfterViewInit(): void {
@@ -109,16 +149,56 @@ export class ResultsMainComponent implements OnInit, AfterViewInit {
   }
 
   changeGender(gender: string) {
-    this.searchParams.gender = gender;
+    console.log('Before changeGender: ' + this.searchParams.gender);
+    if (this.searchParams.gender === gender) {
+      this.searchParams.gender = undefined;
+    } else {
+      this.searchParams.gender = gender;
+    }
+    console.log('After changeGender: ' + this.searchParams.gender);
   }
 
   onLangCheckboxChanged(language: string) {
-    console.log('onLangCheckboxChanged: ' + language);
-    this.searchParams.languageMap[language] = !this.searchParams.languageMap[language];
+    console.log('Before onLangCheckboxChanged: ' + this.searchParams.languageMap.get(language));
+    this.searchParams.languageMap.set(language, !this.searchParams.languageMap.get(language));
+    console.log('After onLangCheckboxChanged: ' + this.searchParams.languageMap.get(language));
   }
 
   onSpecializationCheckboxChanged(specialization: string) {
-    console.log('onSpecializationCheckboxChanged: ' + specialization);
-    this.searchParams.specializationMap[specialization] = !this.searchParams.specializationMap[specialization];
+    console.log('Before onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
+
+    this.searchParams.specializationMap.set(specialization, !this.searchParams.specializationMap.get(specialization));
+
+    console.log('After onSpecializationCheckboxChanged: ' + this.searchParams.specializationMap.get(specialization));
   }
+
+  getSliderTickInterval(): number {
+    if (this.showTicks) {
+      const value = this.autoTicks ? 'auto' : this.tickInterval + 'mi';
+      this.searchParams.distanceFromYourAddress = this.value + 'mi';
+      return this.value;
+    }
+
+    return 0;
+  }
+  onPlanChange(e) {
+    this.searchParams.plans = e;
+    console.log('selected plan is ' + this.searchParams.plans);
+  }
+
+  filterByPlan_And_Location_Distance() {
+    this.dataService.getResultItems().subscribe(r => {
+      this.resItems = this.dataService.getResults(r);
+      console.log('res:');
+      console.log(this.resItems);
+    });
+
+    this.searchParams = this.dataService.getParameters();
+    console.log('Search Params:');
+    console.log(this.searchParams);
+  }
+  //
+
+
+
 }
