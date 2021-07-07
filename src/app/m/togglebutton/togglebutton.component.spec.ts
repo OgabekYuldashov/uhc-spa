@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SliderButtonComponent } from './slider-button.component';
+import { TogglebuttonComponent } from './togglebutton.component';
 
-describe('SliderButtonComponent', () => {
-  let component: SliderButtonComponent;
-  let fixture: ComponentFixture<SliderButtonComponent>;
+describe('TogglebuttonComponent', () => {
+  let component: TogglebuttonComponent;
+  let fixture: ComponentFixture<TogglebuttonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SliderButtonComponent ]
+      declarations: [ TogglebuttonComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SliderButtonComponent);
+    fixture = TestBed.createComponent(TogglebuttonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
